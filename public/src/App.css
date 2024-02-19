@@ -5,3 +5,18 @@
   overflow: hidden;
   position: relative;
 }
+
+.bg-focus-dark {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.082);
+  width: 100%;
+  height: 100vh;
+  left: 0px;
+  z-index: 5;
+}
+
+@media (max-width: 960px) {
+  .bg-focus-dark {
+    background-color: rgba(0, 0, 0, 0.274);
+  }
+}

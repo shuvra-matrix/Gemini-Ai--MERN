@@ -111,9 +111,9 @@ const Sidebar = () => {
     setisShowMore((pre) => !pre);
   };
 
-  const settingsHandler = () => {
+  const settingsHandler = (e) => {
     dispatch(uiAction.toggleSettings());
-    if (isSidebarLong === true) {
+    if (e.view.innerWidth <= 960) {
       dispatch(uiAction.toggleSideBar());
     }
   };

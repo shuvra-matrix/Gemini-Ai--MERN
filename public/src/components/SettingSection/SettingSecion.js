@@ -21,7 +21,6 @@ const SettingSection = () => {
   };
 
   const settingShow = isSettingsShow ? "settngs-show" : "settings-hide";
-  console.log(settingShow);
 
   return (
     <div className={`${styles["setting-main"]} ${styles[settingShow]}`}>

@@ -2,21 +2,10 @@ import Header from "../Header/Header";
 import InputSection from "../InputSection/InputSection";
 import NewChat from "../NewChat/NewChat";
 import styles from "./ChatSection.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { uiAction } from "../../store/ui-gemini";
 
 const ChatSection = () => {
-  const dispatch = useDispatch();
-  const settingsShow = useSelector((state) => state.ui.isSettingsShow);
-
-  const settingsHideHandler = () => {
-    if (settingsShow === true) {
-      dispatch(uiAction.toggleSettings());
-    }
-  };
-
   return (
-    <div className={styles["chat-section-main"]} onClick={settingsHideHandler}>
+    <div className={styles["chat-section-main"]}>
       <Header />
       <NewChat />
       <InputSection />
