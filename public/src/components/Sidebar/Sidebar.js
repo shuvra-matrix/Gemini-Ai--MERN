@@ -9,7 +9,8 @@ import activityIcon from "../../asset/icons8-activity-48.png";
 import settingsIcon from "../../asset/icons8-settings-64.png";
 import geminiLogo from "../../asset/gemini_sparkle_red_4ed1cbfcbc6c9e84c31b987da73fc4168aec8445.svg";
 import dotIcon from "../../asset/icons8-dot-30.png";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { uiAction } from "../../store/ui-gemini";
 
 const recentChat = [
   {
@@ -35,13 +36,14 @@ const recentChat = [
 ];
 
 const Sidebar = () => {
-  const [isSideBarLong, setSideBarLong] = useState(false);
+  const dispatch = useDispatch();
+  const isSidebarLong = useSelector((state) => state.ui.isSidebarLong);
 
   const sideBarWidthHandler = () => {
-    setSideBarLong((pre) => !pre);
+    dispatch(uiAction.toggleSideBar());
   };
 
-  const sideBarWidthClass = isSideBarLong ? "side-bar-long" : "side-bar-sort";
+  const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";
 
   return (
     <div className={`${styles["sidebar-main"]} ${styles[sideBarWidthClass]}`}>
@@ -52,9 +54,9 @@ const Sidebar = () => {
       <div className={styles["recent-chat-section"]}>
         <div className={styles["pluc-icon"]}>
           <img src={plusIcon} alt="plus icon"></img>
-          {isSideBarLong && <p>New chat</p>}
+          {isSidebarLong && <p>New chat</p>}
         </div>
-        {isSideBarLong && (
+        {isSidebarLong && (
           <div className={styles["recent-chat-main"]}>
             <p>Recent</p>
 
@@ -79,17 +81,17 @@ const Sidebar = () => {
       <div className={styles["settings-section"]}>
         <div className={styles["help"]}>
           <img src={helpIcon} alt="help icon"></img>
-          {isSideBarLong && <p>Help</p>}
+          {isSidebarLong && <p>Help</p>}
         </div>
         <div className={styles["activity"]}>
           <img src={activityIcon} alt="activity icon"></img>
-          {isSideBarLong && <p>Activity</p>}
+          {isSidebarLong && <p>Activity</p>}
         </div>
         <div className={styles["settings"]}>
           <img src={settingsIcon} alt="settings icon"></img>
-          {isSideBarLong && <p>Settings</p>}
+          {isSidebarLong && <p>Settings</p>}
         </div>
-        {isSideBarLong && (
+        {isSidebarLong && (
           <div className={styles["upgrade-gimini"]}>
             <img src={geminiLogo} alt="gemini-logo"></img>
             <p>Upgrade to Gemini Advanced</p>

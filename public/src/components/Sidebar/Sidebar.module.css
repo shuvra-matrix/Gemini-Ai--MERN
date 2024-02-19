@@ -80,8 +80,8 @@
 }
 
 .recent-chat-main {
-  width: 230px;
-  gap: 8px;
+  width: 90%;
+  gap: 6px;
   margin-top: 4rem;
   position: absolute;
   left: 10px;
@@ -140,11 +140,11 @@
 }
 
 .recent-chat {
-  height: 34px;
+  height: 40px;
   /* background-color: #004a77;
   color: #c2e7ff !important; */
   border: 0px;
-  border-radius: 16px;
+  border-radius: 24px;
   position: relative;
 }
 
@@ -221,14 +221,14 @@
 
 .upgrade-gimini {
   background-color: #47494a;
-  height: 45px;
   border: 0px;
-  padding: 6px 3px;
-  border-radius: 12px;
+  padding: 12px 3px;
+  border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  width: 90%;
 }
 
 .upgrade-gimini img {
@@ -277,6 +277,61 @@
 
 @media (max-width: 960px) {
   .sidebar-main {
+    position: absolute;
+    max-width: 85%;
+    z-index: 4;
+  }
+
+  .side-bar-sort.sidebar-main {
+    left: -200px;
+    max-width: 0px;
+  }
+
+  .side-bar-long.sidebar-main {
+    left: 0px;
+  }
+
+  .menu-icon {
+    opacity: 0;
+  }
+
+  .pluc-icon {
+    display: none;
+  }
+
+  .recent-chat-main {
+    margin-top: 0rem;
+    width: 95%;
+    gap: 4px;
+  }
+
+  .recent-chat-section p:first-child {
+    margin-bottom: 10px;
+  }
+
+  .recent-chat-main p {
+    font-size: 17px;
+  }
+
+  .recent-chat {
+    height: 50px;
+    border-radius: 24px;
+  }
+
+  .recent-chat p {
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+  }
+}
+
+@media (max-width: 450px) {
+  .recent-chat-main {
+    width: 90%;
+  }
+
+  .three-dot {
     display: none;
   }
 }

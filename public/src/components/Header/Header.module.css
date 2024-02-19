@@ -13,6 +13,10 @@
   gap: 15px;
 }
 
+.left-section {
+  z-index: 4;
+}
+
 .menu-icon,
 .plus-icon {
   display: flex;
