@@ -7,7 +7,7 @@ import threeDotIcon from "../../asset/icons8-menu-vertical-30.png";
 import helpIcon from "../../asset/icons8-help-50.png";
 import activityIcon from "../../asset/icons8-activity-48.png";
 import settingsIcon from "../../asset/icons8-settings-64.png";
-import geminiLogo from "../../asset/gemini_advanced_slap_logo_d55053ceb94d1a82d2fa11e831e4c68f.svg";
+import geminiLogo from "../../asset/gemini_sparkle_red_4ed1cbfcbc6c9e84c31b987da73fc4168aec8445.svg";
 import dotIcon from "../../asset/icons8-dot-30.png";
 import { useState } from "react";
 
@@ -95,20 +95,18 @@ const Sidebar = () => {
             <p>Upgrade to Gemini Advanced</p>
           </div>
         )}
-        {isSideBarLong && (
-          <div className={styles["location"]}>
-            <div className={styles["dot"]}>
-              <img src={dotIcon} alt="dot icon"></img>
-            </div>
-            <p>
-              <span className={styles["location-name"]}>
-                Kolkata, Westbengal, India
-              </span>{" "}
-              From your IP address <span className={styles["span-dot"]}>.</span>
-              <span> Update location</span>
-            </p>
+        <div className={styles["location"]}>
+          <div className={styles["dot"]}>
+            <img src={dotIcon} alt="dot icon"></img>
           </div>
-        )}
+          <p>
+            <span className={styles["location-name"]}>
+              Kolkata, Westbengal, India
+            </span>{" "}
+            From your IP address <span className={styles["span-dot"]}>.</span>
+            <span> Update location</span>
+          </p>
+        </div>
       </div>
     </div>
   );

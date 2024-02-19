@@ -18,6 +18,24 @@ h2 {
   font-weight: 500;
 }
 
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .text-section h1 {
   color: transparent;
   background: -webkit-linear-gradient(
@@ -42,9 +60,11 @@ h2 {
     var(--bard-color-brand-text-gradient-stop-2) 50%,
     var(--bard-color-brand-text-gradient-stop-3) 56%
   );
-
+  overflow: hidden;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  animation: gradientAnimation 3s linear infinite;
 }
 
 .text-section h2 {

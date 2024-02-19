@@ -26,14 +26,24 @@
   border-radius: 50%;
   cursor: pointer;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 }
 
 .menu-icon {
-  width: 100%;
   position: absolute;
-  left: 20px;
+  left: 14px;
+  height: 40px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px !important;
+  border: 0px;
+  border-radius: 50%;
+  background-color: #393b3d;
+}
+
+.menu-icon:hover {
+  background-color: #393b3d;
 }
 
 .sidebar-main .menu-icon img {
@@ -52,7 +62,7 @@
   gap: 30px;
   overflow: scroll;
   padding-bottom: 5px;
-  margin-top: 3rem;
+  margin-top: 4rem;
 }
 
 .side-bar-long .recent-chat-section {
@@ -72,6 +82,9 @@
 .recent-chat-main {
   width: 230px;
   gap: 8px;
+  margin-top: 4rem;
+  position: absolute;
+  left: 10px;
 }
 
 .pluc-icon {
@@ -82,18 +95,20 @@
   height: 40px;
   border: 0px;
   cursor: pointer;
+  transition: all 0.4s ease;
+  position: absolute;
+  left: 14px;
+  padding: 8px;
 }
 
 .side-bar-long .pluc-icon {
   border-radius: 18px;
   width: 150px;
-  padding: 5px;
 }
 
 .side-bar-sort .pluc-icon {
-  border-radius: 50%;
+  border-radius: 18px;
   width: 40px;
-  padding: 8px;
 }
 
 .pluc-icon p,
@@ -106,7 +121,7 @@
 }
 
 .recent-chat-main p {
-  padding-left: 12px;
+  padding-left: 10px;
 }
 
 .recent-chat-section img,
@@ -182,14 +197,19 @@
   display: flex;
   flex-flow: nowrap column;
   gap: 20px;
+  position: absolute;
+  left: 20px;
+  transition: all 0.4s ease;
 }
 
 .side-bar-long .settings-section {
   height: 220px;
+  bottom: 20px;
 }
 
 .side-bar-sort .settings-section {
   height: 100px;
+  bottom: 60px;
 }
 
 .settings-section div {
@@ -199,19 +219,11 @@
   justify-content: flex-start;
 }
 
-.side-bar-long .settings-section div {
-  padding-left: 8px;
-}
-
-.side-bar-sort .settings-section div {
-  padding-left: 0px;
-}
-
 .upgrade-gimini {
   background-color: #47494a;
   height: 45px;
   border: 0px;
-  padding: 6px 0px;
+  padding: 6px 3px;
   border-radius: 12px;
   display: flex;
   justify-content: center;
@@ -257,6 +269,10 @@
 .span-dot {
   font-size: 20px;
   color: #8e918f;
+}
+
+.side-bar-sort .location {
+  display: none;
 }
 
 @media (max-width: 960px) {
