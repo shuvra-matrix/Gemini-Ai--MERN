@@ -15,12 +15,8 @@ const Header = () => {
   return (
     <div className={styles["header-main"]}>
       <div className={styles["left-section"]}>
-        <div className={styles["menu-icon"]}>
-          <img
-            onClick={toggleSideBarHandler}
-            src={menuIcon}
-            alt="menu icon"
-          ></img>
+        <div className={styles["menu-icon"]} onClick={toggleSideBarHandler}>
+          <img src={menuIcon} alt="menu icon"></img>
         </div>
         <div className={styles["name"]}>
           <p>Gemimi</p>

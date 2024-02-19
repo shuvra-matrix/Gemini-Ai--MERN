@@ -100,6 +100,7 @@ const recentChat = [
 const Sidebar = () => {
   const dispatch = useDispatch();
   const isSidebarLong = useSelector((state) => state.ui.isSidebarLong);
+
   const [isShowMore, setisShowMore] = useState(false);
 
   const sideBarWidthHandler = () => {
@@ -108,6 +109,10 @@ const Sidebar = () => {
 
   const showMoreHandler = () => {
     setisShowMore((pre) => !pre);
+  };
+
+  const settingsHandler = () => {
+    dispatch(uiAction.toggleSettings());
   };
 
   const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";
@@ -167,7 +172,7 @@ const Sidebar = () => {
           <img src={activityIcon} alt="activity icon"></img>
           {isSidebarLong && <p>Activity</p>}
         </div>
-        <div className={styles["settings"]}>
+        <div className={styles["settings"]} onClick={settingsHandler}>
           <img src={settingsIcon} alt="settings icon"></img>
           {isSidebarLong && <p>Settings</p>}
         </div>

@@ -72,7 +72,7 @@
 }
 
 .recent-chat-main {
-  height: calc(79.5vh - 235px);
+  height: calc(78vh - 235px);
   width: 90%;
   gap: 6px;
   margin-top: 4rem;
@@ -211,7 +211,7 @@
 }
 
 .side-bar-long .settings-section {
-  height: 235px;
+  height: 230px;
   bottom: 35px;
 }
 
@@ -241,9 +241,9 @@
   padding: 7px 7px;
 }
 
-.help:hover,
-.activity:hover,
-.settings:hover {
+.side-bar-long .help:hover,
+.side-bar-long .activity:hover,
+.side-bar-long .settings:hover {
   background-color: #303131;
 }
 

@@ -1,0 +1,57 @@
+.setting-main {
+  position: absolute;
+  left: 0px;
+  width: 320px;
+  height: 200px;
+  background-color: #424242;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 10px 0px;
+  gap: 2px;
+  z-index: 5;
+  bottom: 180px;
+  transition: all 4s ease;
+}
+
+.title h4 {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+}
+
+.title,
+.public-link,
+.theme,
+.real-time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.public-link:hover,
+.theme:hover,
+.real-time:hover {
+  background-color: #515151;
+}
+
+.setting-main img {
+  width: 25px;
+  height: 25px;
+}
+
+.setting-main p {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
+@media (max-width: 960px) {
+  .setting-main {
+    width: 100%;
+    bottom: 0px;
+  }
+}

@@ -1,0 +1,44 @@
+.btn-main {
+  width: 45px;
+  height: 15px;
+  border-radius: 18px;
+  border: 0px;
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.on-main {
+  background-color: #1f75e9;
+}
+
+.off-main {
+  background-color: #676767;
+}
+
+.btn-round {
+  width: 22px;
+  height: 22px;
+  border: 0px;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.4s ease;
+}
+
+.on-round {
+  background-color: #aecbfa;
+  left: 25px;
+}
+
+.off-round {
+  background-color: #cecece;
+  left: 0px;
+}
+
+.off-round:hover {
+  background-color: rgb(231, 231, 231);
+}
