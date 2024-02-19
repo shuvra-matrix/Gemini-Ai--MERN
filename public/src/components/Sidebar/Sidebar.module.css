@@ -13,10 +13,12 @@
 
 .side-bar-long {
   max-width: 268px;
+  min-width: 268px;
 }
 
 .side-bar-sort {
   max-width: 68px;
+  min-width: 68px;
 }
 
 .sidebar-main .menu-icon {
@@ -60,19 +62,9 @@
 
 .recent-chat-section {
   gap: 30px;
-  overflow: scroll;
+  overflow: hidden;
   padding-bottom: 5px;
   margin-top: 4rem;
-}
-
-.side-bar-long .recent-chat-section {
-  min-height: calc(85vh - 250px);
-  max-height: calc(85vh - 250px);
-}
-
-.side-bar-sort .recent-chat-section {
-  min-height: calc(85vh - 150px);
-  max-height: calc(85vh - 150px);
 }
 
 .recent-chat-section::-webkit-scrollbar {
@@ -80,11 +72,17 @@
 }
 
 .recent-chat-main {
+  height: calc(79.5vh - 235px);
   width: 90%;
   gap: 6px;
   margin-top: 4rem;
   position: absolute;
-  left: 10px;
+  left: 18px;
+  overflow: scroll;
+}
+
+.recent-chat-main::-webkit-scrollbar {
+  width: 0px;
 }
 
 .pluc-icon {
@@ -124,6 +122,11 @@
   padding-left: 10px;
 }
 
+.recent-chat-main p:first-child {
+  padding-left: 8px;
+  padding-bottom: 5px;
+}
+
 .recent-chat-section img,
 .settings-section img {
   width: 24px;
@@ -139,10 +142,14 @@
   cursor: pointer;
 }
 
+.show-more {
+  padding: 8px 7px;
+}
+
 .recent-chat {
-  height: 40px;
-  /* background-color: #004a77;
-  color: #c2e7ff !important; */
+  padding: 7px 7px;
+  background-color: #004a77;
+  color: #c2e7ff !important;
   border: 0px;
   border-radius: 24px;
   position: relative;
@@ -196,15 +203,16 @@
 .settings-section {
   display: flex;
   flex-flow: nowrap column;
-  gap: 20px;
+  gap: 10px;
   position: absolute;
   left: 20px;
   transition: all 0.4s ease;
+  width: 90%;
 }
 
 .side-bar-long .settings-section {
-  height: 220px;
-  bottom: 20px;
+  height: 235px;
+  bottom: 35px;
 }
 
 .side-bar-sort .settings-section {
@@ -219,16 +227,36 @@
   justify-content: flex-start;
 }
 
+.help,
+.activity,
+.settings {
+  border: 0px;
+  padding: 7px 0px;
+  border-radius: 20px;
+}
+
+.side-bar-long .help,
+.side-bar-long .activity,
+.side-bar-long .settings {
+  padding: 7px 7px;
+}
+
+.help:hover,
+.activity:hover,
+.settings:hover {
+  background-color: #303131;
+}
+
 .upgrade-gimini {
   background-color: #47494a;
   border: 0px;
-  padding: 12px 3px;
+  padding: 12px 7px;
   border-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  width: 90%;
+  width: 220px;
 }
 
 .upgrade-gimini img {
@@ -301,8 +329,9 @@
 
   .recent-chat-main {
     margin-top: 0rem;
-    width: 95%;
+    width: 90%;
     gap: 4px;
+    height: calc(85.5vh - 235px);
   }
 
   .recent-chat-section p:first-child {
@@ -314,8 +343,12 @@
   }
 
   .recent-chat {
-    height: 50px;
+    padding: 10px 7px;
     border-radius: 24px;
+  }
+
+  .show-more {
+    padding: 10px 7px;
   }
 
   .recent-chat p {
@@ -333,5 +366,12 @@
 
   .three-dot {
     display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .side-bar-long .settings-section {
+    height: 220px;
+    bottom: 35px;
   }
 }

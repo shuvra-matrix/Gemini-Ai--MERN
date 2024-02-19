@@ -9,8 +9,10 @@ import activityIcon from "../../asset/icons8-activity-48.png";
 import settingsIcon from "../../asset/icons8-settings-64.png";
 import geminiLogo from "../../asset/gemini_sparkle_red_4ed1cbfcbc6c9e84c31b987da73fc4168aec8445.svg";
 import dotIcon from "../../asset/icons8-dot-30.png";
+import upArrowIcon from "../../asset/icons8-collapse-arrow-64.png";
 import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
+import { useState } from "react";
 
 const recentChat = [
   {
@@ -33,17 +35,83 @@ const recentChat = [
     id: 5,
     chat: "I need more context",
   },
+  {
+    id: 6,
+    chat: "I need more context",
+  },
+  {
+    id: 7,
+    chat: "I need more context how i get",
+  },
+  {
+    id: 8,
+    chat: "I need more context",
+  },
+  {
+    id: 9,
+    chat: "I need more context",
+  },
+  {
+    id: 10,
+    chat: "I need more context",
+  },
+  {
+    id: 11,
+    chat: "I need more context",
+  },
+  {
+    id: 12,
+    chat: "I need more context how i get",
+  },
+  {
+    id: 13,
+    chat: "I need more context",
+  },
+  {
+    id: 14,
+    chat: "I need more context",
+  },
+  {
+    id: 15,
+    chat: "I need more context",
+  },
+  {
+    id: 16,
+    chat: "I need more context",
+  },
+  {
+    id: 17,
+    chat: "I need more context how i get",
+  },
+  {
+    id: 18,
+    chat: "I need more context",
+  },
+  {
+    id: 19,
+    chat: "I need more context",
+  },
+  {
+    id: 20,
+    chat: "I need more context",
+  },
 ];
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const isSidebarLong = useSelector((state) => state.ui.isSidebarLong);
+  const [isShowMore, setisShowMore] = useState(false);
 
   const sideBarWidthHandler = () => {
     dispatch(uiAction.toggleSideBar());
   };
 
+  const showMoreHandler = () => {
+    setisShowMore((pre) => !pre);
+  };
+
   const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";
+  const showMoreArrowIcon = isShowMore ? upArrowIcon : expandIcon;
 
   return (
     <div className={`${styles["sidebar-main"]} ${styles[sideBarWidthClass]}`}>
@@ -60,7 +128,7 @@ const Sidebar = () => {
           <div className={styles["recent-chat-main"]}>
             <p>Recent</p>
 
-            {recentChat.map((chat) => (
+            {recentChat.slice(0, 5).map((chat) => (
               <div className={styles["recent-chat"]} key={chat.id}>
                 <img src={messageIcon} alt="message"></img>
                 <p>{chat.chat.slice(0, 20)}</p>
@@ -69,11 +137,23 @@ const Sidebar = () => {
                 </div>
               </div>
             ))}
+            {recentChat.length > 5 && (
+              <div className={styles["show-more"]} onClick={showMoreHandler}>
+                <img src={showMoreArrowIcon} alt="drop down"></img>
+                <p>Show more</p>
+              </div>
+            )}
 
-            <div className={styles["show-more"]}>
-              <img src={expandIcon} alt="drop down"></img>
-              <p>Show more</p>
-            </div>
+            {isShowMore &&
+              recentChat.slice(5, recentChat.length).map((chat) => (
+                <div className={styles["recent-chat"]} key={chat.id}>
+                  <img src={messageIcon} alt="message"></img>
+                  <p>{chat.chat.slice(0, 20)}</p>
+                  <div className={styles["three-dot"]}>
+                    <img src={threeDotIcon} alt="more-option"></img>
+                  </div>
+                </div>
+              ))}
           </div>
         )}
       </div>
