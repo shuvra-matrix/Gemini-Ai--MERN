@@ -8,9 +8,15 @@ import { uiAction } from "./store/ui-gemini";
 function App() {
   const dispatch = useDispatch();
   const settingsShow = useSelector((state) => state.ui.isSettingsShow);
+  const isAdvanceGeminiPrompt = useSelector((state) => state.ui.isAdvanceShow);
 
   const settingHandler = () => {
-    dispatch(uiAction.toggleSettings());
+    if (settingsShow === true) {
+      dispatch(uiAction.toggleSettings());
+    }
+    if (isAdvanceGeminiPrompt === true) {
+      dispatch(uiAction.toggleAdvanceShow());
+    }
   };
 
   return (
@@ -18,7 +24,11 @@ function App() {
       <Sidebar />
       <ChatSection />
       <SettingSection />
+
       {settingsShow && (
+        <div onClick={settingHandler} className="bg-focus-dark"></div>
+      )}
+      {isAdvanceGeminiPrompt && (
         <div onClick={settingHandler} className="bg-focus-dark"></div>
       )}
     </div>

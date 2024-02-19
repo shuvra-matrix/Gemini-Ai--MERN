@@ -5,6 +5,7 @@ const uiInitialState = {
   isSidebarLong: false,
   isRealTimeResponse: false,
   isSettingsShow: false,
+  isAdvanceShow: false,
 };
 
 const uiCreteSlice = createSlice({
@@ -22,6 +23,9 @@ const uiCreteSlice = createSlice({
     },
     toggleSettings(state) {
       state.isSettingsShow = !state.isSettingsShow;
+    },
+    toggleAdvanceShow(state) {
+      state.isAdvanceShow = !state.isAdvanceShow;
     },
   },
 });

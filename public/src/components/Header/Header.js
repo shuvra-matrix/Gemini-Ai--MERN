@@ -12,14 +12,18 @@ const Header = () => {
     dispatch(uiAction.toggleSideBar());
   };
 
+  const toggleAadvanceGeminiHandler = () => {
+    dispatch(uiAction.toggleAdvanceShow());
+  };
+
   return (
     <div className={styles["header-main"]}>
       <div className={styles["left-section"]}>
         <div className={styles["menu-icon"]} onClick={toggleSideBarHandler}>
           <img src={menuIcon} alt="menu icon"></img>
         </div>
-        <div className={styles["name"]}>
-          <p>Gemimi</p>
+        <div className={styles["name"]} onClick={toggleAadvanceGeminiHandler}>
+          <p>Gemini</p>
           <img src={dropDownIcon} alt="drop down button"></img>
         </div>
       </div>

@@ -1,12 +1,15 @@
 import Header from "../Header/Header";
 import InputSection from "../InputSection/InputSection";
 import NewChat from "../NewChat/NewChat";
+import AdvanceGemini from "../Ui/AdvanceGmini";
+
 import styles from "./ChatSection.module.css";
 
 const ChatSection = () => {
   return (
     <div className={styles["chat-section-main"]}>
       <Header />
+      <AdvanceGemini />
       <NewChat />
       <InputSection />
       <div className={styles["warning-text"]}>
