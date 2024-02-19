@@ -1,0 +1,266 @@
+.sidebar-main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #1e1f20;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding: 20px;
+  gap: 30px;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.side-bar-long {
+  max-width: 268px;
+}
+
+.side-bar-sort {
+  max-width: 68px;
+}
+
+.sidebar-main .menu-icon {
+  height: 32px;
+  width: 32px;
+  border: 0px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.menu-icon {
+  width: 100%;
+  position: absolute;
+  left: 20px;
+}
+
+.sidebar-main .menu-icon img {
+  height: 24px;
+  width: 24px;
+}
+
+.recent-chat-section,
+.recent-chat-main {
+  display: flex;
+  flex-flow: nowrap column;
+  align-items: flex-start;
+}
+
+.recent-chat-section {
+  gap: 30px;
+  overflow: scroll;
+  padding-bottom: 5px;
+  margin-top: 3rem;
+}
+
+.side-bar-long .recent-chat-section {
+  min-height: calc(85vh - 250px);
+  max-height: calc(85vh - 250px);
+}
+
+.side-bar-sort .recent-chat-section {
+  min-height: calc(85vh - 150px);
+  max-height: calc(85vh - 150px);
+}
+
+.recent-chat-section::-webkit-scrollbar {
+  width: 0px;
+}
+
+.recent-chat-main {
+  width: 230px;
+  gap: 8px;
+}
+
+.pluc-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #393b3d;
+  height: 40px;
+  border: 0px;
+  cursor: pointer;
+}
+
+.side-bar-long .pluc-icon {
+  border-radius: 18px;
+  width: 150px;
+  padding: 5px;
+}
+
+.side-bar-sort .pluc-icon {
+  border-radius: 50%;
+  width: 40px;
+  padding: 8px;
+}
+
+.pluc-icon p,
+.recent-chat-main p,
+.settings-section p {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: rgb(227, 227, 227);
+}
+
+.recent-chat-main p {
+  padding-left: 12px;
+}
+
+.recent-chat-section img,
+.settings-section img {
+  width: 24px;
+  height: 24px;
+}
+
+.recent-chat,
+.show-more {
+  display: flex;
+  flex-flow: nowrap row;
+  align-items: center;
+  padding-left: 8px;
+  cursor: pointer;
+}
+
+.recent-chat {
+  height: 34px;
+  /* background-color: #004a77;
+  color: #c2e7ff !important; */
+  border: 0px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.recent-chat {
+  width: 100%;
+}
+
+.recent-chat img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recent-chat p,
+.show-more p {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 500;
+  font-style: normal;
+  color: #c4c7c5;
+}
+
+.three-dot {
+  padding-left: 4px;
+  position: absolute;
+  right: 15px;
+  opacity: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 0;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.three-dot:hover {
+  background-color: rgba(0, 0, 0, 0.342);
+}
+
+.recent-chat:hover {
+  background-color: #282a2c;
+}
+
+.recent-chat:hover .three-dot {
+  opacity: 1;
+}
+
+.settings-section {
+  display: flex;
+  flex-flow: nowrap column;
+  gap: 20px;
+}
+
+.side-bar-long .settings-section {
+  height: 220px;
+}
+
+.side-bar-sort .settings-section {
+  height: 100px;
+}
+
+.settings-section div {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  justify-content: flex-start;
+}
+
+.side-bar-long .settings-section div {
+  padding-left: 8px;
+}
+
+.side-bar-sort .settings-section div {
+  padding-left: 0px;
+}
+
+.upgrade-gimini {
+  background-color: #47494a;
+  height: 45px;
+  border: 0px;
+  padding: 6px 0px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upgrade-gimini img {
+  width: 20px;
+  height: 20px;
+}
+
+.upgrade-gimini p {
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.location {
+  display: flex;
+}
+
+.dot img {
+  width: 15px;
+  height: 15px;
+}
+
+.dot {
+  padding-left: 8px !important;
+}
+
+.location p {
+  font-size: 11px;
+  line-height: 16px;
+  color: #a8c7fa;
+  text-align: left;
+}
+
+.location-name {
+  display: block;
+  color: #ffffff;
+}
+
+.span-dot {
+  font-size: 20px;
+  color: #8e918f;
+}
+
+@media (max-width: 960px) {
+  .sidebar-main {
+    display: none;
+  }
+}

@@ -1,0 +1,79 @@
+.input-main {
+  max-width: 830px;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.input-main input {
+  width: 100%;
+  height: 65px;
+  padding-left: 25px;
+  padding-right: 60px;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgb(255, 255, 255);
+  background-color: #1e1f20;
+  border: 0px;
+  border-radius: 30px;
+}
+
+.input-main input:focus {
+  outline: none;
+  background-color: #282a2c;
+}
+
+.input-main input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #bdc1c6;
+}
+
+.input-main button {
+  background-color: transparent;
+  border: 0px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.input-main button img {
+  width: 30px;
+  height: 30px;
+  transform: rotate(45deg);
+}
+
+@media (max-width: 1106px) {
+  .input-main {
+    padding: 0px 20px;
+  }
+
+  .input-main button {
+    right: 25px;
+  }
+}
+
+@media (max-width: 680px) {
+  .input-main {
+    bottom: 30px;
+    padding: 0px 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .input-main {
+    bottom: 40px;
+  }
+}
+
+@media (max-width: 260px) {
+  .input-main {
+    bottom: 60px;
+  }
+}

@@ -1,0 +1,97 @@
+.prompt-main {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  overflow: scroll;
+  gap: 10px;
+  margin-top: 7rem;
+}
+
+.prompt-main::-webkit-scrollbar {
+  width: 0px;
+}
+
+.prompt-main::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.prompt-main::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.prompt {
+  min-height: 200px;
+  min-width: 200px;
+  background-color: #1e1f20;
+  border: 0px;
+  border-radius: 12px;
+  padding: 15px;
+  position: relative;
+  cursor: pointer;
+}
+
+.prompt:hover {
+  background-color: #333537;
+}
+
+.is-selected {
+  background-color: #3b4456;
+}
+
+.prompt p {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: rgb(227, 227, 227);
+  text-align: left;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+}
+
+.icon {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-color: #131314;
+  border: 0px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 15px;
+  right: 20px;
+}
+
+.icon img {
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-width: 1106px) {
+  .prompt:first-child {
+    margin-inline: 20px 0px;
+  }
+  .prompt:last-child {
+    margin-inline: 0px 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .prompt-main {
+    margin-top: 5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .prompt-main {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 250px) {
+  .prompt-main {
+    margin-top: 0.8rem;
+  }
+}
