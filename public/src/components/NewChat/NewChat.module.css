@@ -19,20 +19,11 @@ h2 {
 }
 
 @keyframes gradientAnimation {
-  0% {
-    background-position: 0% 0%;
-  }
-  100% {
-    background-position: 100% 0%;
-  }
-}
-
-@keyframes slideIn {
   from {
-    transform: translateX(-100%);
+    width: 0%;
   }
   to {
-    transform: translateX(0);
+    width: 100%;
   }
 }
 
@@ -64,7 +55,11 @@ h2 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 200% 100%;
-  animation: gradientAnimation 3s linear infinite;
+  animation: gradientAnimation 2s ease;
+  -webkit-box-orient: vertical;
+  display: -webkit-inline-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
 }
 
 .text-section h2 {

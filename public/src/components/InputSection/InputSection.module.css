@@ -1,12 +1,13 @@
 .input-main {
   max-width: 830px;
-  width: 100%;
   margin: auto;
   position: absolute;
   bottom: 14px;
   left: 50%;
+  width: 100%;
   transform: translate(-50%, -50%);
   z-index: 1;
+  animation: widthChange 1.5s ease-out;
 }
 
 .input-main input {
@@ -17,14 +18,14 @@
   font-size: 16px;
   line-height: 24px;
   color: rgb(255, 255, 255);
-  background-color: #1e1f20;
+  background-color: #282a2c;
   border: 0px;
   border-radius: 30px;
 }
 
 .input-main input:focus {
   outline: none;
-  background-color: #282a2c;
+  background-color: #1e1f20;
 }
 
 .input-main input::placeholder {
@@ -47,6 +48,15 @@
   width: 30px;
   height: 30px;
   transform: rotate(45deg);
+}
+
+@keyframes widthChange {
+  from {
+    width: 10%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1106px) {
