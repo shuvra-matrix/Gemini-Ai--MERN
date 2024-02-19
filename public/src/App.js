@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Sidebar />
       <ChatSection />
-      {settingsShow && <SettingSection />}
+      <SettingSection />
     </div>
   );
 }

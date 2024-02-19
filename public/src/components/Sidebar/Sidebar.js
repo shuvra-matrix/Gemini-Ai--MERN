@@ -113,6 +113,9 @@ const Sidebar = () => {
 
   const settingsHandler = () => {
     dispatch(uiAction.toggleSettings());
+    if (isSidebarLong === true) {
+      dispatch(uiAction.toggleSideBar());
+    }
   };
 
   const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";

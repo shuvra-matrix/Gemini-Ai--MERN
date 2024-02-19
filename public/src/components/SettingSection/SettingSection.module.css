@@ -1,6 +1,5 @@
 .setting-main {
   position: absolute;
-  left: 0px;
   width: 320px;
   height: 200px;
   background-color: #424242;
@@ -11,8 +10,21 @@
   padding: 10px 0px;
   gap: 2px;
   z-index: 5;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0px 0px 40px 15px rgb(0 0 0 / 25%);
+  transition: all 0.1s ease-out;
+}
+
+.settngs-show {
+  left: 0px;
   bottom: 180px;
-  transition: all 4s ease;
+}
+
+.settings-hide {
+  opacity: 0;
+  left: -400px;
+  bottom: 100px;
 }
 
 .title h4 {
@@ -53,5 +65,13 @@
   .setting-main {
     width: 100%;
     bottom: 0px;
+    gap: 8px;
+    height: 220px;
+  }
+  .title,
+  .public-link,
+  .theme,
+  .real-time {
+    padding: 10px 20px;
   }
 }

@@ -10,6 +10,7 @@ const SettingSection = () => {
   const dispatch = useDispatch();
   const themeMode = useSelector((state) => state.ui.isDark);
   const realTimeMode = useSelector((state) => state.ui.isRealTimeResponse);
+  const isSettingsShow = useSelector((state) => state.ui.isSettingsShow);
 
   const themeHandler = () => {
     dispatch(uiAction.toggleTheme());
@@ -19,8 +20,11 @@ const SettingSection = () => {
     dispatch(uiAction.toggleRealTimeResponse());
   };
 
+  const settingShow = isSettingsShow ? "settngs-show" : "settings-hide";
+  console.log(settingShow);
+
   return (
-    <div className={styles["setting-main"]}>
+    <div className={`${styles["setting-main"]} ${styles[settingShow]}`}>
       <div className={styles["title"]}>
         <h4>Settings</h4>
       </div>
