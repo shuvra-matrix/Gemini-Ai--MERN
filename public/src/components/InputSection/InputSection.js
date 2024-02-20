@@ -1,6 +1,5 @@
 import styles from "./InputSection.module.css";
-import { useState } from "react";
-import sendIcon from "../../asset/icons8-send-48.png";
+import { darkIcon } from "../../asset/darkIcon";
 
 const InputSection = () => {
   return (
@@ -12,7 +11,7 @@ const InputSection = () => {
           name="prompt"
         ></input>
         <button type="submit">
-          <img src={sendIcon} alt="send icon"></img>
+          <img src={darkIcon.sendIcon} alt="send icon"></img>
         </button>
       </form>
     </div>

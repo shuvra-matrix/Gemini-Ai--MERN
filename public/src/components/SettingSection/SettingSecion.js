@@ -1,8 +1,6 @@
 import styles from "./SettingSection.module.css";
-import wallIcon from "../../asset/icons8-wall-64.png";
-import moonIcon from "../../asset/icons8-moon-64.png";
-import linkIcon from "../../asset/icons8-link-64.png";
 import ToggleButton from "./ToggleButton";
+import { darkIcon } from "../../asset/darkIcon";
 import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
 
@@ -20,6 +18,7 @@ const SettingSection = () => {
     dispatch(uiAction.toggleRealTimeResponse());
   };
 
+  const icon = darkIcon;
   const settingShow = isSettingsShow ? "settngs-show" : "settings-hide";
 
   return (
@@ -28,16 +27,16 @@ const SettingSection = () => {
         <h4>Settings</h4>
       </div>
       <div className={styles["public-link"]}>
-        <img src={linkIcon} alt="link icon"></img>
+        <img src={icon.linkIcon} alt="link icon"></img>
         <p>Your public links</p>
       </div>
       <div className={styles["theme"]}>
-        <img src={moonIcon} alt="moon icon"></img>
+        <img src={icon.moonIcon} alt="moon icon"></img>
         <p>Dark theme</p>
         <ToggleButton onClick={themeHandler} mode={themeMode} />
       </div>
       <div className={styles["real-time"]}>
-        <img src={wallIcon} alt="wall icon"></img>
+        <img src={icon.wallIcon} alt="wall icon"></img>
         <p>Real-time responses</p>
         <ToggleButton onClick={realTimeResponseHandler} mode={realTimeMode} />
       </div>

@@ -1,15 +1,6 @@
 import styles from "./Sidebar.module.css";
-import menuIcon from "../../asset/icons8-menu-64.png";
-import plusIcon from "../../asset/icons8-plus-50.png";
-import messageIcon from "../../asset/icons8-message-48.png";
-import expandIcon from "../../asset/icons8-expand-arrow-64.png";
-import threeDotIcon from "../../asset/icons8-menu-vertical-30.png";
-import helpIcon from "../../asset/icons8-help-50.png";
-import activityIcon from "../../asset/icons8-activity-48.png";
-import settingsIcon from "../../asset/icons8-settings-64.png";
-import geminiLogo from "../../asset/gemini_sparkle_red_4ed1cbfcbc6c9e84c31b987da73fc4168aec8445.svg";
-import dotIcon from "../../asset/icons8-dot-30.png";
-import upArrowIcon from "../../asset/icons8-collapse-arrow-64.png";
+import { darkIcon } from "../../asset/darkIcon";
+import { commonIcon } from "../../asset";
 import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
 import { useState } from "react";
@@ -117,19 +108,19 @@ const Sidebar = () => {
       dispatch(uiAction.toggleSideBar());
     }
   };
-
+  const icon = darkIcon;
   const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";
-  const showMoreArrowIcon = isShowMore ? upArrowIcon : expandIcon;
+  const showMoreArrowIcon = isShowMore ? icon.upArrowIcon : icon.expandIcon;
 
   return (
     <div className={`${styles["sidebar-main"]} ${styles[sideBarWidthClass]}`}>
       <div className={styles["menu-icon"]} onClick={sideBarWidthHandler}>
-        <img src={menuIcon} alt="menu icon"></img>
+        <img src={icon.menuIcon} alt="menu icon"></img>
       </div>
 
       <div className={styles["recent-chat-section"]}>
         <div className={styles["pluc-icon"]}>
-          <img src={plusIcon} alt="plus icon"></img>
+          <img src={icon.plusIcon} alt="plus icon"></img>
           {isSidebarLong && <p>New chat</p>}
         </div>
         {isSidebarLong && (
@@ -146,10 +137,10 @@ const Sidebar = () => {
                 }}
                 key={chat.id}
               >
-                <img src={messageIcon} alt="message"></img>
+                <img src={icon.messageIcon} alt="message"></img>
                 <p>{chat.chat.slice(0, 20)}</p>
                 <div className={styles["three-dot"]}>
-                  <img src={threeDotIcon} alt="more-option"></img>
+                  <img src={icon.threeDotIcon} alt="more-option"></img>
                 </div>
               </div>
             ))}
@@ -171,10 +162,10 @@ const Sidebar = () => {
                   }}
                   key={chat.id}
                 >
-                  <img src={messageIcon} alt="message"></img>
+                  <img src={icon.messageIcon} alt="message"></img>
                   <p>{chat.chat.slice(0, 20)}</p>
                   <div className={styles["three-dot"]}>
-                    <img src={threeDotIcon} alt="more-option"></img>
+                    <img src={icon.threeDotIcon} alt="more-option"></img>
                   </div>
                 </div>
               ))}
@@ -184,26 +175,26 @@ const Sidebar = () => {
 
       <div className={styles["settings-section"]}>
         <div className={styles["help"]}>
-          <img src={helpIcon} alt="help icon"></img>
+          <img src={icon.helpIcon} alt="help icon"></img>
           {isSidebarLong && <p>Help</p>}
         </div>
         <div className={styles["activity"]}>
-          <img src={activityIcon} alt="activity icon"></img>
+          <img src={icon.activityIcon} alt="activity icon"></img>
           {isSidebarLong && <p>Activity</p>}
         </div>
         <div className={styles["settings"]} onClick={settingsHandler}>
-          <img src={settingsIcon} alt="settings icon"></img>
+          <img src={icon.settingsIcon} alt="settings icon"></img>
           {isSidebarLong && <p>Settings</p>}
         </div>
         {isSidebarLong && (
           <div className={styles["upgrade-gimini"]}>
-            <img src={geminiLogo} alt="gemini-logo"></img>
+            <img src={commonIcon.advanceGeminiIcon} alt="gemini-logo"></img>
             <p>Upgrade to Gemini Advanced</p>
           </div>
         )}
         <div className={styles["location"]}>
           <div className={styles["dot"]}>
-            <img src={dotIcon} alt="dot icon"></img>
+            <img src={icon.dotIcon} alt="dot icon"></img>
           </div>
           <p>
             <span className={styles["location-name"]}>
