@@ -41,16 +41,15 @@
   width: 40px !important;
   border: 0px;
   border-radius: 50%;
-  background-color: #393b3d;
+}
+
+.menu-icon img {
+  height: 20px;
+  width: 20px;
 }
 
 .menu-icon:hover {
   background-color: #393b3d;
-}
-
-.sidebar-main .menu-icon img {
-  height: 24px;
-  width: 24px;
 }
 
 .recent-chat-section,
@@ -90,22 +89,27 @@
   align-items: center;
   gap: 20px;
   background-color: #393b3d;
-  height: 40px;
   border: 0px;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: width 0.4s ease;
   position: absolute;
-  left: 14px;
+  left: 15px;
   padding: 8px;
 }
 
+.pluc-icon:hover {
+  background-color: #2c2d30;
+}
+
 .side-bar-long .pluc-icon {
+  height: 40px;
   border-radius: 18px;
   width: 150px;
 }
 
 .side-bar-sort .pluc-icon {
-  border-radius: 18px;
+  height: 40px;
+  border-radius: 24px;
   width: 40px;
 }
 
@@ -129,8 +133,8 @@
 
 .recent-chat-section img,
 .settings-section img {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }
 
 .recent-chat,
@@ -205,14 +209,14 @@
   flex-flow: nowrap column;
   gap: 10px;
   position: absolute;
-  left: 20px;
   transition: all 0.4s ease;
-  width: 90%;
 }
 
 .side-bar-long .settings-section {
   height: 230px;
   bottom: 35px;
+  width: 90%;
+  left: 20px;
 }
 
 .side-bar-sort .settings-section {
@@ -224,7 +228,6 @@
   display: flex;
   gap: 10px;
   cursor: pointer;
-  justify-content: flex-start;
 }
 
 .help,
@@ -232,28 +235,36 @@
 .settings {
   border: 0px;
   padding: 7px 0px;
-  border-radius: 20px;
 }
 
 .side-bar-long .help,
 .side-bar-long .activity,
 .side-bar-long .settings {
   padding: 7px 7px;
+  border-radius: 20px;
 }
 
-.side-bar-long .help:hover,
-.side-bar-long .activity:hover,
-.side-bar-long .settings:hover {
+.side-bar-sort .help,
+.side-bar-sort .activity,
+.side-bar-sort .settings {
+  padding: 8px 8px;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.help:hover,
+.activity:hover,
+.settings:hover {
   background-color: #303131;
 }
 
 .upgrade-gimini {
   background-color: #47494a;
   border: 0px;
-  padding: 12px 7px;
+  padding: 12px 8px;
   border-radius: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   cursor: pointer;
   width: 220px;
