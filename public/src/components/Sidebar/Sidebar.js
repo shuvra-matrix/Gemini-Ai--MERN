@@ -100,8 +100,8 @@ const recentChat = [
 const Sidebar = () => {
   const dispatch = useDispatch();
   const isSidebarLong = useSelector((state) => state.ui.isSidebarLong);
-
   const [isShowMore, setisShowMore] = useState(false);
+  const [isActiveChat, setIsActiveChat] = useState("");
 
   const sideBarWidthHandler = () => {
     dispatch(uiAction.toggleSideBar());
@@ -123,8 +123,8 @@ const Sidebar = () => {
 
   return (
     <div className={`${styles["sidebar-main"]} ${styles[sideBarWidthClass]}`}>
-      <div className={styles["menu-icon"]}>
-        <img onClick={sideBarWidthHandler} src={menuIcon} alt="menu icon"></img>
+      <div className={styles["menu-icon"]} onClick={sideBarWidthHandler}>
+        <img src={menuIcon} alt="menu icon"></img>
       </div>
 
       <div className={styles["recent-chat-section"]}>
@@ -137,7 +137,15 @@ const Sidebar = () => {
             <p>Recent</p>
 
             {recentChat.slice(0, 5).map((chat) => (
-              <div className={styles["recent-chat"]} key={chat.id}>
+              <div
+                className={`${styles["recent-chat"]} ${
+                  isActiveChat === chat.id ? styles["active-recent-chat"] : ""
+                }`}
+                onClick={() => {
+                  setIsActiveChat(chat.id);
+                }}
+                key={chat.id}
+              >
                 <img src={messageIcon} alt="message"></img>
                 <p>{chat.chat.slice(0, 20)}</p>
                 <div className={styles["three-dot"]}>
@@ -154,7 +162,15 @@ const Sidebar = () => {
 
             {isShowMore &&
               recentChat.slice(5, recentChat.length).map((chat) => (
-                <div className={styles["recent-chat"]} key={chat.id}>
+                <div
+                  className={`${styles["recent-chat"]} ${
+                    isActiveChat === chat.id ? styles["active-recent-chat"] : ""
+                  }`}
+                  onClick={() => {
+                    setIsActiveChat(chat.id);
+                  }}
+                  key={chat.id}
+                >
                   <img src={messageIcon} alt="message"></img>
                   <p>{chat.chat.slice(0, 20)}</p>
                   <div className={styles["three-dot"]}>

@@ -52,38 +52,6 @@
   background-color: #393b3d;
 }
 
-.recent-chat-section,
-.recent-chat-main {
-  display: flex;
-  flex-flow: nowrap column;
-  align-items: flex-start;
-}
-
-.recent-chat-section {
-  gap: 30px;
-  overflow: hidden;
-  padding-bottom: 5px;
-  margin-top: 4rem;
-}
-
-.recent-chat-section::-webkit-scrollbar {
-  width: 0px;
-}
-
-.recent-chat-main {
-  height: calc(78vh - 235px);
-  width: 90%;
-  gap: 6px;
-  margin-top: 4rem;
-  position: absolute;
-  left: 18px;
-  overflow: scroll;
-}
-
-.recent-chat-main::-webkit-scrollbar {
-  width: 0px;
-}
-
 .pluc-icon {
   display: flex;
   align-items: center;
@@ -122,6 +90,38 @@
   color: rgb(227, 227, 227);
 }
 
+.recent-chat-section,
+.recent-chat-main {
+  display: flex;
+  flex-flow: nowrap column;
+  align-items: flex-start;
+}
+
+.recent-chat-section {
+  gap: 30px;
+  overflow: hidden;
+  padding-bottom: 5px;
+  margin-top: 4rem;
+}
+
+.recent-chat-section::-webkit-scrollbar {
+  width: 0px;
+}
+
+.recent-chat-main {
+  height: calc(78vh - 235px);
+  width: 90%;
+  gap: 6px;
+  margin-top: 4rem;
+  position: absolute;
+  left: 18px;
+  overflow: scroll;
+}
+
+.recent-chat-main::-webkit-scrollbar {
+  width: 0px;
+}
+
 .recent-chat-main p {
   padding-left: 10px;
 }
@@ -148,15 +148,20 @@
 
 .show-more {
   padding: 8px 7px;
+  width: 100%;
+  border-radius: 24px;
 }
 
 .recent-chat {
   padding: 7px 7px;
-  background-color: #004a77;
   color: #c2e7ff !important;
   border: 0px;
   border-radius: 24px;
   position: relative;
+}
+
+.active-recent-chat {
+  background-color: #004a77;
 }
 
 .recent-chat {
@@ -196,13 +201,20 @@
   background-color: rgba(0, 0, 0, 0.342);
 }
 
-.recent-chat:hover {
+.recent-chat:hover,
+.show-more:hover {
   background-color: #282a2c;
+}
+
+.recent-chat.active-recent-chat:hover {
+  background-color: #043d61;
 }
 
 .recent-chat:hover .three-dot {
   opacity: 1;
 }
+
+/* setting section start */
 
 .settings-section {
   display: flex;
