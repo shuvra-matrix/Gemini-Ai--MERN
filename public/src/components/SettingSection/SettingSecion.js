@@ -20,6 +20,8 @@ const SettingSection = () => {
 
   const icon = darkIcon;
   const settingShow = isSettingsShow ? "settngs-show" : "settings-hide";
+  const getLocalTheme = localStorage.getItem("theme");
+  const theme = getLocalTheme || "dark";
 
   return (
     <div className={`${styles["setting-main"]} ${styles[settingShow]}`}>
@@ -33,7 +35,7 @@ const SettingSection = () => {
       <div className={styles["theme"]}>
         <img src={icon.moonIcon} alt="moon icon"></img>
         <p>Dark theme</p>
-        <ToggleButton onClick={themeHandler} mode={themeMode} />
+        <ToggleButton theme={theme} onClick={themeHandler} mode={themeMode} />
       </div>
       <div className={styles["real-time"]}>
         <img src={icon.wallIcon} alt="wall icon"></img>

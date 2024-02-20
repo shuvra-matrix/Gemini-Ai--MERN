@@ -32,7 +32,7 @@
 .plus-icon {
   height: 32px;
   width: 32px;
-  background-color: #282a2c;
+  background-color: var(--header-plus-bg);
   border: 0px;
   border-radius: 50%;
 }
@@ -53,7 +53,7 @@
 .name p {
   font-size: 20px;
   font-weight: 400;
-  color: #caccce;
+  color: var(--logo-font-color);
 }
 
 .name img {

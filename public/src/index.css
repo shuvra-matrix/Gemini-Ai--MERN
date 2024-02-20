@@ -17,6 +17,127 @@
   --bard-color-surface: #131314;
 }
 
+[data-theme="dark"] {
+  --chat-section-bg: #131314;
+
+  --logo-font-color: #caccce;
+  --header-plus-bg: #282a2c;
+
+  --new-chat-h2-color: #444746;
+
+  --prompt-bg: #1e1f20;
+  --prompt-bg-hover: #333537;
+  --prompt-bg-selected: #3b4456;
+  --prompt-font-color: rgb(227, 227, 227);
+  --prompt-icon-bg: #131314;
+
+  --input-font-color: rgb(255, 255, 255);
+  --input-bg: #282a2c;
+  --input-focus-bg: #1e1f20;
+  --input-placeholder-font-color: #bdc1c6;
+
+  --warning-text-color: #c4c7c5;
+
+  --advance-gimini-gb: #282a2c;
+  --advance-gimini-box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.096);
+  --advance-gimini-h4-color: #ffffff;
+  --gemini-p-color: #e3e3e3;
+  --gemini-advance-p-color: #a0a0a0;
+  --advance-button-bg: #1b1b1b;
+  --advance-button-font-color: white;
+  --advance-button-hover-bg: #131313;
+
+  --sidebar-bg-color: #1e1f20;
+  --menuicon-hover-bg: #393b3d;
+  --icon-p-color: rgb(227, 227, 227);
+  --plus-icon-before-font-color: white;
+  --plus-icon-before-bg-color: #3c4043;
+  --recent-chat-font-color: #c2e7ff;
+  --recent-active-chat-bg: #004a77;
+  --show-more-font-color: #c4c7c5;
+  --three-dot-hover-bg: rgba(0, 0, 0, 0.342);
+  --recent-chat-hover-bg: #282a2c;
+  --recent-chat-active-bg: #043d61;
+  --help-before-font-color: white;
+  --help-before-bg: #3c4043;
+  --help-hover-bg: #303131;
+  --upgrade-gimini-settings-bg: #47494a;
+  --upgrade-gimini-p: #ffffff;
+  --location-font-color: #a8c7fa;
+  --location-name-color: #ffffff;
+  --dot-color: #8e918f;
+
+  --setting-main-bg: #424242;
+  --setting-main-box-shadow: 0px 0px 40px 15px rgb(0 0 0 / 25%);
+  --settings-h4-color: rgb(255, 255, 255);
+  --settings-option-hover-bg: #515151;
+  --settings-p-color: rgb(255, 255, 255);
+
+  --bg-focus-pc: rgba(0, 0, 0, 0.082);
+  --bg-focus-mobile: rgba(0, 0, 0, 0.274);
+}
+
+[data-theme="light"] {
+  --chat-section-bg: #ffffff;
+
+  --logo-font-color: #5f6368;
+  --header-plus-bg: #e9eef6;
+
+  --new-chat-h2-color: #c4c7c5;
+
+  --prompt-bg: #f0f4f9;
+  --prompt-bg-hover: #dde3ea;
+  --prompt-bg-selected: #d3e3fd;
+  --prompt-font-color: #1f1f1f;
+  --prompt-icon-bg: #ffffff;
+
+  --input-font-color: 1f1f1f;
+  --input-bg: #f0f4f9;
+  --input-focus-bg: #e9eef6;
+  --input-placeholder-font-color: #5f6368;
+
+  --warning-text-color: #444746;
+
+  --advance-gimini-gb: #e9eef6;
+  --advance-gimini-box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.096);
+  --advance-gimini-h4-color: #000000;
+  --gemini-p-color: #2f3030;
+  --gemini-advance-p-color: #9c9fa4;
+  --advance-button-bg: #f8fafd;
+  --advance-button-font-color: #000000;
+  --advance-button-hover-bg: #eef0f3;
+
+  --sidebar-bg-color: #f0f4f9;
+  --menuicon-hover-bg: #e9edf2;
+  --newchat-bg: #d4dae1;
+  --icon-p-color: #1f1f1f;
+  --plus-icon-before-font-color: white;
+  --plus-icon-before-bg-color: #3c4043;
+  --recent-chat-font-color: #1f1f1f;
+  --recent-active-chat-bg: #d3e3fd;
+  --show-more-font-color: #444746;
+  --three-dot-hover-bg: #ffffff;
+  --recent-chat-hover-bg: #e9eef6;
+  --recent-chat-active-bg: #c4d7f7;
+  --help-before-font-color: white;
+  --help-before-bg: #3c4043;
+  --help-hover-bg: #e7eaef;
+  --upgrade-gimini-settings-bg: #d4dae1;
+  --upgrade-gimini-p: #000015;
+  --location-font-color: #0b97e2;
+  --location-name-color: #1f1f1f;
+  --dot-color: #747775;
+
+  --setting-main-bg: #ffffff;
+  --setting-main-box-shadow: 0px 0px 40px 15px rgb(0 0 0 / 25%);
+  --settings-h4-color: #000000;
+  --settings-option-hover-bg: #f5f5f5;
+  --settings-p-color: #1f1f1f;
+
+  --bg-focus-pc: rgba(0, 0, 0, 0.062);
+  --bg-focus-mobile: rgba(0, 0, 0, 0.068);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

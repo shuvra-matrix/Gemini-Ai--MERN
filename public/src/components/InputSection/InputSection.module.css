@@ -17,21 +17,21 @@
   padding-right: 60px;
   font-size: 16px;
   line-height: 24px;
-  color: rgb(255, 255, 255);
-  background-color: #282a2c;
+  color: var(--input-font-color);
+  background-color: var(--input-bg);
   border: 0px;
   border-radius: 30px;
 }
 
 .input-main input:focus {
   outline: none;
-  background-color: #1e1f20;
+  background-color: var(--input-focus-bg);
 }
 
 .input-main input::placeholder {
   font-size: 16px;
   font-weight: 400;
-  color: #bdc1c6;
+  color: var(--input-placeholder-font-color);
 }
 
 .input-main button {

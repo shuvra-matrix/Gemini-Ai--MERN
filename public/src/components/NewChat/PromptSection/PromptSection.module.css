@@ -22,7 +22,7 @@
 .prompt {
   min-height: 200px;
   min-width: 200px;
-  background-color: #1e1f20;
+  background-color: var(--prompt-bg);
   border: 0px;
   border-radius: 12px;
   padding: 15px;
@@ -31,18 +31,18 @@
 }
 
 .prompt:hover {
-  background-color: #333537;
+  background-color: var(--prompt-bg-hover);
 }
 
 .is-selected {
-  background-color: #3b4456;
+  background-color: var(--prompt-bg-selected);
 }
 
 .prompt p {
   font-size: 16px;
   line-height: 22px;
   font-weight: 400;
-  color: rgb(227, 227, 227);
+  color: var(--prompt-font-color);
   text-align: left;
   -webkit-box-orient: vertical;
   display: -webkit-box;
@@ -54,7 +54,7 @@
   position: absolute;
   width: 35px;
   height: 35px;
-  background-color: #131314;
+  background-color: var(--prompt-icon-bg);
   border: 0px;
   border-radius: 50%;
   display: flex;

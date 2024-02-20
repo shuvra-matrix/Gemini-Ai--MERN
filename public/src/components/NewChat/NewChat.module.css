@@ -63,7 +63,7 @@ h2 {
 }
 
 .text-section h2 {
-  color: #444746;
+  color: var(--new-chat-h2-color);
 }
 
 @media (max-width: 1106px) {

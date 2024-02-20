@@ -8,7 +8,7 @@
 
 .bg-focus-dark {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.082);
+  background-color: var(--bg-focus-pc);
   width: 100%;
   height: 100vh;
   left: 0px;
@@ -17,6 +17,6 @@
 
 @media (max-width: 960px) {
   .bg-focus-dark {
-    background-color: rgba(0, 0, 0, 0.274);
+    background-color: var(--bg-focus-mobile);
   }
 }

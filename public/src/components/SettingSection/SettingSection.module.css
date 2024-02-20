@@ -2,7 +2,7 @@
   position: absolute;
   width: 320px;
   height: 200px;
-  background-color: #424242;
+  background-color: var(--setting-main-bg);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -12,7 +12,7 @@
   z-index: 6;
   border: 0;
   border-radius: 6px;
-  box-shadow: 0px 0px 40px 15px rgb(0 0 0 / 25%);
+  box-shadow: var(--setting-main-box-shadow);
   transition: all 0.2s ease-out;
 }
 
@@ -30,7 +30,7 @@
 .title h4 {
   font-size: 16px;
   font-weight: 500;
-  color: rgb(255, 255, 255);
+  color: var(--settings-h4-color);
 }
 
 .title,
@@ -47,7 +47,7 @@
 .public-link:hover,
 .theme:hover,
 .real-time:hover {
-  background-color: #515151;
+  background-color: var(--settings-option-hover-bg);
 }
 
 .setting-main img {
@@ -58,7 +58,7 @@
 .setting-main p {
   font-size: 16px;
   font-weight: 400;
-  color: rgb(255, 255, 255);
+  color: var(--settings-p-color);
 }
 
 @media (max-width: 960px) {

@@ -1,7 +1,7 @@
 .chat-section-main {
   width: 100%;
   min-height: 100vh;
-  background-color: #131314;
+  background-color: var(--chat-section-bg);
   position: relative;
 }
 
@@ -14,10 +14,9 @@
   margin: 12px auto;
 }
 
-.warning-text,
-p,
-a {
-  color: #c4c7c5;
+.warning-text p,
+.warning-text a {
+  color: var(--warning-text-color);
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.1px;

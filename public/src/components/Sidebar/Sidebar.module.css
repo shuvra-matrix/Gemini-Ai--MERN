@@ -1,7 +1,7 @@
 .sidebar-main {
   width: 100%;
   min-height: 100vh;
-  background-color: #1e1f20;
+  background-color: var(--sidebar-bg-color);
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -49,14 +49,14 @@
 }
 
 .menu-icon:hover {
-  background-color: #393b3d;
+  background-color: var(--menuicon-hover-bg);
 }
 
 .pluc-icon {
   display: flex;
   align-items: center;
   gap: 20px;
-  background-color: #393b3d;
+  background-color: var(--newchat-bg);
   border: 0px;
   cursor: pointer;
   transition: width 0.4s ease;
@@ -78,10 +78,6 @@
   -webkit-line-clamp: 1;
 }
 
-.pluc-icon:hover {
-  background-color: #2c2d30;
-}
-
 .side-bar-long .pluc-icon {
   height: 40px;
   border-radius: 18px;
@@ -100,7 +96,7 @@
   font-size: 14px;
   line-height: 20px;
   font-weight: 500;
-  color: rgb(227, 227, 227);
+  color: var(--icon-p-color);
 }
 
 .pluc-icon:hover::before,
@@ -110,8 +106,8 @@
   font-weight: 400;
   border: 0px;
   border-radius: 5px;
-  color: white;
-  background-color: #3c4043;
+  color: var(--plus-icon-before-font-color);
+  background-color: var(--plus-icon-before-bg-color);
   z-index: 5;
   display: flex;
   justify-content: center;
@@ -217,14 +213,14 @@ resent chat section  */
 
 .recent-chat {
   padding: 7px 7px;
-  color: #c2e7ff !important;
+  color: var(--recent-chat-font-color) !important;
   border: 0px;
   border-radius: 24px;
   position: relative;
 }
 
 .active-recent-chat {
-  background-color: #004a77;
+  background-color: var(--recent-active-chat-bg);
 }
 
 .recent-chat {
@@ -243,7 +239,7 @@ resent chat section  */
   line-height: 24px;
   font-weight: 500;
   font-style: normal;
-  color: #c4c7c5;
+  color: var(--show-more-font-color);
 }
 
 .three-dot {
@@ -261,16 +257,16 @@ resent chat section  */
 }
 
 .three-dot:hover {
-  background-color: rgba(0, 0, 0, 0.342);
+  background-color: var(--three-dot-hover-bg);
 }
 
 .recent-chat:hover,
 .show-more:hover {
-  background-color: #282a2c;
+  background-color: var(--recent-chat-hover-bg);
 }
 
 .recent-chat.active-recent-chat:hover {
-  background-color: #043d61;
+  background-color: var(--recent-chat-active-bg);
 }
 
 .recent-chat:hover .three-dot {
@@ -319,10 +315,10 @@ resent chat section  */
   position: absolute;
   top: -2px;
   font-size: 12px;
-  color: white;
+  color: var(--help-before-font-color);
   font-weight: 400;
   z-index: 5;
-  background: #3c4043;
+  background: var(--help-before-bg);
   height: 35px;
   display: flex;
   justify-content: center;
@@ -376,11 +372,11 @@ resent chat section  */
 .help:hover,
 .activity:hover,
 .settings:hover {
-  background-color: #303131;
+  background-color: var(--help-hover-bg);
 }
 
 .upgrade-gimini {
-  background-color: #47494a;
+  background-color: var(--upgrade-gimini-settings-bg);
   border: 0px;
   padding: 12px 8px;
   border-radius: 20px;
@@ -398,7 +394,7 @@ resent chat section  */
 
 .upgrade-gimini p {
   font-size: 12px;
-  color: #ffffff;
+  color: var(--upgrade-gimini-p);
 }
 
 .location {
@@ -417,18 +413,18 @@ resent chat section  */
 .location p {
   font-size: 11px;
   line-height: 16px;
-  color: #a8c7fa;
+  color: var(--location-font-color);
   text-align: left;
 }
 
 .location-name {
   display: block;
-  color: #ffffff;
+  color: var(--location-name-color);
 }
 
 .span-dot {
   font-size: 20px;
-  color: #8e918f;
+  color: var(--dot-color);
 }
 
 .side-bar-sort .location {

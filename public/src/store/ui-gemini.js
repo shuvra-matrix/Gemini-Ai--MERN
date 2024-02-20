@@ -17,6 +17,8 @@ const uiCreteSlice = createSlice({
     },
     toggleTheme(state) {
       state.isDark = !state.isDark;
+      const theme = state.isDark ? "dark" : "light";
+      localStorage.setItem("theme", theme);
     },
     toggleRealTimeResponse(state) {
       state.isRealTimeResponse = !state.isRealTimeResponse;

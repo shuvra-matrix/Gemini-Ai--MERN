@@ -1,8 +1,8 @@
 import styles from "./ToggleButton.module.css";
 
 const ToggleButton = (props) => {
-  const buttonMainMode = props.mode ? "on-main" : "off-main";
-  const buttonRoundMode = props.mode ? "on-round" : "off-round";
+  const buttonMainMode = props.theme === "dark" ? "on-main" : "off-main";
+  const buttonRoundMode = props.theme === "dark" ? "on-round" : "off-round";
 
   return (
     <div

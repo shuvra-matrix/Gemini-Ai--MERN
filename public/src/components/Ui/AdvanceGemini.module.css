@@ -4,14 +4,14 @@
   top: 60px;
   width: 264px;
   height: 110px;
-  background-color: #282a2c;
+  background-color: var(--advance-gimini-gb);
   border: 0px;
   border-radius: 8px;
   flex-flow: column nowrap;
   justify-content: center;
   padding: 5px 10px;
   gap: 25px;
-  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.096);
+  box-shadow: var(--advance-gimini-box-shadow);
   transition: all 0.3s ease;
   z-index: 6;
   display: none;
@@ -29,7 +29,7 @@
 
 .advance-main h4 {
   font-size: 14px;
-  color: #ffffff;
+  color: var(--advance-gimini-h4-color);
   width: 100%;
   text-align: left;
   display: none;
@@ -58,11 +58,11 @@
 }
 
 .gemini p {
-  color: #e3e3e3;
+  color: var(--gemini-p-color);
 }
 
 .advance-gemini p {
-  color: #a0a0a0;
+  color: var(--gemini-advance-p-color);
 }
 
 .advance-gemini button {
@@ -70,16 +70,16 @@
   height: 36px;
   border: 0px;
   border-radius: 4px;
-  color: white;
+  color: var(--advance-button-font-color);
   font-size: 12px;
-  background-color: #1b1b1b;
+  background-color: var(--advance-button-bg);
   cursor: pointer;
   position: absolute;
   right: 10px;
 }
 
 .advance-gemini button:hover {
-  background-color: #131313;
+  background-color: var(--advance-button-hover-bg);
 }
 
 @media (max-width: 960px) {
