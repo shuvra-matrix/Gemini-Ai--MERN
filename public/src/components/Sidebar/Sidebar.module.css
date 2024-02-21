@@ -73,8 +73,11 @@
 }
 
 .old-plus-icon {
-  background-color: #161618;
-  opacity: 0.6;
+  background-color: var(--new-chat-new-bg);
+}
+
+.old-plus-icon img {
+  opacity: var(--new-chat-new-opacity);
 }
 
 .pluc-icon img {

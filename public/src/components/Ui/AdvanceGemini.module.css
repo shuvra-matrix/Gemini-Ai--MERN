@@ -2,15 +2,14 @@
   position: absolute;
   left: 10px;
   top: 60px;
-  width: 264px;
-  height: 110px;
+  width: 240px;
+  height: 120px;
   background-color: var(--advance-gimini-gb);
   border: 0px;
   border-radius: 8px;
   flex-flow: column nowrap;
   justify-content: center;
-  padding: 5px 10px;
-  gap: 25px;
+  gap: 5px;
   box-shadow: var(--advance-gimini-box-shadow);
   transition: all 0.3s ease;
   z-index: 6;
@@ -41,6 +40,7 @@
   flex-flow: row nowrap;
   align-items: center;
   gap: 10px;
+  padding: 10px 10px;
 }
 
 .gemini img:last-child {
@@ -82,15 +82,39 @@
   background-color: var(--advance-button-hover-bg);
 }
 
+.gemini {
+  cursor: pointer;
+}
+
+.gemini:hover {
+  background-color: var(--settings-option-hover-bg);
+}
+
 @media (max-width: 960px) {
   .advance-main {
     position: absolute;
     left: 0px;
     width: 100%;
-    height: 180px;
+    height: 200px;
     border-radius: 0px;
-    padding: 10px 20px 40px 20px;
     transition: all 0.4s ease;
+    gap: 5px;
+    justify-content: flex-start;
+  }
+
+  .advance-main h4 {
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+  }
+
+  .gemini,
+  .advance-gemini {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 5px;
+    padding: 16px 20px;
   }
 
   .advance-on {
@@ -105,5 +129,9 @@
   }
   .advance-main h4 {
     display: inline;
+  }
+
+  .advance-gemini button {
+    right: 20px;
   }
 }

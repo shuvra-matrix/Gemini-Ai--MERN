@@ -51,6 +51,8 @@
   --menuicon-hover-bg: #393b3d;
   --newchat-bg: #282a2c;
   --new-chat-hover-bg: #393b3d;
+  --new-chat-new-bg: #1a1a1c;
+  --new-chat-new-opacity: 0.4;
   --icon-p-color: rgb(227, 227, 227);
   --plus-icon-before-font-color: white;
   --plus-icon-before-bg-color: #3c4043;
@@ -115,6 +117,8 @@
   --menuicon-hover-bg: #e9edf2;
   --newchat-bg: #d4dae1;
   --new-chat-hover-bg: #cad0d8;
+  --new-chat-new-bg: #e5eaf1;
+  --new-chat-new-opacity: 0.35;
   --icon-p-color: #1f1f1f;
   --plus-icon-before-font-color: white;
   --plus-icon-before-bg-color: #3c4043;
@@ -147,6 +151,10 @@
 
 html {
   height: 100dvb;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
