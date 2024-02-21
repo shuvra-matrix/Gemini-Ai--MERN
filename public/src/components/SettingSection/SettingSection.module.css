@@ -39,7 +39,7 @@
 .real-time {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   padding: 8px 20px;
   cursor: pointer;
 }
@@ -68,6 +68,8 @@
     gap: 8px;
     height: 220px;
     transition: all 0.4s ease-out;
+    justify-content: flex-start;
+    height: 250px;
   }
   .title,
   .public-link,

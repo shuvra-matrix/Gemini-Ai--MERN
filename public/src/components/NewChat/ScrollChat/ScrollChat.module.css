@@ -32,6 +32,8 @@
   flex-flow: nowrap column;
   gap: 55px;
   margin: 20px auto;
+  overflow: hidden;
+  word-break: break-all;
 }
 
 .single-chat:last-child {
