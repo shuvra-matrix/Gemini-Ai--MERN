@@ -41,7 +41,8 @@ const chatSlice = createSlice({
     },
     chatStart(state, action) {
       state.chats.push({
-        user: action.payload.useInput,
+        user: action.payload.useInput.query,
+        isLoader: action.payload.useInput.isLoader,
         gemini: "",
       });
     },

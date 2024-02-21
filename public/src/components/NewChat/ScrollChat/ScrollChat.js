@@ -3,6 +3,7 @@ import { commonIcon } from "../../../asset";
 import { useSelector } from "react-redux";
 const ScrollChat = () => {
   const chat = useSelector((state) => state.chat.chats);
+  const isLoader = useSelector((state) => state.chat.isLoader);
 
   const chatSection = chat.map((c) => (
     <div className={styles["single-chat"]} key={c.id}>
@@ -11,7 +12,12 @@ const ScrollChat = () => {
         <p>{c.user}</p>
       </div>
       <div className={styles["gemini"]}>
-        <img src={commonIcon.chatGeminiIcon} alt="gemini icon"></img>
+        {isLoader && c?.isLoader === "yes" && (
+          <img src={commonIcon.geminiLaoder} alt="avater icon"></img>
+        )}
+        {!isLoader && (
+          <img src={commonIcon.chatGeminiIcon} alt="avater icon"></img>
+        )}
         <p>{c.gemini}</p>
       </div>
     </div>

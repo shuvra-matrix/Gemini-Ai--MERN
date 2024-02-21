@@ -16,7 +16,7 @@ const InputSection = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(sendChatData(userInput));
+    dispatch(sendChatData({ query: userInput, isLoader: "yes" }));
     navigate("/app");
   };
 
