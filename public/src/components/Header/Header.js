@@ -1,11 +1,10 @@
 import styles from "./Header.module.css";
 import { useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
-import { darkIcon } from "../../asset/darkIcon";
+import { themeIcon } from "../../asset";
 
 const Header = () => {
   const dispatch = useDispatch();
-
   const toggleSideBarHandler = () => {
     dispatch(uiAction.toggleSideBar());
   };
@@ -14,7 +13,7 @@ const Header = () => {
     dispatch(uiAction.toggleAdvanceShow());
   };
 
-  const icon = darkIcon;
+  const icon = themeIcon();
 
   return (
     <div className={styles["header-main"]}>

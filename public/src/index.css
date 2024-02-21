@@ -49,6 +49,8 @@
 
   --sidebar-bg-color: #1e1f20;
   --menuicon-hover-bg: #393b3d;
+  --newchat-bg: #282a2c;
+  --new-chat-hover-bg: #393b3d;
   --icon-p-color: rgb(227, 227, 227);
   --plus-icon-before-font-color: white;
   --plus-icon-before-bg-color: #3c4043;
@@ -110,6 +112,7 @@
   --sidebar-bg-color: #f0f4f9;
   --menuicon-hover-bg: #e9edf2;
   --newchat-bg: #d4dae1;
+  --new-chat-hover-bg: #cad0d8;
   --icon-p-color: #1f1f1f;
   --plus-icon-before-font-color: white;
   --plus-icon-before-bg-color: #3c4043;

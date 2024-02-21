@@ -22,7 +22,6 @@ function App() {
 
   useEffect(() => {
     const getLocalTheme = localStorage.getItem("theme");
-    console.log(getLocalTheme);
     const theme = getLocalTheme || "dark";
     document.documentElement.setAttribute("data-theme", theme);
   }, [isDark]);

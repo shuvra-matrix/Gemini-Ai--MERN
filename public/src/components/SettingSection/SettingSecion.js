@@ -1,6 +1,6 @@
 import styles from "./SettingSection.module.css";
 import ToggleButton from "./ToggleButton";
-import { darkIcon } from "../../asset/darkIcon";
+import { themeIcon } from "../../asset";
 import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
 
@@ -18,7 +18,7 @@ const SettingSection = () => {
     dispatch(uiAction.toggleRealTimeResponse());
   };
 
-  const icon = darkIcon;
+  const icon = themeIcon();
   const settingShow = isSettingsShow ? "settngs-show" : "settings-hide";
   const getLocalTheme = localStorage.getItem("theme");
   const theme = getLocalTheme || "dark";

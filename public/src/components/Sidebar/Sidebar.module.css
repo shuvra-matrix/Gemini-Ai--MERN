@@ -65,6 +65,10 @@
   padding: 8px;
 }
 
+.pluc-icon:hover {
+  background-color: var(--new-chat-hover-bg);
+}
+
 .pluc-icon img {
   position: absolute;
   left: 9px;

@@ -1,5 +1,5 @@
 import styles from "./Sidebar.module.css";
-import { darkIcon } from "../../asset/darkIcon";
+import { themeIcon } from "../../asset";
 import { commonIcon } from "../../asset";
 import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
@@ -108,7 +108,7 @@ const Sidebar = () => {
       dispatch(uiAction.toggleSideBar());
     }
   };
-  const icon = darkIcon;
+  const icon = themeIcon();
   const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";
   const showMoreArrowIcon = isShowMore ? icon.upArrowIcon : icon.expandIcon;
 

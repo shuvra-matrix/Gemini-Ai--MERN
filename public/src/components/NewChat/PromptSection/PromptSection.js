@@ -1,8 +1,8 @@
 import styles from "./PromptSection.module.css";
-import { darkIcon } from "../../../asset/darkIcon";
+import { themeIcon } from "../../../asset";
 
 const PromptSection = () => {
-  const icon = darkIcon;
+  const icon = themeIcon();
 
   const prompt = [
     {

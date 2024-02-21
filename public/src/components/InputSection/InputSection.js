@@ -1,7 +1,8 @@
 import styles from "./InputSection.module.css";
-import { darkIcon } from "../../asset/darkIcon";
+import { themeIcon } from "../../asset";
 
 const InputSection = () => {
+  const icon = themeIcon();
   return (
     <div className={styles["input-main"]}>
       <form>
@@ -11,7 +12,7 @@ const InputSection = () => {
           name="prompt"
         ></input>
         <button type="submit">
-          <img src={darkIcon.sendIcon} alt="send icon"></img>
+          <img src={icon.sendIcon} alt="send icon"></img>
         </button>
       </form>
     </div>

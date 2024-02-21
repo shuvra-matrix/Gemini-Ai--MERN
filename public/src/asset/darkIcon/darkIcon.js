@@ -14,6 +14,7 @@ import upArrowIcon from "./icons8-collapse-arrow-64.png";
 import wallIcon from "./icons8-wall-64.png";
 import moonIcon from "./icons8-moon-64.png";
 import linkIcon from "./icons8-link-64.png";
+import okIcon from "./icons8-ok-64.png";
 
 export const darkIcon = {
   plusIcon,
@@ -32,4 +33,5 @@ export const darkIcon = {
   wallIcon,
   moonIcon,
   linkIcon,
+  okIcon,
 };
