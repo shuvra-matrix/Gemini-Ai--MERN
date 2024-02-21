@@ -1,11 +1,15 @@
 import styles from "./Header.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
 import { themeIcon } from "../../asset";
 import { commonIcon } from "../../asset";
+import { useNavigate } from "react-router-dom";
+import { chatAction } from "../../store/chat";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isNewChat = useSelector((state) => state.chat.newChat);
   const toggleSideBarHandler = () => {
     dispatch(uiAction.toggleSideBar());
   };
@@ -15,6 +19,12 @@ const Header = () => {
   };
 
   const icon = themeIcon();
+
+  const newChatHandler = () => {
+    dispatch(chatAction.replaceChat({ chats: [] }));
+    dispatch(chatAction.newChatHandler());
+    navigate("/");
+  };
 
   return (
     <div className={styles["header-main"]}>
@@ -28,9 +38,14 @@ const Header = () => {
         </div>
       </div>
       <div className={styles["right-section"]}>
-        <div className={styles["plus-icon"]}>
-          <img src={icon.plusIcon} alt="plus icon"></img>
-        </div>
+        {isNewChat ? (
+          <div
+            onClick={newChatHandler}
+            className={`${styles["plus-icon"]} ${styles["new-plus-icon"]}`}
+          >
+            <img src={icon.plusIcon} alt="plus icon"></img>
+          </div>
+        ) : null}
         <div className={styles["user"]}>
           <img src={commonIcon.avatarIcon} alt="avatar icon"></img>
         </div>

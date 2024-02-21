@@ -56,17 +56,25 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background-color: var(--newchat-bg);
   border: 0px;
-  cursor: pointer;
   transition: width 0.4s ease;
   position: absolute;
   left: 15px;
   padding: 8px;
 }
 
-.pluc-icon:hover {
+.new-plus-icon {
+  background-color: var(--newchat-bg);
+  cursor: pointer;
+}
+
+.new-plus-icon:hover {
   background-color: var(--new-chat-hover-bg);
+}
+
+.old-plus-icon {
+  background-color: #161618;
+  opacity: 0.6;
 }
 
 .pluc-icon img {

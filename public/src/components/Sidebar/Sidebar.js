@@ -4,6 +4,8 @@ import { commonIcon } from "../../asset";
 import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
 import { useState } from "react";
+import { chatAction } from "../../store/chat";
+import { useNavigate } from "react-router-dom";
 
 const recentChat = [
   {
@@ -90,7 +92,9 @@ const recentChat = [
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isSidebarLong = useSelector((state) => state.ui.isSidebarLong);
+  const isNewChat = useSelector((state) => state.chat.newChat);
   const [isShowMore, setisShowMore] = useState(false);
   const [isActiveChat, setIsActiveChat] = useState("");
 
@@ -108,6 +112,13 @@ const Sidebar = () => {
       dispatch(uiAction.toggleSideBar());
     }
   };
+
+  const newChatHandler = () => {
+    dispatch(chatAction.replaceChat({ chats: [] }));
+    dispatch(chatAction.newChatHandler());
+    navigate("/");
+  };
+
   const icon = themeIcon();
   const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";
   const showMoreArrowIcon = isShowMore ? icon.upArrowIcon : icon.expandIcon;
@@ -119,10 +130,20 @@ const Sidebar = () => {
       </div>
 
       <div className={styles["recent-chat-section"]}>
-        <div className={styles["pluc-icon"]}>
-          <img src={icon.plusIcon} alt="plus icon"></img>
-          {isSidebarLong && <p>New chat</p>}
-        </div>
+        {isNewChat ? (
+          <div
+            onClick={newChatHandler}
+            className={`${styles["pluc-icon"]} ${styles["new-plus-icon"]}`}
+          >
+            <img src={icon.plusIcon} alt="plus icon"></img>
+            {isSidebarLong && <p>New chat</p>}
+          </div>
+        ) : (
+          <div className={`${styles["pluc-icon"]} ${styles["old-plus-icon"]}`}>
+            <img src={icon.plusIcon} alt="plus icon"></img>
+            {isSidebarLong && <p>New chat</p>}
+          </div>
+        )}
         {isSidebarLong && (
           <div className={styles["recent-chat-main"]}>
             <p>Recent</p>
