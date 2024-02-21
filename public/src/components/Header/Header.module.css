@@ -64,7 +64,14 @@
 .user {
   width: 35px;
   height: 35px;
-  background-color: green;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.user img {
+  width: 35px;
+  height: 35px;
   border: none;
   border-radius: 50%;
 }

@@ -1,16 +1,22 @@
+import { Route, Routes } from "react-router-dom";
 import Header from "../Header/Header";
 import InputSection from "../InputSection/InputSection";
 import NewChat from "../NewChat/NewChat";
 import AdvanceGemini from "../Ui/AdvanceGmini";
 
 import styles from "./ChatSection.module.css";
+import ScrollChat from "../NewChat/ScrollChat/ScrollChat";
 
 const ChatSection = () => {
   return (
     <div className={styles["chat-section-main"]}>
       <Header />
       <AdvanceGemini />
-      <NewChat />
+      <Routes>
+        <Route path="/" element={<NewChat />}></Route>
+        <Route path="/app" element={<ScrollChat />}></Route>
+      </Routes>
+
       <InputSection />
       <div className={styles["warning-text"]}>
         <p>

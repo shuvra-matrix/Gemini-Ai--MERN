@@ -1,5 +1,5 @@
 .btn-main {
-  width: 45px;
+  width: 40px;
   height: 15px;
   border-radius: 18px;
   border: 0px;
@@ -31,12 +31,12 @@
 
 .on-round {
   background-color: #aecbfa;
-  left: 25px;
+  left: 24px;
 }
 
 .off-round {
   background-color: #cecece;
-  left: 0px;
+  left: -2px;
 }
 
 .off-round:hover {

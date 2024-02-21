@@ -2,6 +2,7 @@ import styles from "./Header.module.css";
 import { useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
 import { themeIcon } from "../../asset";
+import { commonIcon } from "../../asset";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,9 @@ const Header = () => {
         <div className={styles["plus-icon"]}>
           <img src={icon.plusIcon} alt="plus icon"></img>
         </div>
-        <div className={styles["user"]}></div>
+        <div className={styles["user"]}>
+          <img src={commonIcon.avatarIcon} alt="avatar icon"></img>
+        </div>
       </div>
     </div>
   );

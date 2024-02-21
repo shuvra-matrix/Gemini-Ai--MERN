@@ -1,0 +1,94 @@
+.scroll-chat-main {
+  width: 100%;
+  display: flex;
+  flex-flow: nowrap column;
+  height: 80dvh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  gap: 20px;
+}
+
+.scroll-chat-main::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scroll-chat-main::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.scroll-chat-main::-webkit-scrollbar-thumb {
+  background-color: #80868b;
+  border-radius: 6px;
+}
+
+.scroll-chat-main::-webkit-scrollbar-thumb:hover {
+  background-color: #60666a;
+}
+
+.single-chat {
+  width: 100%;
+  max-width: 712px;
+  display: flex;
+  flex-flow: nowrap column;
+  gap: 55px;
+  margin: 20px auto;
+}
+
+.single-chat:last-child {
+  margin-block-end: 6rem;
+}
+
+.user,
+.gemini {
+  display: flex;
+  flex-flow: nowrap row;
+  position: relative;
+}
+
+.user p,
+.gemini p {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--chat-font-color);
+  text-align: left;
+  padding-left: 60px;
+}
+
+.user p {
+  line-height: 24px;
+}
+
+.gemini p {
+  line-height: 28px;
+}
+
+.user img,
+.gemini img {
+  position: absolute;
+  left: 0px;
+}
+
+.user img {
+  border: 0px;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+}
+
+.gemini img {
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-width: 960px) {
+  .scroll-chat-main {
+    padding: 0px 20px;
+  }
+
+  .user img {
+    border: 0px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+  }
+}
