@@ -1,0 +1,52 @@
+version: "3.1"
+services:
+  client:
+    image: gemini-client-image:latest
+    container_name: gemini-client-container
+    build:
+      context: ./public
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./public/.env
+    depends_on:
+      - server
+    networks:
+      - gemini-network
+
+    develop:
+      watch:
+        - path: ./public/package.json
+          action: rebuild
+        - path: ./public/package-lock.json
+          action: rebuild
+        - path: ./public
+          target: /app
+          action: sync
+
+  server:
+    image: gemini-server-image:latest
+    container_name: gemini-server-container
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3030:3030"
+    env_file:
+      - ./server/.env
+    networks:
+      - gemini-network
+    develop:
+      watch:
+        - path: ./server/package.json
+          action: rebuild
+        - path: ./server/package-lock.json
+          action: rebuild
+        - path: ./server
+          target: /app
+          action: sync
+
+networks:
+  gemini-network:
+    driver: bridge

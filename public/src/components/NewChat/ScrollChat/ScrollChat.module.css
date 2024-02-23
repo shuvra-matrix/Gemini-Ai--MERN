@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   flex-flow: nowrap column;
-  height: 80dvh;
+  height: 76dvh;
   overflow-y: scroll;
   overflow-x: hidden;
   gap: 20px;
@@ -32,7 +32,6 @@
   flex-flow: nowrap column;
   gap: 55px;
   margin: 20px auto;
-  overflow: hidden;
   word-break: break-all;
 }
 
@@ -45,6 +44,7 @@
   display: flex;
   flex-flow: nowrap row;
   position: relative;
+  align-items: center;
 }
 
 .user p,
@@ -53,7 +53,7 @@
   font-weight: 400;
   color: var(--chat-font-color);
   text-align: left;
-  padding-left: 60px;
+  padding-left: 20px;
 }
 
 .user p {
@@ -62,12 +62,6 @@
 
 .gemini p {
   line-height: 28px;
-}
-
-.user img,
-.gemini img {
-  position: absolute;
-  left: 0px;
 }
 
 .user img {
@@ -92,5 +86,22 @@
     border-radius: 50%;
     height: 30px;
     width: 30px;
+  }
+
+  .single-chat {
+    gap: 30px;
+  }
+
+  .user,
+  .gemini {
+    flex-flow: nowrap column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .user p,
+  .gemini p {
+    flex: 1;
+    padding-left: 0px;
   }
 }

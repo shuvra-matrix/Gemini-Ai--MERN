@@ -5,6 +5,7 @@ const inittalState = {
   newChat: false,
   isLoader: false,
   recentChat: [],
+  previousChat: [],
 };
 
 const chatSlice = createSlice({
@@ -25,10 +26,20 @@ const chatSlice = createSlice({
     },
     chatStart(state, action) {
       state.chats.push({
-        user: action.payload.useInput.query,
+        user: action.payload.useInput.user,
         isLoader: action.payload.useInput.isLoader,
-        gemini: "",
+        gemini: action.payload.useInput.gemini,
+        id: Math.random(),
       });
+    },
+    popChat(state) {
+      state.chats.pop();
+    },
+    previousChatHandler(state, action) {
+      state.previousChat.push(
+        action.payload.previousChat[0],
+        action.payload.previousChat[1]
+      );
     },
   },
 });

@@ -2,13 +2,14 @@ import styles from "./InputSection.module.css";
 import { themeIcon } from "../../asset";
 import { sendChatData } from "../../store/chat-action";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const InputSection = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [userInput, setUserInput] = useState("");
+  const previousChat = useSelector((state) => state.chat.previousChat);
 
   const userInputHandler = (e) => {
     setUserInput(e.target.value);
@@ -16,7 +17,7 @@ const InputSection = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(sendChatData({ query: userInput, isLoader: "yes" }));
+    dispatch(sendChatData({ user: userInput, isLoader: "yes", previousChat }));
     navigate("/app");
   };
 

@@ -5,6 +5,8 @@ const ScrollChat = () => {
   const chat = useSelector((state) => state.chat.chats);
   const isLoader = useSelector((state) => state.chat.isLoader);
 
+  console.log(chat);
+
   const chatSection = chat.map((c) => (
     <div className={styles["single-chat"]} key={c.id}>
       <div className={styles["user"]}>
@@ -15,7 +17,7 @@ const ScrollChat = () => {
         {isLoader && c?.isLoader === "yes" && (
           <img src={commonIcon.geminiLaoder} alt="avater icon"></img>
         )}
-        {!isLoader && (
+        {c?.isLoader === "no" && (
           <img src={commonIcon.chatGeminiIcon} alt="avater icon"></img>
         )}
         <p>{c.gemini}</p>
