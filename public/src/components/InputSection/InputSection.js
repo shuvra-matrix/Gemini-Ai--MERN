@@ -10,6 +10,7 @@ const InputSection = () => {
   const dispatch = useDispatch();
   const [userInput, setUserInput] = useState("");
   const previousChat = useSelector((state) => state.chat.previousChat);
+  const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
 
   const userInputHandler = (e) => {
     setUserInput(e.target.value);
@@ -17,7 +18,14 @@ const InputSection = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(sendChatData({ user: userInput, isLoader: "yes", previousChat }));
+    dispatch(
+      sendChatData({
+        user: userInput,
+        isLoader: "yes",
+        previousChat,
+        chatHistoryId,
+      })
+    );
     navigate("/app");
   };
 

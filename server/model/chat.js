@@ -7,10 +7,21 @@ const chatSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "ChatHistory",
   },
-  chat: [
+  messages: [
     {
-      type: Object,
-      required: true,
+      sender: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
+      message: {
+        type: Object,
+        required: true,
+      },
+      timestamp: {
+        type: Date,
+        default: Date.now,
+      },
     },
   ],
 });

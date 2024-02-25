@@ -6,6 +6,7 @@ const inittalState = {
   isLoader: false,
   recentChat: [],
   previousChat: [],
+  chatHistoryId: "",
 };
 
 const chatSlice = createSlice({
@@ -40,6 +41,9 @@ const chatSlice = createSlice({
         action.payload.previousChat[0],
         action.payload.previousChat[1]
       );
+    },
+    chatHistoryIdHandler(state, action) {
+      state.chatHistoryId = action.payload.chatHistoryId;
     },
   },
 });

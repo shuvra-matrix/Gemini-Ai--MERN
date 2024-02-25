@@ -44,7 +44,6 @@
   display: flex;
   flex-flow: nowrap row;
   position: relative;
-  align-items: center;
 }
 
 .user p,

@@ -18,6 +18,7 @@ export const sendChatData = (useInput) => {
       body: JSON.stringify({
         userInput: useInput.user,
         previousChat: useInput.previousChat,
+        chatHistoryId: useInput.chatHistoryId,
       }),
     })
       .then((response) => {
@@ -51,9 +52,14 @@ export const sendChatData = (useInput) => {
         );
         dispatch(chatAction.loaderHandler());
         dispatch(chatAction.newChatHandler());
+        dispatch(
+          chatAction.chatHistoryIdHandler({ chatHistoryId: data.chatHistoryId })
+        );
       })
       .catch((err) => {
         console.log(err);
+        dispatch(chatAction.loaderHandler());
+        dispatch(chatAction.newChatHandler());
       });
   };
 };

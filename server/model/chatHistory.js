@@ -16,7 +16,6 @@ const chatHistorySchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Chat",
-      required: true,
     },
   ],
 });

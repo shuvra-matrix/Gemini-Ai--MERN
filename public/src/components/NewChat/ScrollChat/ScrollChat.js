@@ -1,14 +1,23 @@
 import styles from "./ScrollChat.module.css";
 import { commonIcon } from "../../../asset";
 import { useSelector } from "react-redux";
+import React, { useRef, useEffect } from "react";
+import DOMPurify from "dompurify";
+
 const ScrollChat = () => {
+  const chatRef = useRef(null);
   const chat = useSelector((state) => state.chat.chats);
   const isLoader = useSelector((state) => state.chat.isLoader);
 
-  console.log(chat);
+  useEffect(() => {
+    if (chatRef.current) {
+      console.log(chatRef);
+      chatRef.current.scrollTop = 0;
+    }
+  }, [chat]);
 
   const chatSection = chat.map((c) => (
-    <div className={styles["single-chat"]} key={c.id}>
+    <div className={styles["single-chat"]} ref={chatRef} key={c.id}>
       <div className={styles["user"]}>
         <img src={commonIcon.avatarIcon} alt="avater icon"></img>
         <p>{c.user}</p>
@@ -20,12 +29,20 @@ const ScrollChat = () => {
         {c?.isLoader === "no" && (
           <img src={commonIcon.chatGeminiIcon} alt="avater icon"></img>
         )}
-        <p>{c.gemini}</p>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(c?.gemini?.replace(/\n/g, "<br>")),
+          }}
+        />
       </div>
     </div>
   ));
 
-  return <div className={styles["scroll-chat-main"]}>{chatSection}</div>;
+  return (
+    <div className={styles["scroll-chat-main"]} ref={chatRef}>
+      {chatSection}
+    </div>
+  );
 };
 
 export default ScrollChat;

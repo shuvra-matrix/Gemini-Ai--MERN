@@ -31,25 +31,27 @@ app.use((req, res, next) => {
     .then((userData) => {
       if (userData) {
         req.user = userData;
-        next();
+        return next();
       }
 
       const newUser = new user({
         ip: ip,
       });
 
-      return newUser.save();
-    })
-    .then((result) => {
-      return user.findOne({ ip: ip });
-    })
-    .then((userData) => {
-      if (!userData) {
-        const error = new Error("User not found");
-        error.statusCode = 403;
-        throw error;
-      }
-      req.user = userData;
+      newUser
+        .save()
+        .then((result) => {
+          return user.findOne({ ip: ip });
+        })
+        .then((userData) => {
+          if (!userData) {
+            const error = new Error("User not found");
+            error.statusCode = 403;
+            throw error;
+          }
+          req.user = userData;
+          return next();
+        });
     })
     .catch((err) => {
       if (!err.statusCode) {
