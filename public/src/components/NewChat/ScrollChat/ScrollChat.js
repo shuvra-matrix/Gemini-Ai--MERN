@@ -3,18 +3,21 @@ import { commonIcon } from "../../../asset";
 import { useSelector } from "react-redux";
 import React, { useRef, useEffect } from "react";
 import DOMPurify from "dompurify";
+import { useNavigate } from "react-router-dom";
 
 const ScrollChat = () => {
+  const navigate = useNavigate();
   const chatRef = useRef(null);
   const chat = useSelector((state) => state.chat.chats);
   const isLoader = useSelector((state) => state.chat.isLoader);
+  const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
 
   useEffect(() => {
     if (chatRef.current) {
-      console.log(chatRef);
       chatRef.current.scrollTop = 0;
     }
-  }, [chat]);
+    navigate(`/app/${chatHistoryId}`);
+  }, [chat, chatHistoryId, navigate]);
 
   const chatSection = chat.map((c) => (
     <div className={styles["single-chat"]} ref={chatRef} key={c.id}>

@@ -15,6 +15,7 @@ const ChatSection = () => {
       <Routes>
         <Route path="/" element={<NewChat />}></Route>
         <Route path="/app" element={<ScrollChat />}></Route>
+        <Route path="/app/:historyId" element={<ScrollChat />}></Route>
       </Routes>
 
       <InputSection />

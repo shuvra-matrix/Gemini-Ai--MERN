@@ -126,8 +126,6 @@ export const postGemini = async (req, res, next) => {
         throw new Error("Server Error");
       }
 
-      console.log(newChatHistoryId);
-
       return chatHistory.findById(newChatHistoryId);
     })
     .then((chatHistory) => {
