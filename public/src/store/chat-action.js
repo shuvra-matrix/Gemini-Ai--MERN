@@ -1,14 +1,34 @@
 import { chatAction } from "./chat";
 
-export const getRecentChat = () => {};
+export const getRecentChat = () => {
+  return (dispatch) => {
+    const url = "http://localhost:3030/gemini/api/getchathistory";
+
+    fetch(url, { method: "GET" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("server error");
+        }
+
+        return response.json();
+      })
+      .then((data) => {
+        dispatch(
+          chatAction.recentChatHandler({ recentChat: data.chatHistory })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
 
 export const sendChatData = (useInput) => {
   return (dispatch) => {
     dispatch(chatAction.loaderHandler());
-
     dispatch(chatAction.chatStart({ useInput: useInput }));
 
-    const url = "http://localhost:3030/gemini/api";
+    const url = "http://localhost:3030/gemini/api/chat";
 
     fetch(url, {
       method: "POST",
@@ -51,6 +71,7 @@ export const sendChatData = (useInput) => {
           })
         );
         dispatch(chatAction.loaderHandler());
+        dispatch(getRecentChat());
         dispatch(chatAction.newChatHandler());
         dispatch(
           chatAction.chatHistoryIdHandler({ chatHistoryId: data.chatHistoryId })

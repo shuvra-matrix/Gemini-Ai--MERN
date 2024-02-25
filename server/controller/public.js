@@ -173,3 +173,23 @@ export const postGemini = async (req, res, next) => {
       next(err);
     });
 };
+
+export const getChatHistory = (req, res, next) => {
+  chatHistory
+    .find({ user: req.user._id })
+    .then((chatHistory) => {
+      if (!chatHistory) {
+        const error = new Error("ChatHistory Not Found");
+        error.statusCode = 403;
+        throw error;
+      }
+
+      res.status(200).json({ chatHistory: chatHistory.reverse() });
+    })
+    .catch((error) => {
+      if (!error.statusCode) {
+        error.statusCode = 500;
+      }
+      next(error);
+    });
+};

@@ -5,11 +5,13 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "./store/ui-gemini";
 import { useEffect } from "react";
+import { getRecentChat } from "./store/chat-action";
 
 function App() {
   const dispatch = useDispatch();
   const settingsShow = useSelector((state) => state.ui.isSettingsShow);
   const isAdvanceGeminiPrompt = useSelector((state) => state.ui.isAdvanceShow);
+  const newChat = useSelector((state) => state.chat.newChat);
   const isDark = useSelector((state) => state.ui.isDark);
   const settingHandler = () => {
     if (settingsShow === true) {
@@ -25,6 +27,12 @@ function App() {
     const theme = getLocalTheme || "dark";
     document.documentElement.setAttribute("data-theme", theme);
   }, [isDark]);
+
+  useEffect(() => {
+    if (newChat === false) {
+      dispatch(getRecentChat());
+    }
+  }, [dispatch, newChat]);
 
   return (
     <div className="App">

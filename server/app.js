@@ -63,7 +63,7 @@ app.use((req, res, next) => {
 
 import PublicRoutes from "./router/public.js";
 
-app.use(PublicRoutes);
+app.use("/gemini", PublicRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);

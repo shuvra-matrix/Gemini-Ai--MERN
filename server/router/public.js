@@ -2,9 +2,14 @@ import express from "express";
 
 const router = express.Router();
 
-import { getGeminiHome, postGemini } from "../controller/public.js";
+import {
+  getGeminiHome,
+  postGemini,
+  getChatHistory,
+} from "../controller/public.js";
 
-router.get("/", getGeminiHome);
-router.post("/gemini/api", postGemini);
+router.get("/api", getGeminiHome);
+router.post("/api/chat", postGemini);
+router.get("/api/getchathistory", getChatHistory);
 
 export default router;

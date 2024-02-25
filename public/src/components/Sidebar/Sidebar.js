@@ -7,94 +7,13 @@ import { useState } from "react";
 import { chatAction } from "../../store/chat";
 import { useNavigate } from "react-router-dom";
 
-const recentChat = [
-  {
-    id: 1,
-    chat: "I need more context",
-  },
-  {
-    id: 2,
-    chat: "I need more context how i get",
-  },
-  {
-    id: 3,
-    chat: "I need more context",
-  },
-  {
-    id: 4,
-    chat: "I need more context",
-  },
-  {
-    id: 5,
-    chat: "I need more context",
-  },
-  {
-    id: 6,
-    chat: "I need more context",
-  },
-  {
-    id: 7,
-    chat: "I need more context how i get",
-  },
-  {
-    id: 8,
-    chat: "I need more context",
-  },
-  {
-    id: 9,
-    chat: "I need more context",
-  },
-  {
-    id: 10,
-    chat: "I need more context",
-  },
-  {
-    id: 11,
-    chat: "I need more context",
-  },
-  {
-    id: 12,
-    chat: "I need more context how i get",
-  },
-  {
-    id: 13,
-    chat: "I need more context",
-  },
-  {
-    id: 14,
-    chat: "I need more context",
-  },
-  {
-    id: 15,
-    chat: "I need more context",
-  },
-  {
-    id: 16,
-    chat: "I need more context",
-  },
-  {
-    id: 17,
-    chat: "I need more context how i get",
-  },
-  {
-    id: 18,
-    chat: "I need more context",
-  },
-  {
-    id: 19,
-    chat: "I need more context",
-  },
-  {
-    id: 20,
-    chat: "I need more context",
-  },
-];
-
 const Sidebar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isSidebarLong = useSelector((state) => state.ui.isSidebarLong);
   const isNewChat = useSelector((state) => state.chat.newChat);
+  const recentChat = useSelector((state) => state.chat.recentChat);
+  console.log(recentChat);
   const [isShowMore, setisShowMore] = useState(false);
   const [isActiveChat, setIsActiveChat] = useState("");
 
@@ -152,15 +71,15 @@ const Sidebar = () => {
             {recentChat.slice(0, 5).map((chat) => (
               <div
                 className={`${styles["recent-chat"]} ${
-                  isActiveChat === chat.id ? styles["active-recent-chat"] : ""
+                  isActiveChat === chat._id ? styles["active-recent-chat"] : ""
                 }`}
                 onClick={() => {
-                  setIsActiveChat(chat.id);
+                  setIsActiveChat(chat._id);
                 }}
-                key={chat.id}
+                key={chat._id}
               >
                 <img src={icon.messageIcon} alt="message"></img>
-                <p>{chat.chat.slice(0, 20)}</p>
+                <p>{chat.title.slice(0, 20)}</p>
                 <div className={styles["three-dot"]}>
                   <img src={icon.threeDotIcon} alt="more-option"></img>
                 </div>
@@ -177,15 +96,17 @@ const Sidebar = () => {
               recentChat.slice(5, recentChat.length).map((chat) => (
                 <div
                   className={`${styles["recent-chat"]} ${
-                    isActiveChat === chat.id ? styles["active-recent-chat"] : ""
+                    isActiveChat === chat._id
+                      ? styles["active-recent-chat"]
+                      : ""
                   }`}
                   onClick={() => {
-                    setIsActiveChat(chat.id);
+                    setIsActiveChat(chat._id);
                   }}
-                  key={chat.id}
+                  key={chat._id}
                 >
                   <img src={icon.messageIcon} alt="message"></img>
-                  <p>{chat.chat.slice(0, 20)}</p>
+                  <p>{chat.title.slice(0, 20)}</p>
                   <div className={styles["three-dot"]}>
                     <img src={icon.threeDotIcon} alt="more-option"></img>
                   </div>

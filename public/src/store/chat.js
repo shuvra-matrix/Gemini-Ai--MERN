@@ -22,9 +22,10 @@ const chatSlice = createSlice({
     replaceChat(state, action) {
       state.chats = action.payload.chats;
     },
-    replaceRecentChat(state, action) {
+    recentChatHandler(state, action) {
       state.recentChat = action.payload.recentChat;
     },
+
     chatStart(state, action) {
       state.chats.push({
         user: action.payload.useInput.user,
