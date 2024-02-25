@@ -116,6 +116,7 @@ const Sidebar = () => {
   const newChatHandler = () => {
     dispatch(chatAction.replaceChat({ chats: [] }));
     dispatch(chatAction.newChatHandler());
+    dispatch(chatAction.chatHistoryIdHandler({ chatHistoryId: "" }));
     navigate("/");
   };
 
