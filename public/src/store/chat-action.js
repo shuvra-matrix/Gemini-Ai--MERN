@@ -89,8 +89,6 @@ export const getChat = (chatHistoryId) => {
   return (dispatch) => {
     const url = "http://localhost:3030/gemini/api/chatdata";
 
-    console.log(chatHistoryId);
-
     fetch(url, {
       method: "POST",
       body: JSON.stringify({ chatHistoryId }),

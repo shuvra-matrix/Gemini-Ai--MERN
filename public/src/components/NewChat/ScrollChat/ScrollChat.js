@@ -1,25 +1,32 @@
 import styles from "./ScrollChat.module.css";
 import { commonIcon } from "../../../asset";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import React, { useRef, useEffect } from "react";
 import DOMPurify from "dompurify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getChat } from "../../../store/chat-action";
 
 const ScrollChat = () => {
   const navigate = useNavigate();
-  // const { historyId } = useParams();
-
+  const dispatch = useDispatch();
+  const { historyId } = useParams();
   const chatRef = useRef(null);
   const chat = useSelector((state) => state.chat.chats);
   const isLoader = useSelector((state) => state.chat.isLoader);
   const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
 
+  console.log(chatHistoryId, historyId);
+
   useEffect(() => {
-    if (chatRef.current) {
-      chatRef.current.scrollTop = 0;
+    if (chat.length === 0 && !historyId) {
+      console.log("hi");
+      navigate("/");
+    } else if (historyId && historyId !== chatHistoryId) {
+      dispatch(getChat(historyId));
+    } else {
+      navigate(`/app/${chatHistoryId}`);
     }
-    navigate(`/app/${chatHistoryId}`);
-  }, [chat, chatHistoryId, navigate]);
+  }, [dispatch, historyId, chatHistoryId, navigate, chat]);
 
   const chatSection = chat.map((c) => (
     <div className={styles["single-chat"]} ref={chatRef} key={c.id}>

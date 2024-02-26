@@ -210,6 +210,7 @@ export const postChat = (req, res, next) => {
         error.statusCode - 403;
         throw error;
       }
+
       res.status(200).json({
         chatHistory: chatData[0]._id,
         chats: chatData[0].chat.messages,

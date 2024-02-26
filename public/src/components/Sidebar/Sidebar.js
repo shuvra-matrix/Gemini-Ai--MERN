@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
 import { useState } from "react";
 import { chatAction } from "../../store/chat";
-import { useNavigate } from "react-router-dom";
-import { getChat } from "../../store/chat-action";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -39,11 +38,6 @@ const Sidebar = () => {
     navigate("/");
   };
 
-  const getChatHandler = (id) => {
-    dispatch(getChat(id));
-    navigate("/app/");
-  };
-
   const icon = themeIcon();
   const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";
   const showMoreArrowIcon = isShowMore ? icon.upArrowIcon : icon.expandIcon;
@@ -74,22 +68,24 @@ const Sidebar = () => {
             <p>Recent</p>
 
             {recentChat.slice(0, 5).map((chat) => (
-              <div
-                className={`${styles["recent-chat"]} ${
-                  isActiveChat === chat._id ? styles["active-recent-chat"] : ""
-                }`}
-                onClick={() => {
-                  setIsActiveChat(chat._id);
-                  getChatHandler(chat._id);
-                }}
-                key={chat._id}
-              >
-                <img src={icon.messageIcon} alt="message"></img>
-                <p>{chat.title.slice(0, 20)}</p>
-                <div className={styles["three-dot"]}>
-                  <img src={icon.threeDotIcon} alt="more-option"></img>
+              <Link to={`/app/${chat._id}`} key={chat._id}>
+                <div
+                  className={`${styles["recent-chat"]} ${
+                    isActiveChat === chat._id
+                      ? styles["active-recent-chat"]
+                      : ""
+                  }`}
+                  onClick={() => {
+                    setIsActiveChat(chat._id);
+                  }}
+                >
+                  <img src={icon.messageIcon} alt="message"></img>
+                  <p>{chat.title.slice(0, 20)}</p>
+                  <div className={styles["three-dot"]}>
+                    <img src={icon.threeDotIcon} alt="more-option"></img>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
             {recentChat.length > 5 && (
               <div className={styles["show-more"]} onClick={showMoreHandler}>
@@ -100,24 +96,25 @@ const Sidebar = () => {
 
             {isShowMore &&
               recentChat.slice(5, recentChat.length).map((chat) => (
-                <div
-                  className={`${styles["recent-chat"]} ${
-                    isActiveChat === chat._id
-                      ? styles["active-recent-chat"]
-                      : ""
-                  }`}
-                  onClick={() => {
-                    setIsActiveChat(chat._id);
-                    getChatHandler(chat._id);
-                  }}
-                  key={chat._id}
-                >
-                  <img src={icon.messageIcon} alt="message"></img>
-                  <p>{chat.title.slice(0, 20)}</p>
-                  <div className={styles["three-dot"]}>
-                    <img src={icon.threeDotIcon} alt="more-option"></img>
+                <Link to={`/app/${chat._id}`} key={chat._id}>
+                  <div
+                    className={`${styles["recent-chat"]} ${
+                      isActiveChat === chat._id
+                        ? styles["active-recent-chat"]
+                        : ""
+                    }`}
+                    onClick={() => {
+                      setIsActiveChat(chat._id);
+                    }}
+                    key={chat._id}
+                  >
+                    <img src={icon.messageIcon} alt="message"></img>
+                    <p>{chat.title.slice(0, 20)}</p>
+                    <div className={styles["three-dot"]}>
+                      <img src={icon.threeDotIcon} alt="more-option"></img>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
           </div>
         )}

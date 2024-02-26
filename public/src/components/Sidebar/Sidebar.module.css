@@ -192,6 +192,11 @@ resent chat section  */
   overflow: scroll;
 }
 
+.recent-chat-main a {
+  width: 100%;
+  text-decoration: none;
+}
+
 .recent-chat-main::-webkit-scrollbar {
   width: 0px;
 }
