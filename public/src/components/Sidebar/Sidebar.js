@@ -13,7 +13,6 @@ const Sidebar = () => {
   const isSidebarLong = useSelector((state) => state.ui.isSidebarLong);
   const isNewChat = useSelector((state) => state.chat.newChat);
   const recentChat = useSelector((state) => state.chat.recentChat);
-  console.log(recentChat);
   const [isShowMore, setisShowMore] = useState(false);
   const [isActiveChat, setIsActiveChat] = useState("");
 

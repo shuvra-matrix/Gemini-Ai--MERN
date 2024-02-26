@@ -12,12 +12,10 @@ const chatHistorySchema = new Schema({
     ref: "User",
     required: true,
   },
-  chat: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Chat",
-    },
-  ],
+  chat: {
+    type: Schema.Types.ObjectId,
+    ref: "Chat",
+  },
 });
 
 export const chatHistory = mongoose.model("ChatHistory", chatHistorySchema);
