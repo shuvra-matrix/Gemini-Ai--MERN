@@ -25,7 +25,6 @@ const chatSlice = createSlice({
     recentChatHandler(state, action) {
       state.recentChat = action.payload.recentChat;
     },
-
     chatStart(state, action) {
       state.chats.push({
         user: action.payload.useInput.user,
@@ -42,6 +41,9 @@ const chatSlice = createSlice({
         action.payload.previousChat[0],
         action.payload.previousChat[1]
       );
+    },
+    replacePreviousChat(state, action) {
+      state.previousChat = action.payload.previousChat;
     },
     chatHistoryIdHandler(state, action) {
       state.chatHistoryId = action.payload.chatHistoryId;

@@ -84,3 +84,51 @@ export const sendChatData = (useInput) => {
       });
   };
 };
+
+export const getChat = (chatHistoryId) => {
+  return (dispatch) => {
+    const url = "http://localhost:3030/gemini/api/chatdata";
+
+    console.log(chatHistoryId);
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({ chatHistoryId }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("server error");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const previousChat = data.chats.flatMap((c) => [
+          { role: "user", parts: c.message.user },
+          { role: "model", parts: c.message.gemini },
+        ]);
+
+        const chats = data.chats.map((c) => {
+          return {
+            user: c.message.user,
+            gemini: c.message.gemini,
+            id: c._id,
+            isLoader: "no",
+          };
+        });
+
+        const chatHistoryId = data.chatHistory;
+
+        dispatch(chatAction.replacePreviousChat({ previousChat }));
+
+        dispatch(chatAction.replaceChat({ chats }));
+        dispatch(chatAction.chatHistoryIdHandler({ chatHistoryId }));
+        dispatch(chatAction.newChatHandler());
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};

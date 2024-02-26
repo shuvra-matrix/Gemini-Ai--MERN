@@ -6,6 +6,7 @@ import { uiAction } from "../../store/ui-gemini";
 import { useState } from "react";
 import { chatAction } from "../../store/chat";
 import { useNavigate } from "react-router-dom";
+import { getChat } from "../../store/chat-action";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -36,6 +37,11 @@ const Sidebar = () => {
     dispatch(chatAction.newChatHandler());
     dispatch(chatAction.chatHistoryIdHandler({ chatHistoryId: "" }));
     navigate("/");
+  };
+
+  const getChatHandler = (id) => {
+    dispatch(getChat(id));
+    navigate("/app/");
   };
 
   const icon = themeIcon();
@@ -74,6 +80,7 @@ const Sidebar = () => {
                 }`}
                 onClick={() => {
                   setIsActiveChat(chat._id);
+                  getChatHandler(chat._id);
                 }}
                 key={chat._id}
               >
@@ -101,6 +108,7 @@ const Sidebar = () => {
                   }`}
                   onClick={() => {
                     setIsActiveChat(chat._id);
+                    getChatHandler(chat._id);
                   }}
                   key={chat._id}
                 >
