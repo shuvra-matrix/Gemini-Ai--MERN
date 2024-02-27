@@ -57,9 +57,7 @@ export const sendChatData = (useInput) => {
             ],
           })
         );
-
         dispatch(chatAction.popChat());
-
         dispatch(
           chatAction.chatStart({
             useInput: {
@@ -77,6 +75,17 @@ export const sendChatData = (useInput) => {
       })
       .catch((err) => {
         console.log(err);
+        dispatch(chatAction.popChat());
+        dispatch(
+          chatAction.chatStart({
+            useInput: {
+              user: useInput.user,
+              gemini:
+                "<span>Oops! Something went wrong on our end. Please refresh the page and try again. If the issue persists, please contact us for assistance.</span>",
+              isLoader: "no",
+            },
+          })
+        );
         dispatch(chatAction.newChatHandler());
       });
   };

@@ -31,6 +31,7 @@ const chatSlice = createSlice({
         isLoader: action.payload.useInput.isLoader,
         gemini: action.payload.useInput.gemini,
         id: Math.random(),
+        newChat: true,
       });
     },
     popChat(state) {

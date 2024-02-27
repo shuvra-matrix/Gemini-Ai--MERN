@@ -2,6 +2,7 @@ import { user } from "../model/user.js";
 import { chat } from "../model/chat.js";
 import { chatHistory } from "../model/chatHistory.js";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { Error } from "mongoose";
 
 export const getGeminiHome = (req, res, next) => {
   res.status(200).json({ message: "Welcome to Gemini Ai Api" });
@@ -16,6 +17,8 @@ export const getGeminiHome = (req, res, next) => {
 // add chat to chatHistory only first one
 
 // add chatHistory to user
+
+let b = 0;
 
 export const postGemini = async (req, res, next) => {
   const query = String(req.body.userInput);
@@ -162,6 +165,10 @@ export const postGemini = async (req, res, next) => {
         throw new Error("Server Error");
       }
 
+      b += 1;
+
+      console.log("new chat ", b);
+
       res.status(200).json({
         user: query,
         gemini: text,
@@ -196,6 +203,8 @@ export const getChatHistory = (req, res, next) => {
     });
 };
 
+let a = 0;
+
 export const postChat = (req, res, next) => {
   const chatHistoryId = req.body.chatHistoryId;
 
@@ -210,6 +219,9 @@ export const postChat = (req, res, next) => {
         error.statusCode - 403;
         throw error;
       }
+
+      a += 1;
+      console.log("get by history ", a);
 
       res.status(200).json({
         chatHistory: chatData[0]._id,

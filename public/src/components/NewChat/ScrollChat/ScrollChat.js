@@ -2,9 +2,10 @@ import styles from "./ScrollChat.module.css";
 import { commonIcon } from "../../../asset";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useRef, useEffect } from "react";
-import DOMPurify from "dompurify";
 import { useNavigate, useParams } from "react-router-dom";
 import { getChat } from "../../../store/chat-action";
+import ReplyByGemini from "./ReplyByGemini";
+import NewChatByGemini from "./NewChatGemini";
 
 const ScrollChat = () => {
   const navigate = useNavigate();
@@ -27,6 +28,10 @@ const ScrollChat = () => {
     }
   }, [dispatch, historyId, chatHistoryId, navigate, chat]);
 
+  const loadText = (text) => {
+    return text?.replace(/\n/g, "<br>");
+  };
+
   const chatSection = chat.map((c) => (
     <div className={styles["single-chat"]} ref={chatRef} key={c.id}>
       <div className={styles["user"]}>
@@ -40,11 +45,12 @@ const ScrollChat = () => {
         {c?.isLoader === "no" && (
           <img src={commonIcon.chatGeminiIcon} alt="avater icon"></img>
         )}
-        <p
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(c?.gemini?.replace(/\n/g, "<br>")),
-          }}
-        />
+
+        {c.newChat ? (
+          <ReplyByGemini gemini={loadText(c?.gemini)} />
+        ) : (
+          <NewChatByGemini gemini={loadText(c?.gemini)} />
+        )}
       </div>
     </div>
   ));
