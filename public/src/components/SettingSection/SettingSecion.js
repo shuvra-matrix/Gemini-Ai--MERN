@@ -22,6 +22,8 @@ const SettingSection = () => {
   const settingShow = isSettingsShow ? "settngs-show" : "settings-hide";
   const getLocalTheme = localStorage.getItem("theme");
   const theme = getLocalTheme || "dark";
+  const realTime = localStorage.getItem("realtime");
+  const realTimeTheme = realTime === "yes" ? "dark" : "light";
 
   return (
     <div className={`${styles["setting-main"]} ${styles[settingShow]}`}>
@@ -40,7 +42,11 @@ const SettingSection = () => {
       <div className={styles["real-time"]}>
         <img src={icon.wallIcon} alt="wall icon"></img>
         <p>Real-time responses</p>
-        <ToggleButton onClick={realTimeResponseHandler} mode={realTimeMode} />
+        <ToggleButton
+          theme={realTimeTheme}
+          onClick={realTimeResponseHandler}
+          mode={realTimeMode}
+        />
       </div>
     </div>
   );

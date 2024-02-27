@@ -14,8 +14,9 @@ const ScrollChat = () => {
   const chatRef = useRef(null);
   const chat = useSelector((state) => state.chat.chats);
   const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
+  const realTimeResponse = localStorage.getItem("realtime") || "no";
 
-  console.log(chatHistoryId, historyId);
+  console.log(chatHistoryId, historyId, realTimeResponse);
 
   useEffect(() => {
     if (chat.length === 0 && !historyId) {
@@ -30,6 +31,8 @@ const ScrollChat = () => {
   const loadText = (text) => {
     return text?.replace(/\n/g, "<br>");
   };
+
+  const lastElemetId = chat[chat.length - 1].id;
 
   const chatSection = chat.map((c) => (
     <Fragment>
@@ -47,7 +50,7 @@ const ScrollChat = () => {
               <img src={commonIcon.chatGeminiIcon} alt="avater icon"></img>
             )}
 
-            {c.newChat ? (
+            {c.newChat && lastElemetId === c.id && realTimeResponse === "no" ? (
               <ReplyByGemini gemini={loadText(c?.gemini)} />
             ) : (
               <NewChatByGemini gemini={loadText(c?.gemini)} />

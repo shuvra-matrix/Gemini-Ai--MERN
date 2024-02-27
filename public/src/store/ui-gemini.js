@@ -22,6 +22,8 @@ const uiCreteSlice = createSlice({
     },
     toggleRealTimeResponse(state) {
       state.isRealTimeResponse = !state.isRealTimeResponse;
+      const realtime = state.isRealTimeResponse ? "yes" : "no";
+      localStorage.setItem("realtime", realtime);
     },
     toggleSettings(state) {
       state.isSettingsShow = !state.isSettingsShow;
