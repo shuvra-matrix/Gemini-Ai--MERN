@@ -25,7 +25,6 @@ export const getRecentChat = () => {
 
 export const sendChatData = (useInput) => {
   return (dispatch) => {
-    dispatch(chatAction.loaderHandler());
     dispatch(chatAction.chatStart({ useInput: useInput }));
 
     const url = "http://localhost:3030/gemini/api/chat";
@@ -70,7 +69,6 @@ export const sendChatData = (useInput) => {
             },
           })
         );
-        dispatch(chatAction.loaderHandler());
         dispatch(getRecentChat());
         dispatch(chatAction.newChatHandler());
         dispatch(
@@ -79,7 +77,6 @@ export const sendChatData = (useInput) => {
       })
       .catch((err) => {
         console.log(err);
-        dispatch(chatAction.loaderHandler());
         dispatch(chatAction.newChatHandler());
       });
   };
@@ -87,6 +84,7 @@ export const sendChatData = (useInput) => {
 
 export const getChat = (chatHistoryId) => {
   return (dispatch) => {
+    dispatch(chatAction.loaderHandler());
     const url = "http://localhost:3030/gemini/api/chatdata";
 
     fetch(url, {
@@ -103,6 +101,7 @@ export const getChat = (chatHistoryId) => {
         return response.json();
       })
       .then((data) => {
+        dispatch(chatAction.loaderHandler());
         const previousChat = data.chats.flatMap((c) => [
           { role: "user", parts: c.message.user },
           { role: "model", parts: c.message.gemini },
@@ -120,13 +119,13 @@ export const getChat = (chatHistoryId) => {
         const chatHistoryId = data.chatHistory;
 
         dispatch(chatAction.replacePreviousChat({ previousChat }));
-
         dispatch(chatAction.replaceChat({ chats }));
         dispatch(chatAction.chatHistoryIdHandler({ chatHistoryId }));
         dispatch(chatAction.newChatHandler());
       })
       .catch((err) => {
         console.log(err);
+        dispatch(chatAction.loaderHandler());
       });
   };
 };

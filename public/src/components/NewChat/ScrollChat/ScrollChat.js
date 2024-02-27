@@ -12,7 +12,6 @@ const ScrollChat = () => {
   const { historyId } = useParams();
   const chatRef = useRef(null);
   const chat = useSelector((state) => state.chat.chats);
-  const isLoader = useSelector((state) => state.chat.isLoader);
   const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
 
   console.log(chatHistoryId, historyId);
@@ -35,7 +34,7 @@ const ScrollChat = () => {
         <p>{c.user}</p>
       </div>
       <div className={styles["gemini"]}>
-        {isLoader && c?.isLoader === "yes" && (
+        {c?.isLoader === "yes" && (
           <img src={commonIcon.geminiLaoder} alt="avater icon"></img>
         )}
         {c?.isLoader === "no" && (

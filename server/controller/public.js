@@ -13,7 +13,7 @@ export const getGeminiHome = (req, res, next) => {
 
 // if chatHistoryId -> push old chat -> create new chat
 
-// add chat to chatHistory
+// add chat to chatHistory only first one
 
 // add chatHistory to user
 
