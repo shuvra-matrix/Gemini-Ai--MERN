@@ -134,7 +134,21 @@ export const getChat = (chatHistoryId) => {
       })
       .catch((err) => {
         console.log(err);
+        dispatch(
+          chatAction.replaceChat({
+            chats: [
+              {
+                error: true,
+                user: "Hi, is there any issue ? ",
+                gemini: "",
+                id: 34356556565,
+                isLoader: "Oops! I cound't find you chat history",
+              },
+            ],
+          })
+        );
         dispatch(chatAction.loaderHandler());
+        dispatch(chatAction.chatHistoryIdHandler({ chatHistoryId }));
       });
   };
 };

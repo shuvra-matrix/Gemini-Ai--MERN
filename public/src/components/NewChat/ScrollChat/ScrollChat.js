@@ -1,7 +1,7 @@
 import styles from "./ScrollChat.module.css";
 import { commonIcon } from "../../../asset";
 import { useSelector, useDispatch } from "react-redux";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, Fragment } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getChat } from "../../../store/chat-action";
 import ReplyByGemini from "./ReplyByGemini";
@@ -19,7 +19,6 @@ const ScrollChat = () => {
 
   useEffect(() => {
     if (chat.length === 0 && !historyId) {
-      console.log("hi");
       navigate("/");
     } else if (historyId && historyId !== chatHistoryId) {
       dispatch(getChat(historyId));
@@ -33,26 +32,32 @@ const ScrollChat = () => {
   };
 
   const chatSection = chat.map((c) => (
-    <div className={styles["single-chat"]} ref={chatRef} key={c.id}>
-      <div className={styles["user"]}>
-        <img src={commonIcon.avatarIcon} alt="avater icon"></img>
-        <p>{c.user}</p>
-      </div>
-      <div className={styles["gemini"]}>
-        {c?.isLoader === "yes" && (
-          <img src={commonIcon.geminiLaoder} alt="avater icon"></img>
-        )}
-        {c?.isLoader === "no" && (
-          <img src={commonIcon.chatGeminiIcon} alt="avater icon"></img>
-        )}
+    <Fragment>
+      {!c.error ? (
+        <div className={styles["single-chat"]} ref={chatRef} key={c.id}>
+          <div className={styles["user"]}>
+            <img src={commonIcon.avatarIcon} alt="avater icon"></img>
+            <p>{c.user}</p>
+          </div>
+          <div className={styles["gemini"]}>
+            {c?.isLoader === "yes" && (
+              <img src={commonIcon.geminiLaoder} alt="avater icon"></img>
+            )}
+            {c?.isLoader === "no" && (
+              <img src={commonIcon.chatGeminiIcon} alt="avater icon"></img>
+            )}
 
-        {c.newChat ? (
-          <ReplyByGemini gemini={loadText(c?.gemini)} />
-        ) : (
-          <NewChatByGemini gemini={loadText(c?.gemini)} />
-        )}
-      </div>
-    </div>
+            {c.newChat ? (
+              <ReplyByGemini gemini={loadText(c?.gemini)} />
+            ) : (
+              <NewChatByGemini gemini={loadText(c?.gemini)} />
+            )}
+          </div>
+        </div>
+      ) : (
+        navigate("/")
+      )}
+    </Fragment>
   ));
 
   return (
