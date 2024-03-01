@@ -36,6 +36,7 @@ const InputSection = () => {
       <form onSubmit={onSubmitHandler}>
         <input
           onChange={userInputHandler}
+          autoComplete="off"
           type="text"
           placeholder="Enter a prompt here"
           name="prompt"
