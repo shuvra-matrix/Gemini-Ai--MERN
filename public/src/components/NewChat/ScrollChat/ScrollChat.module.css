@@ -33,6 +33,7 @@
   gap: 55px;
   margin: 20px auto;
   word-break: break-word;
+  position: relative;
 }
 
 .single-chat:last-child {

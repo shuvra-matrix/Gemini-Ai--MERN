@@ -15,6 +15,7 @@ import wallIcon from "./icons8-brick-wall-64.png";
 import moonIcon from "./icons8-moon-64.png";
 import linkIcon from "./icons8-link-50.png";
 import okIcon from "./icons8-ok-48.png";
+import copyIcon from "./icons8-copy-48.png";
 
 export const lightIcon = {
   plusIcon,
@@ -34,4 +35,5 @@ export const lightIcon = {
   moonIcon,
   linkIcon,
   okIcon,
+  copyIcon,
 };

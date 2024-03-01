@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getChat } from "../../../store/chat-action";
 import ReplyByGemini from "./ReplyByGemini";
 import NewChatByGemini from "./NewChatGemini";
+import CopyBtn from "../../Ui/CopyBtn";
 import "./ScrollChatModule.css";
 
 const ScrollChat = () => {
@@ -34,14 +35,13 @@ const ScrollChat = () => {
       ?.replace(/\n/g, "<br>")
       ?.replace(/\*\*(.*?)\*\*/g, '<span class="h1-bold">$1</span>')
       ?.replace(/<br>\*/g, "<br><span class='list'>&#9898;</span>")
-      ?.replace(/```<br>([\s\S]*?)```/g, "<br><div class='email-div'>$1</div>")
       ?.replace(/```([\s\S]*?)```/g, (_, codeBlock) => {
         let code = codeBlock
           .replace(/<br>/g, "\n")
           .replace(/</g, "&#60;")
           .replace(/>/g, "&#62;");
         let highlighted = `\`\`\`` + code + `\`\`\``;
-        return `<br><pre><code>${highlighted} </code></pre>`;
+        return `<br><pre><code>${highlighted}</code></pre>`;
       })
       ?.replace(/```([\s\S]*?)```/g, "<br><div class='email-div'>$1</div>");
   };
@@ -63,9 +63,6 @@ const ScrollChat = () => {
             {c?.isLoader === "no" && (
               <img src={commonIcon.chatGeminiIcon} alt="avater icon"></img>
             )}
-
-            {console.log(c.gemini)}
-
             {c?.newChat &&
             !c?.gemini.includes("```") &&
             lastElemetId === c?.id &&
@@ -75,6 +72,7 @@ const ScrollChat = () => {
               <NewChatByGemini gemini={loadText(c?.gemini)} />
             )}
           </div>
+          <CopyBtn data={c.gemini} />
         </div>
       ) : (
         navigate("/")

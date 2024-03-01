@@ -1,4 +1,4 @@
-import { marked } from "marked";
+import DOMPurify from "dompurify";
 import { useEffect } from "react";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
@@ -13,7 +13,7 @@ const NewChatByGemini = (props) => {
     <p
       className="gemini-p"
       dangerouslySetInnerHTML={{
-        __html: marked(props?.gemini),
+        __html: DOMPurify.sanitize(props?.gemini),
       }}
     ></p>
   );

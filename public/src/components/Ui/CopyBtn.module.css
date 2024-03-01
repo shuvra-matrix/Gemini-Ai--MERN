@@ -1,0 +1,49 @@
+.copy-icon {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  bottom: -40px;
+  right: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.copy-icon:hover {
+  background-color: var(--prompt-bg-hover);
+}
+
+.copy-icon img {
+  width: 18px;
+  height: 18px;
+}
+
+.copy-icon-one:hover::after {
+  content: "Copy";
+  position: absolute;
+  width: 40px;
+  font-size: 12px;
+  left: -45px;
+  color: var(--plus-icon-before-font-color);
+  background-color: var(--plus-icon-before-bg-color);
+  padding: 4px 5px;
+  border-radius: 5px;
+}
+
+.copy-message {
+  position: absolute;
+  display: inline;
+  width: 60px;
+  color: var(--plus-icon-before-font-color);
+  background-color: var(--plus-icon-before-bg-color);
+  font-size: 12px;
+  left: -65px;
+  padding: 4px 5px;
+  border-radius: 5px;
+}
+
+.copy-message.fade-out {
+  opacity: 0;
+}
