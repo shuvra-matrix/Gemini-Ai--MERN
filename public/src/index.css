@@ -81,6 +81,9 @@
   --bg-focus-mobile: rgba(0, 0, 0, 0.274);
 
   --chat-font-color: #e3e3e3;
+
+  --code-bg: #1e1f20;
+  --code-text-color: #d8d6d6;
 }
 
 [data-theme="light"] {
@@ -147,6 +150,9 @@
   --bg-focus-mobile: rgba(0, 0, 0, 0.068);
 
   --chat-font-color: #1f1f1f;
+
+  --code-bg: #f0f4f9;
+  --code-text-color: #333333;
 }
 
 html {

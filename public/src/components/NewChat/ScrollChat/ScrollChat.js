@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getChat } from "../../../store/chat-action";
 import ReplyByGemini from "./ReplyByGemini";
 import NewChatByGemini from "./NewChatGemini";
+import "./ScrollChatModule.css";
 
 const ScrollChat = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const ScrollChat = () => {
   const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
   const realTimeResponse = localStorage.getItem("realtime") || "no";
 
-  console.log(chatHistoryId, historyId, realTimeResponse);
+  console.log(historyId);
 
   useEffect(() => {
     if (chat.length === 0 && !historyId) {
@@ -29,15 +30,28 @@ const ScrollChat = () => {
   }, [dispatch, historyId, chatHistoryId, navigate, chat]);
 
   const loadText = (text) => {
-    return text?.replace(/\n/g, "<br>");
+    return text
+      ?.replace(/\n/g, "<br>")
+      ?.replace(/\*\*(.*?)\*\*/g, '<span class="h1-bold">$1</span>')
+      ?.replace(/<br>\*/g, "<br><span class='list'>&#9898;</span>")
+      ?.replace(/```<br>([\s\S]*?)```/g, "<br><div class='email-div'>$1</div>")
+      ?.replace(/```([\s\S]*?)```/g, (_, codeBlock) => {
+        let code = codeBlock
+          .replace(/<br>/g, "\n")
+          .replace(/</g, "&#60;")
+          .replace(/>/g, "&#62;");
+        let highlighted = `\`\`\`` + code + `\`\`\``;
+        return `<br><pre><code>${highlighted} </code></pre>`;
+      })
+      ?.replace(/```([\s\S]*?)```/g, "<br><div class='email-div'>$1</div>");
   };
 
-  const lastElemetId = chat[chat.length - 1].id;
+  const lastElemetId = chat[chat.length - 1]?.id;
 
   const chatSection = chat.map((c) => (
-    <Fragment>
+    <Fragment key={c?.id}>
       {!c.error ? (
-        <div className={styles["single-chat"]} ref={chatRef} key={c.id}>
+        <div className={styles["single-chat"]} ref={chatRef}>
           <div className={styles["user"]}>
             <img src={commonIcon.avatarIcon} alt="avater icon"></img>
             <p>{c.user}</p>
@@ -50,7 +64,12 @@ const ScrollChat = () => {
               <img src={commonIcon.chatGeminiIcon} alt="avater icon"></img>
             )}
 
-            {c.newChat && lastElemetId === c.id && realTimeResponse === "no" ? (
+            {console.log(c.gemini)}
+
+            {c?.newChat &&
+            !c?.gemini.includes("```") &&
+            lastElemetId === c?.id &&
+            realTimeResponse === "no" ? (
               <ReplyByGemini gemini={loadText(c?.gemini)} />
             ) : (
               <NewChatByGemini gemini={loadText(c?.gemini)} />

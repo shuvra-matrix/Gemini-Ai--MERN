@@ -1,5 +1,6 @@
 import DOMPurify from "dompurify";
 import { useState, useEffect } from "react";
+import "./ScrollChatModule.css";
 
 const ReplyByGemini = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,6 +17,7 @@ const ReplyByGemini = (props) => {
 
   return (
     <p
+      className="gemini-p"
       dangerouslySetInnerHTML={{
         __html: DOMPurify.sanitize(props?.gemini?.slice(0, currentIndex)),
       }}

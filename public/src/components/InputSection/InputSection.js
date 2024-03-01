@@ -21,6 +21,7 @@ const InputSection = () => {
     dispatch(
       sendChatData({
         user: userInput,
+        gemini: "",
         isLoader: "yes",
         previousChat,
         chatHistoryId,
