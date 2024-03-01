@@ -265,6 +265,13 @@ resent chat section  */
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+.show-more img {
+  width: 20px;
+  height: 20px;
 }
 
 .recent-chat p,

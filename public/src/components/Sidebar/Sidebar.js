@@ -3,7 +3,7 @@ import { themeIcon } from "../../asset";
 import { commonIcon } from "../../asset";
 import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "../../store/ui-gemini";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { chatAction } from "../../store/chat";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -15,6 +15,7 @@ const Sidebar = () => {
   const recentChat = useSelector((state) => state.chat.recentChat);
   const [isShowMore, setisShowMore] = useState(false);
   const [isActiveChat, setIsActiveChat] = useState("");
+  const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
 
   const sideBarWidthHandler = () => {
     dispatch(uiAction.toggleSideBar());
@@ -23,6 +24,11 @@ const Sidebar = () => {
   const showMoreHandler = () => {
     setisShowMore((pre) => !pre);
   };
+
+  useEffect(() => {
+    const id = chatHistoryId || "";
+    setIsActiveChat(id);
+  }, [chatHistoryId]);
 
   const settingsHandler = (e) => {
     dispatch(uiAction.toggleSettings());
@@ -41,6 +47,8 @@ const Sidebar = () => {
   const icon = themeIcon();
   const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";
   const showMoreArrowIcon = isShowMore ? icon.upArrowIcon : icon.expandIcon;
+
+  console.log("hi");
 
   return (
     <div className={`${styles["sidebar-main"]} ${styles[sideBarWidthClass]}`}>
