@@ -70,12 +70,12 @@ code::-webkit-scrollbar-thumb:hover {
 .hljs-string,
 .hljs-template-tag,
 .hljs-type {
-  color: #14bbd1 !important;
+  color: var(--code-type-color) !important;
 }
 
 .hljs-section,
 .hljs-title {
-  color: #1cad89 !important;
+  color: var(--code-title-color) !important;
   font-weight: 700 !important;
 }
 
@@ -83,7 +83,8 @@ code::-webkit-scrollbar-thumb:hover {
 .hljs-built_in,
 .hljs-bullet,
 .hljs-code {
-  color: #ee3060e8 !important;
+  color: var(--code-code-color) !important;
+  font-weight: 700 !important;
 }
 
 .hljs-attribute,
@@ -93,25 +94,21 @@ code::-webkit-scrollbar-thumb:hover {
 .hljs-name,
 .hljs-selector-tag {
   font-weight: 700 !important;
-  color: #d1ad48 !important;
+  color: var(--code-keyword) !important;
 }
 
 .hljs-punctuation,
 .hljs-tag {
-  color: #ffffffaa !important;
+  color: var(--code-tag) !important;
 }
 
 .hljs-name {
   font-weight: 700 !important;
-  color: #cb63b7 !important;
+  color: var(--code-name) !important;
 }
 
 .hljs-attr {
-  color: #cd4545 !important;
-}
-
-code + :not(code) {
-  color: #ff5733 !important; /* Change to your desired color */
+  color: var(--code-attr) !important;
 }
 
 @media (max-width: 930px) {

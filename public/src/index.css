@@ -84,6 +84,13 @@
 
   --code-bg: #1e1f20;
   --code-text-color: #d8d6d6;
+  --code-type-color: #22d3eb;
+  --code-title-color: #18cea0;
+  --code-code-color: #f52358e8;
+  --code-keyword: #d1ad48;
+  --code-tag: #ffffffc7;
+  --code-name: #cb63b7;
+  --code-attr: #cd4545;
 }
 
 [data-theme="light"] {
@@ -152,7 +159,14 @@
   --chat-font-color: #1f1f1f;
 
   --code-bg: #f0f4f9;
-  --code-text-color: #333333;
+  --code-text-color: #333030;
+  --code-type-color: #095ba8;
+  --code-title-color: #089270;
+  --code-code-color: #d60b3ee8;
+  --code-keyword: #730ad6e0;
+  --code-tag: #444141ef;
+  --code-name: #cb63b7;
+  --code-attr: #d43b3b;
 }
 
 html {
