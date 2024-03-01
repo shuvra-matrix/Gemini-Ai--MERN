@@ -4,9 +4,18 @@ import { Fragment, useState } from "react";
 
 const CopyBtn = (props) => {
   const [copied, setCopied] = useState(false);
+
   const copyHandler = () => {
+    let text = props.data;
+    const regex = /```([^`]+?)```/g;
+    let code = text.match(regex);
+
+    if (code) {
+      text = code.reduce((acc, element) => acc + element, "");
+    }
+
     navigator.clipboard
-      .writeText(props.data)
+      .writeText(text)
       .then(() => {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
