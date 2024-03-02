@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import requestIp from "request-ip";
 import "dotenv/config";
 import { user } from "./model/user.js";
+import cros from "cors";
 
 const MONGODB_URL = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}mymongoinit.6md0cxy.mongodb.net/gemini?retryWrites=true&w=majority`;
 const PORT_NO = 3030;
@@ -11,17 +12,13 @@ const app = express();
 
 app.use(express.json());
 app.use(requestIp.mw());
-app.use((req, res, next) => {
-  const allowedOrigins = process.env.ALLOW_ORIGINES || "http://localhost:3000";
-  res.setHeader("Access-Control-Allow-Origin", allowedOrigins);
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, DELETE, PATCH, PUT"
-  );
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type , Authorization");
-  next();
-});
+
+const crosOption = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cros(crosOption));
 
 app.use((req, res, next) => {
   const ip = req.clientIp;

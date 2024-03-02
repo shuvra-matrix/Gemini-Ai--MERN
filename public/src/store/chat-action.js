@@ -26,6 +26,7 @@ export const getRecentChat = () => {
 export const sendChatData = (useInput) => {
   return (dispatch) => {
     dispatch(chatAction.chatStart({ useInput: useInput }));
+    const apiKey = process.env.REACT_APP_GEMINI_KEY;
 
     const url = "http://localhost:3030/gemini/api/chat";
 
@@ -33,6 +34,7 @@ export const sendChatData = (useInput) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "X-Api-Key": apiKey,
       },
       body: JSON.stringify({
         userInput: useInput.user,

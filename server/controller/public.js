@@ -21,6 +21,15 @@ export const getGeminiHome = (req, res, next) => {
 let b = 0;
 
 export const postGemini = async (req, res, next) => {
+  const clientApikey = String(req.headers["x-api-key"]);
+  const serverSideClientApiKey = String(process.env.CLIENT_API_KEY);
+
+  if (clientApikey !== serverSideClientApiKey) {
+    const error = new Error("Invalid Api Key");
+    error.statusCode = 401;
+    error.data = "Invalid Api Key";
+    return next(error);
+  }
   const query = String(req.body.userInput);
   const previousChat = req.body.previousChat;
   const chatHistoryId = req.body.chatHistoryId;
