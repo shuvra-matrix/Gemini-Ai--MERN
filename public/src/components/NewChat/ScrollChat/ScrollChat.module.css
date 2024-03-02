@@ -2,9 +2,10 @@
   width: 100%;
   display: flex;
   flex-flow: nowrap column;
-  height: 76dvh;
+  height: 78dvh;
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 0px 0px 20px;
   gap: 20px;
 }
 
@@ -47,6 +48,10 @@
   position: relative;
 }
 
+.gemini {
+  min-height: 56px;
+}
+
 .user p,
 .gemini p {
   font-size: 16px;
@@ -82,7 +87,7 @@
 
 @media (max-width: 960px) {
   .scroll-chat-main {
-    padding: 0px 20px;
+    padding: 0px 20px 40px;
   }
 
   .user img {
@@ -107,5 +112,11 @@
   .gemini p {
     flex: 1;
     padding-left: 0px;
+  }
+}
+
+@media (max-width: 255px) {
+  .scroll-chat-main {
+    padding: 0px 20px 60px;
   }
 }

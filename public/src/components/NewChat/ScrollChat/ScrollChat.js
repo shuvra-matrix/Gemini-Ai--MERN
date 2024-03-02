@@ -30,6 +30,10 @@ const ScrollChat = () => {
     }
   }, [dispatch, historyId, chatHistoryId, navigate, chat]);
 
+  useEffect(() => {
+    chatRef.current.scrollTop = chatRef.current.scrollHeight;
+  }, [chat]);
+
   const loadText = (text) => {
     return text
       ?.replace(/\n/g, "<br>")
@@ -48,10 +52,14 @@ const ScrollChat = () => {
 
   const lastElemetId = chat[chat.length - 1]?.id;
 
-  const chatSection = chat.map((c) => (
+  const chatSection = chat.map((c, index) => (
     <Fragment key={c?.id}>
       {!c.error ? (
-        <div className={styles["single-chat"]} ref={chatRef}>
+        <div
+          className={`${styles["single-chat"]} ${
+            index === chat.length - 1 ? styles["last-single-chat"] : ""
+          }`}
+        >
           <div className={styles["user"]}>
             <img src={commonIcon.avatarIcon} alt="avater icon"></img>
             <p>{c.user}</p>
@@ -72,7 +80,7 @@ const ScrollChat = () => {
               <NewChatByGemini gemini={loadText(c?.gemini)} />
             )}
           </div>
-          <CopyBtn data={c.gemini} />
+          {c?.gemini?.length > 0 && <CopyBtn data={c?.gemini} />}
         </div>
       ) : (
         navigate("/")

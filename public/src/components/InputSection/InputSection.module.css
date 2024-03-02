@@ -1,13 +1,15 @@
 .input-main {
-  max-width: 830px;
   margin: auto;
   position: absolute;
-  bottom: 14px;
+  bottom: 5px;
+  max-width: 830px;
   left: 50%;
   width: 100%;
   transform: translate(-50%, -50%);
   z-index: 1;
-  animation: widthChange 1.5s ease-out;
+  background-color: var(--chat-section-bg);
+  padding: 15px 0px 15px;
+  animation: widthChange 1s ease-out;
 }
 
 .input-main input {
@@ -61,7 +63,7 @@
 
 @media (max-width: 1106px) {
   .input-main {
-    padding: 0px 20px;
+    padding: 10px 20px 15px;
   }
 
   .input-main button {
@@ -71,19 +73,19 @@
 
 @media (max-width: 680px) {
   .input-main {
-    bottom: 30px;
-    padding: 0px 10px;
+    bottom: -4px;
+    padding: 15px 10px 15px;
   }
 }
 
 @media (max-width: 360px) {
   .input-main {
-    bottom: 40px;
+    bottom: 28px;
   }
 }
 
 @media (max-width: 260px) {
   .input-main {
-    bottom: 60px;
+    bottom: 52px;
   }
 }
