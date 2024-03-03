@@ -1,4 +1,5 @@
 import { chatAction } from "./chat";
+import { userAction } from "./user";
 
 export const getRecentChat = () => {
   return (dispatch) => {
@@ -16,6 +17,7 @@ export const getRecentChat = () => {
         dispatch(
           chatAction.recentChatHandler({ recentChat: data.chatHistory })
         );
+        dispatch(userAction.setLocation({ location: data.location }));
       })
       .catch((err) => {
         console.log(err);

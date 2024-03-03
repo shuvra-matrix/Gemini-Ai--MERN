@@ -254,3 +254,58 @@ export const postChat = (req, res, next) => {
       next(err);
     });
 };
+
+let d = 0;
+
+export const updateLocation = (req, res, next) => {
+  const { lat, long } = req.body.location;
+
+  const apiKey = process.env.LOCATION_API_KEY;
+
+  const url = `https://geocode.maps.co/reverse?lat=${lat}&lon=${long}&api_key=${apiKey}`;
+
+  let location;
+
+  fetch(url)
+    .then((response) => {
+      if (!response) {
+        const error = new Error("Location Not Found");
+        error.statusCode = 403;
+        throw error;
+      }
+
+      return response.json();
+    })
+    .then((data) => {
+      location = `${data.address.city}, ${data.address.state}, ${data.address.country}`;
+
+      return user.findById(req.user._id);
+    })
+    .then((user) => {
+      if (!user) {
+        const error = new Error("User Not Found");
+        error.statusCode = 403;
+        throw error;
+      }
+
+      user.location = location;
+
+      return user.save();
+    })
+    .then((result) => {
+      if (!result) {
+        const error = new Error("No Result");
+        error.statusCode = 403;
+        throw error;
+      }
+      d += 1;
+      console.log("location", d);
+      res.status(200).json({ location: location });
+    })
+    .catch((error) => {
+      if (!res.statusCode) {
+        res.statusCode = 500;
+      }
+      next(error);
+    });
+};

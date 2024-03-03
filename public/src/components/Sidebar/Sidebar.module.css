@@ -461,6 +461,7 @@ resent chat section  */
 .location-name {
   display: block;
   color: var(--location-name-color);
+  text-transform: capitalize;
 }
 
 .span-dot {

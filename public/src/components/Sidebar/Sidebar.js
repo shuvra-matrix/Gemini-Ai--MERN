@@ -6,6 +6,7 @@ import { uiAction } from "../../store/ui-gemini";
 import { useEffect, useState } from "react";
 import { chatAction } from "../../store/chat";
 import { Link, useNavigate } from "react-router-dom";
+import { userUpdateLocation } from "../../store/user-action";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Sidebar = () => {
   const [isShowMore, setisShowMore] = useState(false);
   const [isActiveChat, setIsActiveChat] = useState("");
   const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
+  const location = useSelector((state) => state.user.location);
 
   const sideBarWidthHandler = () => {
     dispatch(uiAction.toggleSideBar());
@@ -48,7 +50,14 @@ const Sidebar = () => {
   const sideBarWidthClass = isSidebarLong ? "side-bar-long" : "side-bar-sort";
   const showMoreArrowIcon = isShowMore ? icon.upArrowIcon : icon.expandIcon;
 
-  console.log("hi");
+  console.log("sidebar");
+
+  const updateLocationHandler = () => {
+    const location = localStorage.getItem("location");
+    if (!location) {
+      dispatch(userUpdateLocation());
+    }
+  };
 
   return (
     <div className={`${styles["sidebar-main"]} ${styles[sideBarWidthClass]}`}>
@@ -147,15 +156,13 @@ const Sidebar = () => {
             <p>Upgrade to Gemini Advanced</p>
           </div>
         )}
-        <div className={styles["location"]}>
+        <div className={styles["location"]} onClick={updateLocationHandler}>
           <div className={styles["dot"]}>
             <img src={icon.dotIcon} alt="dot icon"></img>
           </div>
           <p>
-            <span className={styles["location-name"]}>
-              Kolkata, Westbengal, India
-            </span>{" "}
-            From your IP address <span className={styles["span-dot"]}>.</span>
+            <span className={styles["location-name"]}>{location}</span> From
+            your IP address <span className={styles["span-dot"]}>.</span>
             <span> Update location</span>
           </p>
         </div>
