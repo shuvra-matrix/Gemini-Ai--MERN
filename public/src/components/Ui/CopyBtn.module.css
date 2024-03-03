@@ -9,6 +9,8 @@
   align-items: center;
   cursor: pointer;
   border-radius: 50%;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .copy-icon:hover {

@@ -24,6 +24,8 @@
   --header-plus-bg: #282a2c;
   --header-login-border: rgba(0, 0, 0, 0.616);
   --header-login-hover-bg: #333537;
+  --header-user-icon-bg: #1c1c1f;
+  --header-user-icon-clicked-bg: #252628;
 
   --new-chat-h2-color: #444746;
 
@@ -100,6 +102,7 @@
   --signout-hover-bg: #37393b;
   --cross-hover-bg: #37393b;
   --user-details-box-shadow: 0px 0px 10px 2px #03030360;
+  --user-details-provacy-hover-bg: #37393b;
 }
 
 [data-theme="light"] {
@@ -109,6 +112,8 @@
   --header-plus-bg: #e9eef6;
   --header-login-border: rgba(51, 219, 248, 0.096);
   --header-login-hover-bg: #dde3ea;
+  --header-user-icon-bg: #d4d4d4;
+  --header-user-icon-clicked-bg: rgb(191, 196, 201);
 
   --new-chat-h2-color: #c4c7c5;
 
@@ -185,6 +190,7 @@
   --signout-hover-bg: #dce1e8;
   --cross-hover-bg: #dce1e8;
   --user-details-box-shadow: 0px 0px 8px 4px #c8c8c8a1;
+  --user-details-provacy-hover-bg: #dce1e8;
 }
 
 html {

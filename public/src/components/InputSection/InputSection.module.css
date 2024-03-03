@@ -44,6 +44,8 @@
   top: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .input-main button img {

@@ -66,13 +66,26 @@
 
 .user {
   border: none;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   cursor: pointer;
 }
 
+.user:hover {
+  background-color: var(--header-user-icon-bg);
+}
+
+.clicked-user {
+  background-color: var(--header-user-icon-clicked-bg);
+}
+
 .user img {
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   border: none;
   border-radius: 50%;
 }
