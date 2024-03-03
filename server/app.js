@@ -30,24 +30,41 @@ app.use((req, res, next) => {
         req.user = userData;
         return next();
       }
+      const ip = req.clientIp;
+      const url = `https://api.ipgeolocation.io/ipgeo?apiKey=${process.env.GEO_API_KEY}&ip=${ip}&fields=geo`;
 
-      const newUser = new user({
-        ip: ip,
-      });
-
-      newUser
-        .save()
-        .then((result) => {
-          return user.findOne({ ip: ip });
+      return fetch(url)
+        .then((response) => {
+          return response.json();
         })
-        .then((userData) => {
-          if (!userData) {
-            const error = new Error("User not found");
-            error.statusCode = 403;
-            throw error;
+        .then((data) => {
+          let location;
+
+          if (data.city) {
+            location =
+              data.city + ", " + data.state_prov + ", " + data.country_name;
+          } else {
+            location = ip;
           }
-          req.user = userData;
-          return next();
+          const newUser = new user({
+            ip: ip,
+            location: location,
+          });
+
+          return newUser
+            .save()
+            .then((result) => {
+              return user.findOne({ ip: ip });
+            })
+            .then((userData) => {
+              if (!userData) {
+                const error = new Error("User not found");
+                error.statusCode = 403;
+                throw error;
+              }
+              req.user = userData;
+              return next();
+            });
         });
     })
     .catch((err) => {

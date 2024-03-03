@@ -166,8 +166,12 @@ export const postGemini = async (req, res, next) => {
         throw error;
       }
 
-      userDate.chatHistory.push(newChatHistoryId);
-      return userDate.save();
+      if (chatHistoryId.length < 5) {
+        userDate.chatHistory.push(newChatHistoryId);
+        return userDate.save();
+      } else {
+        return true;
+      }
     })
     .then((result) => {
       if (!result) {
@@ -192,17 +196,24 @@ export const postGemini = async (req, res, next) => {
     });
 };
 
+let c = 0;
+
 export const getChatHistory = (req, res, next) => {
-  chatHistory
-    .find({ user: req.user._id })
-    .then((chatHistory) => {
-      if (!chatHistory) {
-        const error = new Error("ChatHistory Not Found");
+  user
+    .findById(req.user._id)
+    .populate({ path: "chatHistory" })
+    .then((userData) => {
+      if (!user) {
+        const error = new Error("User Not Found");
         error.statusCode = 403;
         throw error;
       }
-
-      res.status(200).json({ chatHistory: chatHistory.reverse() });
+      c += 1;
+      console.log("chat history", c);
+      res.status(200).json({
+        chatHistory: userData.chatHistory.reverse(),
+        location: userData.location,
+      });
     })
     .catch((error) => {
       if (!error.statusCode) {
@@ -216,7 +227,6 @@ let a = 0;
 
 export const postChat = (req, res, next) => {
   const chatHistoryId = req.body.chatHistoryId;
-
   chatHistory
     .find({ user: req.user._id, _id: chatHistoryId })
     .populate({
@@ -230,7 +240,7 @@ export const postChat = (req, res, next) => {
       }
 
       a += 1;
-      console.log("get by history ", a);
+      console.log("old chats ", a);
 
       res.status(200).json({
         chatHistory: chatData[0]._id,

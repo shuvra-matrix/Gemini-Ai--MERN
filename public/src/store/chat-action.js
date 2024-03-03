@@ -26,6 +26,7 @@ export const getRecentChat = () => {
 export const sendChatData = (useInput) => {
   return (dispatch) => {
     dispatch(chatAction.chatStart({ useInput: useInput }));
+
     const apiKey = process.env.REACT_APP_GEMINI_KEY;
 
     const url = "http://localhost:3030/gemini/api/chat";
@@ -69,7 +70,9 @@ export const sendChatData = (useInput) => {
             },
           })
         );
-        dispatch(getRecentChat());
+        if (useInput.chatHistoryId.length < 2) {
+          dispatch(getRecentChat());
+        }
         dispatch(chatAction.newChatHandler());
         dispatch(
           chatAction.chatHistoryIdHandler({ chatHistoryId: data.chatHistoryId })

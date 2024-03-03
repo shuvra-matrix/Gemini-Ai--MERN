@@ -12,6 +12,9 @@ const userSchema = new Schema({
   ip: {
     type: String,
   },
+  location: {
+    type: String,
+  },
   chatHistory: [
     {
       type: Schema.Types.ObjectId,
