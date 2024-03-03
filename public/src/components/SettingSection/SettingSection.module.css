@@ -14,6 +14,8 @@
   border-radius: 6px;
   box-shadow: var(--setting-main-box-shadow);
   transition: all 0.2s ease-out;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .settngs-show {

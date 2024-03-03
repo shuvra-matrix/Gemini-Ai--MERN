@@ -9,6 +9,8 @@
   gap: 30px;
   transition: all 0.4s ease;
   position: relative;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .side-bar-long {

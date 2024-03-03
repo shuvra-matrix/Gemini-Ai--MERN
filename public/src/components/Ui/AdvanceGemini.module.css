@@ -14,6 +14,8 @@
   transition: all 0.3s ease;
   z-index: 6;
   display: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .advance-on {
