@@ -75,6 +75,25 @@
   border-radius: 50%;
 }
 
+.login {
+  background-color: var(--sidebar-bg-color);
+  color: var(--logo-font-color);
+  padding: 7px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--header-login-border);
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  flex-flow: nowrap row;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.login:hover {
+  background-color: var(--header-login-hover-bg);
+}
+
 @media (max-width: 960px) {
   .menu-icon {
     display: flex;

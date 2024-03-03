@@ -6,6 +6,7 @@ const uiInitialState = {
   isRealTimeResponse: false,
   isSettingsShow: false,
   isAdvanceShow: false,
+  isUserDetailsShow: false,
 };
 
 const uiCreteSlice = createSlice({
@@ -30,6 +31,9 @@ const uiCreteSlice = createSlice({
     },
     toggleAdvanceShow(state) {
       state.isAdvanceShow = !state.isAdvanceShow;
+    },
+    toggleUserDetailsShow(state) {
+      state.isUserDetailsShow = !state.isUserDetailsShow;
     },
   },
 });

@@ -27,6 +27,10 @@ const Header = () => {
     navigate("/");
   };
 
+  const userDetailsOpen = () => {
+    dispatch(uiAction.toggleUserDetailsShow());
+  };
+
   return (
     <div className={styles["header-main"]}>
       <div className={styles["left-section"]}>
@@ -47,7 +51,11 @@ const Header = () => {
             <img src={icon.plusIcon} alt="plus icon"></img>
           </div>
         ) : null}
-        <div className={styles["user"]}>
+        <div className={styles["login"]}>
+          <img src={commonIcon.googleLogo} alt="google logo"></img>
+          <p>Sign In</p>
+        </div>
+        <div onClick={userDetailsOpen} className={styles["user"]}>
           <img src={commonIcon.avatarIcon} alt="avatar icon"></img>
         </div>
       </div>

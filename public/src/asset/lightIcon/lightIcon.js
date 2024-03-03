@@ -16,6 +16,8 @@ import moonIcon from "./icons8-moon-64.png";
 import linkIcon from "./icons8-link-50.png";
 import okIcon from "./icons8-ok-48.png";
 import copyIcon from "./icons8-copy-48.png";
+import crossIcon from "./icons8-cross-50.png";
+import signOutIcon from "./icons8-sign-out-50.png";
 
 export const lightIcon = {
   plusIcon,
@@ -36,4 +38,6 @@ export const lightIcon = {
   linkIcon,
   okIcon,
   copyIcon,
+  crossIcon,
+  signOutIcon,
 };

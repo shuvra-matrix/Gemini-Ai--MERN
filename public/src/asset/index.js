@@ -3,6 +3,7 @@ import advanceGeminiIcon from "./gemini_sparkle_red_4ed1cbfcbc6c9e84c31b987da73f
 import avatarIcon from "./avater-icon.png";
 import chatGeminiIcon from "./bard_sparkle_v2.svg";
 import geminiLaoder from "./bard_sparkle_processing_v2_loader.gif";
+import googleLogo from "./icons8-google-48.png";
 
 import { darkIcon } from "./darkIcon/darkIcon";
 import { lightIcon } from "./lightIcon/lightIcon";
@@ -13,6 +14,7 @@ export const commonIcon = {
   avatarIcon,
   chatGeminiIcon,
   geminiLaoder,
+  googleLogo,
 };
 
 export const themeIcon = () => {

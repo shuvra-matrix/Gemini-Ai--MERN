@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { uiAction } from "./store/ui-gemini";
 import { useEffect } from "react";
 import { getRecentChat } from "./store/chat-action";
+import UserDetails from "./components/UserDetails/UserDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,12 +14,17 @@ function App() {
   const isAdvanceGeminiPrompt = useSelector((state) => state.ui.isAdvanceShow);
   const newChat = useSelector((state) => state.chat.newChat);
   const isDark = useSelector((state) => state.ui.isDark);
+  const isUserDetails = useSelector((state) => state.ui.isUserDetailsShow);
   const settingHandler = () => {
     if (settingsShow === true) {
       dispatch(uiAction.toggleSettings());
     }
     if (isAdvanceGeminiPrompt === true) {
       dispatch(uiAction.toggleAdvanceShow());
+    }
+
+    if (isUserDetails === true) {
+      dispatch(uiAction.toggleUserDetailsShow());
     }
   };
 
@@ -39,11 +45,14 @@ function App() {
       <Sidebar />
       <ChatSection />
       <SettingSection />
-
+      {isUserDetails && <UserDetails />}
       {settingsShow && (
         <div onClick={settingHandler} className="bg-focus-dark"></div>
       )}
       {isAdvanceGeminiPrompt && (
+        <div onClick={settingHandler} className="bg-focus-dark"></div>
+      )}
+      {isUserDetails && (
         <div onClick={settingHandler} className="bg-focus-dark"></div>
       )}
     </div>
