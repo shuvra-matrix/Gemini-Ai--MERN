@@ -1,4 +1,5 @@
 import { authAction } from "./auth";
+import { userAction } from "./user";
 
 const SERVER_ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT;
 
@@ -14,12 +15,24 @@ export const loginHandler = () => {
         if (!response.ok) {
           throw new Error("Invalid Credential");
         }
+
+        return response.json();
+      })
+      .then((data) => {
+        dispatch(
+          userAction.setUserData({
+            userData: {
+              name: data.name,
+              email: data.email,
+              profileImg: data.profileImg,
+            },
+          })
+        );
         dispatch(authAction.isLoginHandler({ isLogin: true }));
         localStorage.setItem("isLogin", true);
       })
       .catch((err) => {
         console.log(err);
-
         dispatch(authAction.isLoginHandler({ isLogin: false }));
         localStorage.removeItem("isLogin");
         localStorage.removeItem("loginCheck");
@@ -42,6 +55,15 @@ export const logoutHandler = () => {
         dispatch(authAction.isLoginHandler({ isLogin: false }));
         localStorage.removeItem("isLogin");
         localStorage.removeItem("loginCheck");
+        dispatch(
+          userAction.setUserData({
+            userData: {
+              name: "User",
+              email: "",
+              profileImg: "",
+            },
+          })
+        );
       })
       .catch((err) => {
         console.log(err);

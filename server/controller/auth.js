@@ -130,7 +130,12 @@ export const loginValidation = (req, res, next) => {
         error.statusCode = 403;
         throw error;
       }
-      res.status(200).json({ message: "Login Success" });
+      res.status(200).json({
+        message: "Login Success",
+        email: user.email,
+        name: user.name,
+        profileImg: user.profileImg,
+      });
     })
     .catch((err) => {
       if (!err.statusCode) {

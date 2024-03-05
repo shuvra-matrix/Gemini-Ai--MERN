@@ -13,6 +13,7 @@ const Header = () => {
   const isNewChat = useSelector((state) => state.chat.newChat);
   const isUserDetails = useSelector((state) => state.ui.isUserDetailsShow);
   const isLogin = useSelector((state) => state.auth.isLogin);
+  const userDetails = useSelector((state) => state.user.user);
 
   const toggleSideBarHandler = () => {
     dispatch(uiAction.toggleSideBar());
@@ -67,7 +68,11 @@ const Header = () => {
               isUserDetails ? styles["clicked-user"] : ""
             }`}
           >
-            <img src={commonIcon.avatarIcon} alt="avatar icon"></img>
+            {userDetails?.profileImg.length > 0 ? (
+              <img src={userDetails?.profileImg} alt=""></img>
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           <div className={styles["login"]} onClick={loginHandler}>

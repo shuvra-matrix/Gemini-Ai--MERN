@@ -1,12 +1,12 @@
 import styles from "./UserDetails.module.css";
-import { commonIcon } from "../../asset";
 import { themeIcon } from "../../asset";
 import { uiAction } from "../../store/ui-gemini";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutHandler } from "../../store/auth-action";
 
 const UserDetails = () => {
   const dispatch = useDispatch();
+  const userDetails = useSelector((state) => state.user.user);
   const icon = themeIcon();
 
   const userDetsilsClose = () => {
@@ -20,14 +20,14 @@ const UserDetails = () => {
   return (
     <div className={styles["user-main"]}>
       <div className={styles["user-data"]}>
-        <p className={styles["email"]}>shuvra232@gmail.com</p>
+        <p className={styles["email"]}>{userDetails?.email}</p>
         <img
           className={styles["userIcon"]}
-          src={commonIcon.avatarIcon}
+          src={userDetails?.profileImg}
           alt="user icon"
         ></img>
 
-        <p className={styles["name"]}>Hi, Shuvra</p>
+        <p className={styles["name"]}>Hi, {userDetails?.name.split(" ")[0]}</p>
 
         <div className={styles["signout"]} onClick={onLogoutHandler}>
           <img src={icon.signOutIcon} alt="signout"></img>

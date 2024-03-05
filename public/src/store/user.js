@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const userInitialState = {
-  user: { username: "", email: "", profileImg: "" },
+  user: { name: "User", email: "", profileImg: "" },
   location: "",
 };
 
@@ -13,7 +13,7 @@ const userSclice = createSlice({
       state.location = action.payload.location;
     },
     setUserData(state, action) {
-      state.user = action.payload.user;
+      state.user = action.payload.userData;
     },
   },
 });
