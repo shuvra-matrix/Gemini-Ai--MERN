@@ -12,6 +12,8 @@ const Header = () => {
   const navigate = useNavigate();
   const isNewChat = useSelector((state) => state.chat.newChat);
   const isUserDetails = useSelector((state) => state.ui.isUserDetailsShow);
+  const isLogin = useSelector((state) => state.auth.isLogin);
+
   const toggleSideBarHandler = () => {
     dispatch(uiAction.toggleSideBar());
   };
@@ -57,18 +59,22 @@ const Header = () => {
             <img src={icon.plusIcon} alt="plus icon"></img>
           </div>
         ) : null}
-        <div className={styles["login"]} onClick={loginHandler}>
-          <img src={commonIcon.googleLogo} alt="google logo"></img>
-          <p>Sign In</p>
-        </div>
-        <div
-          onClick={userDetailsOpen}
-          className={`${styles["user"]} ${
-            isUserDetails ? styles["clicked-user"] : ""
-          }`}
-        >
-          <img src={commonIcon.avatarIcon} alt="avatar icon"></img>
-        </div>
+
+        {isLogin ? (
+          <div
+            onClick={userDetailsOpen}
+            className={`${styles["user"]} ${
+              isUserDetails ? styles["clicked-user"] : ""
+            }`}
+          >
+            <img src={commonIcon.avatarIcon} alt="avatar icon"></img>
+          </div>
+        ) : (
+          <div className={styles["login"]} onClick={loginHandler}>
+            <img src={commonIcon.googleLogo} alt="google logo"></img>
+            <p>Sign In</p>
+          </div>
+        )}
       </div>
     </div>
   );

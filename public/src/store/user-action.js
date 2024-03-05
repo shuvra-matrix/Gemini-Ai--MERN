@@ -13,6 +13,7 @@ export const userUpdateLocation = () => {
 
           fetch(url, {
             method: "PUT",
+            credentials: "include",
             headers: {
               "Content-Type": "application/json",
             },

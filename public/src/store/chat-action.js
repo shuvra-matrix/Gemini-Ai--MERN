@@ -7,7 +7,10 @@ export const getRecentChat = () => {
   return (dispatch) => {
     const url = `${SERVER_ENDPOINT}/gemini/api/getchathistory`;
 
-    fetch(url, { method: "GET" })
+    fetch(url, {
+      method: "GET",
+      credentials: "include",
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("server error");
@@ -37,6 +40,7 @@ export const sendChatData = (useInput) => {
 
     fetch(url, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
         "X-Api-Key": apiKey,
@@ -108,6 +112,7 @@ export const getChat = (chatHistoryId) => {
     fetch(url, {
       method: "POST",
       body: JSON.stringify({ chatHistoryId }),
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const authInitialState = { isLogin: false };
+const loginValue = localStorage.getItem("isLogin") || false;
+
+const authInitialState = { isLogin: loginValue };
 
 const authSlice = createSlice({
   name: "auth slice",
   initialState: authInitialState,
   reducers: {
-    loginHandler(state) {
-      state.isLogin = !state.isLogin;
+    isLoginHandler(state, action) {
+      state.isLogin = action.payload.isLogin;
     },
   },
 });

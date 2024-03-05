@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { getRecentChat } from "./store/chat-action";
 import UserDetails from "./components/UserDetails/UserDetails";
 
+import { loginHandler } from "./store/auth-action";
+
 function App() {
   const dispatch = useDispatch();
   const settingsShow = useSelector((state) => state.ui.isSettingsShow);
@@ -15,6 +17,7 @@ function App() {
   const newChat = useSelector((state) => state.chat.newChat);
   const isDark = useSelector((state) => state.ui.isDark);
   const isUserDetails = useSelector((state) => state.ui.isUserDetailsShow);
+  const isLogin = useSelector((state) => state.auth.isLogin);
   const settingHandler = () => {
     if (settingsShow === true) {
       dispatch(uiAction.toggleSettings());
@@ -40,19 +43,23 @@ function App() {
     }
   }, [dispatch, newChat]);
 
+  useEffect(() => {
+    dispatch(loginHandler());
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Sidebar />
       <ChatSection />
       <SettingSection />
-      {isUserDetails && <UserDetails />}
+      {isUserDetails && isLogin && <UserDetails />}
       {settingsShow && (
         <div onClick={settingHandler} className="bg-focus-dark"></div>
       )}
       {isAdvanceGeminiPrompt && (
         <div onClick={settingHandler} className="bg-focus-dark"></div>
       )}
-      {isUserDetails && (
+      {isUserDetails && isLogin && (
         <div onClick={settingHandler} className="bg-focus-dark"></div>
       )}
     </div>

@@ -19,7 +19,12 @@ const userSchema = new Schema({
   resetToken: {
     type: String,
   },
-  expireToken: [
+  expireAccessToken: [
+    {
+      type: Object,
+    },
+  ],
+  expireRefreshToken: [
     {
       type: Object,
     },

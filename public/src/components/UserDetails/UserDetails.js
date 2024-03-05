@@ -3,6 +3,7 @@ import { commonIcon } from "../../asset";
 import { themeIcon } from "../../asset";
 import { uiAction } from "../../store/ui-gemini";
 import { useDispatch } from "react-redux";
+import { logoutHandler } from "../../store/auth-action";
 
 const UserDetails = () => {
   const dispatch = useDispatch();
@@ -10,6 +11,10 @@ const UserDetails = () => {
 
   const userDetsilsClose = () => {
     dispatch(uiAction.toggleUserDetailsShow());
+  };
+
+  const onLogoutHandler = () => {
+    dispatch(logoutHandler());
   };
 
   return (
@@ -24,7 +29,7 @@ const UserDetails = () => {
 
         <p className={styles["name"]}>Hi, Shuvra</p>
 
-        <div className={styles["signout"]}>
+        <div className={styles["signout"]} onClick={onLogoutHandler}>
           <img src={icon.signOutIcon} alt="signout"></img>
           <p>Sign out</p>
         </div>
