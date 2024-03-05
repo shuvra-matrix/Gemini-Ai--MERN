@@ -75,9 +75,11 @@ app.use((req, res, next) => {
     });
 });
 
-import PublicRoutes from "./router/public.js";
+import publicRoutes from "./router/public.js";
+import authRoutes from "./router/auth.js";
 
-app.use("/gemini", PublicRoutes);
+app.use("/gemini", publicRoutes);
+app.use(authRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);

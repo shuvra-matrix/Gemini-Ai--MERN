@@ -9,6 +9,21 @@ const userSchema = new Schema({
   email: {
     type: String,
   },
+  profileImg: {
+    type: String,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+  resetToken: {
+    type: String,
+  },
+  expireToken: [
+    {
+      type: Object,
+    },
+  ],
   ip: {
     type: String,
   },

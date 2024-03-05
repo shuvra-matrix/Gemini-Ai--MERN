@@ -5,6 +5,7 @@ import { themeIcon } from "../../asset";
 import { commonIcon } from "../../asset";
 import { useNavigate } from "react-router-dom";
 import { chatAction } from "../../store/chat";
+import { continueWithGoogleOauth } from "../../utils/getGoogleOauthUrl";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -32,6 +33,10 @@ const Header = () => {
     dispatch(uiAction.toggleUserDetailsShow());
   };
 
+  const loginHandler = () => {
+    window.open(continueWithGoogleOauth(), "_self");
+  };
+
   return (
     <div className={styles["header-main"]}>
       <div className={styles["left-section"]}>
@@ -52,7 +57,7 @@ const Header = () => {
             <img src={icon.plusIcon} alt="plus icon"></img>
           </div>
         ) : null}
-        <div className={styles["login"]}>
+        <div className={styles["login"]} onClick={loginHandler}>
           <img src={commonIcon.googleLogo} alt="google logo"></img>
           <p>Sign In</p>
         </div>

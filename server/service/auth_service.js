@@ -1,0 +1,65 @@
+import "dotenv/config";
+
+const redirect_url =
+  process.env.GOOGLE_OAUTH_REDIRECT_URL ||
+  "http://localhost:3030/api/auth/google";
+
+export const getGooleOAuthToken = (code) => {
+  const url = "https://oauth2.googleapis.com/token";
+
+  const values = {
+    code,
+    client_id: process.env.GOOGLE_CLIENT_ID,
+    client_secret: process.env.GOOGLE_CLIENT_SECRET,
+    redirect_uri: redirect_url,
+    grant_type: "authorization_code",
+  };
+
+  return new Promise((res, rej) => {
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams(values).toString(),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch Google Oauth Tokens");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        res(data);
+      })
+      .catch((err) => {
+        rej(err);
+      });
+  });
+};
+
+export const getGoogleUser = (id_token, access_token) => {
+  return new Promise((res, rej) => {
+    const url = `https://www.googleapis.com/oauth2/v3/userinfo?alt=json&access_token=${access_token}`;
+
+    fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${id_token}`,
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("No User Found");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        res(data);
+      })
+      .catch((err) => {
+        rej(err);
+      });
+  });
+};

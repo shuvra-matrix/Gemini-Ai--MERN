@@ -1,9 +1,11 @@
 import { chatAction } from "./chat";
 import { userAction } from "./user";
 
+const SERVER_ENDPOINT = process.env.REACT_APP_SERVER_ENDPOINT;
+
 export const getRecentChat = () => {
   return (dispatch) => {
-    const url = "http://localhost:3030/gemini/api/getchathistory";
+    const url = `${SERVER_ENDPOINT}/gemini/api/getchathistory`;
 
     fetch(url, { method: "GET" })
       .then((response) => {
@@ -31,7 +33,7 @@ export const sendChatData = (useInput) => {
 
     const apiKey = process.env.REACT_APP_GEMINI_KEY;
 
-    const url = "http://localhost:3030/gemini/api/chat";
+    const url = `${SERVER_ENDPOINT}/gemini/api/chat`;
 
     fetch(url, {
       method: "POST",
@@ -101,7 +103,7 @@ export const sendChatData = (useInput) => {
 export const getChat = (chatHistoryId) => {
   return (dispatch) => {
     dispatch(chatAction.loaderHandler());
-    const url = "http://localhost:3030/gemini/api/chatdata";
+    const url = `${SERVER_ENDPOINT}/gemini/api/chatdata`;
 
     fetch(url, {
       method: "POST",
