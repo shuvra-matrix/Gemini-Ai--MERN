@@ -29,7 +29,6 @@ export const getGooleOAuthToken = (code) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         res(data);
       })
       .catch((err) => {

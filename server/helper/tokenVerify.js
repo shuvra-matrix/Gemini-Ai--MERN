@@ -25,7 +25,7 @@ export const tokenVerify = (token) => {
         }
 
         const isTokenPresent = userData.expireAccessToken.some(
-          (blockedToken) => blockedToken.type === token
+          (blockedToken) => blockedToken === token
         );
 
         if (isTokenPresent) {

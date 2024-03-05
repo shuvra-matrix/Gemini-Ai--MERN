@@ -6,6 +6,13 @@ import { tokenVerify } from "../helper/tokenVerify.js";
 import { getCookieValue } from "../helper/cookieHandler.js";
 import jwt from "jsonwebtoken";
 
+const accessTokenSecret = process.env.ACCESS_TOKEN_JWT_SECRET;
+const refreshTokenSecret = process.env.REFRESH_TOKEN_JWT_SECRET;
+const accessTokenExpire = process.env.ACCESS_TOKEN_EXPIRETIME;
+const refreshTokenExpire = process.env.REFRESH_TOKEN_EXPIRETIME;
+const applicationType = process.env.APPLICATION_TYPE;
+const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
+
 export const googleOauthHandler = (req, res, next) => {
   const code = req.query.code;
 
@@ -55,11 +62,6 @@ export const googleOauthHandler = (req, res, next) => {
         userAgent: clientUserAgent,
       };
 
-      const accessTokenSecret = process.env.ACCESS_TOKEN_JWT_SECRET;
-      const refreshTokenSecret = process.env.REFRESH_TOKEN_JWT_SECRET;
-      const accessTokenExpire = process.env.ACCESS_TOKEN_EXPIRETIME;
-      const refreshTokenExpire = process.env.REFRESH_TOKEN_EXPIRETIME;
-
       const accessToken = jwtSignIn(
         tokenUserData,
         accessTokenSecret,
@@ -71,9 +73,6 @@ export const googleOauthHandler = (req, res, next) => {
         refreshTokenSecret,
         refreshTokenExpire
       );
-
-      const applicationType = process.env.APPLICATION_TYPE;
-      const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
 
       const accessCookieOption = {
         maxAge: 900000,
@@ -160,8 +159,6 @@ export const logoutHandler = (req, res, next) => {
         error.statusCode = 403;
         throw error;
       }
-      const applicationType = process.env.APPLICATION_TYPE;
-      const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
 
       const accessCookieOption = {
         maxAge: 900000,
@@ -213,8 +210,6 @@ export const refreshToken = (req, res, next) => {
     return next(error);
   }
 
-  const refreshTokenSecret = process.env.REFRESH_TOKEN_JWT_SECRET;
-
   const decodeToken = jwt.verify(refreshToken, refreshTokenSecret);
 
   if (!decodeToken) {
@@ -234,7 +229,7 @@ export const refreshToken = (req, res, next) => {
       }
 
       const isAccessTokenPresent = userData.expireAccessToken.some(
-        (blockedToken) => blockedToken.type === accessToken
+        (blockedToken) => blockedToken === accessToken
       );
 
       if (isAccessTokenPresent) {
@@ -243,7 +238,7 @@ export const refreshToken = (req, res, next) => {
       }
 
       const isRefreshTokenPresent = userData.expireRefreshToken.some(
-        (blockedToken) => blockedToken.type === refreshToken
+        (blockedToken) => blockedToken === refreshToken
       );
 
       if (isRefreshTokenPresent) {
@@ -258,15 +253,12 @@ export const refreshToken = (req, res, next) => {
         userAgent: clientUserAgent,
       };
 
-      const accessTokenSecret = process.env.ACCESS_TOKEN_JWT_SECRET;
-      const accessTokenExpire = process.env.ACCESS_TOKEN_EXPIRETIME;
       const newAccessToken = jwtSignIn(
         tokenUserData,
         accessTokenSecret,
         accessTokenExpire
       );
-      const applicationType = process.env.APPLICATION_TYPE;
-      const cookieDomain = process.env.COOKIE_DOMAIN || "localhost";
+
       const accessCookieOption = {
         maxAge: 900000,
         httpOnly: true,
