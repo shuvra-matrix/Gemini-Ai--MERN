@@ -1,11 +1,10 @@
 import "dotenv/config";
-
-const redirect_url =
-  process.env.GOOGLE_OAUTH_REDIRECT_URL ||
-  "http://localhost:3030/api/auth/google";
+import jwt from "jsonwebtoken";
 
 export const getGooleOAuthToken = (code) => {
   const url = "https://oauth2.googleapis.com/token";
+
+  const redirect_url = process.env.GOOGLE_OAUTH_REDIRECT_URL;
 
   const values = {
     code,
@@ -62,4 +61,10 @@ export const getGoogleUser = (id_token, access_token) => {
         rej(err);
       });
   });
+};
+
+export const jwtSignIn = (userData, secret, expireTime) => {
+  const token = jwt.sign(userData, secret, { expiresIn: expireTime });
+
+  return token;
 };
