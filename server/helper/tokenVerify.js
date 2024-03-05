@@ -4,27 +4,36 @@ import { user } from "../model/user.js";
 export const tokenVerify = (token) => {
   return new Promise((res, rej) => {
     const secret = process.env.ACCESS_TOKEN_JWT_SECRET;
-    let decodeToken;
+    const decodeToken = jwt.verify(token, secret);
 
-    try {
-      decodeToken = jwt.verify(token, secret);
-    } catch (err) {
+    if (!decodeToken) {
+      const err = new Error("Token Invalid");
       err.statusCode = 401;
       err.data = "invalid token";
-      throw err;
+      return next(err);
     }
 
     const userEmail = decodeToken.email;
 
     user
       .findOne({ email: userEmail })
-      .then((user) => {
-        if (!user) {
+      .then((userData) => {
+        if (!userData) {
           const error = new Error("user not found");
           error.statusCode = 403;
           throw error;
         }
-        res(user);
+
+        const isTokenPresent = userData.expireAccessToken.some(
+          (blockedToken) => blockedToken.type === token
+        );
+
+        if (isTokenPresent) {
+          const error = new Error("invalid token");
+          throw error;
+        }
+
+        res(userData);
       })
       .catch((err) => {
         if (!err.statusCode) {

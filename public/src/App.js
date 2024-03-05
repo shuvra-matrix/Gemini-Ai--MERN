@@ -7,7 +7,7 @@ import { uiAction } from "./store/ui-gemini";
 import { useEffect } from "react";
 import { getRecentChat } from "./store/chat-action";
 import UserDetails from "./components/UserDetails/UserDetails";
-
+import { refreshToken } from "./store/auth-action";
 import { loginHandler } from "./store/auth-action";
 
 function App() {
@@ -45,6 +45,17 @@ function App() {
 
   useEffect(() => {
     dispatch(loginHandler());
+  }, [dispatch]);
+
+  useEffect(() => {
+    const refreshTokenHandler = setInterval(() => {
+      const isLoginLocal = localStorage.getItem("isLogin");
+      if (isLoginLocal) {
+        dispatch(refreshToken());
+      }
+    }, 14 * 60 * 1000);
+
+    return () => clearInterval(refreshTokenHandler);
   }, [dispatch]);
 
   return (

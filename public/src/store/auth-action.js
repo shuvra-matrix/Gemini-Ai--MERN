@@ -48,3 +48,24 @@ export const logoutHandler = () => {
       });
   };
 };
+
+export const refreshToken = () => {
+  return (dispatch) => {
+    const url = `${SERVER_ENDPOINT}/api/auth/resetToken`;
+
+    fetch(url, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Invalid Credential");
+        }
+        localStorage.setItem("isLogin", true);
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(logoutHandler());
+      });
+  };
+};

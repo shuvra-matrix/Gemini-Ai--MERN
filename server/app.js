@@ -2,7 +2,6 @@ import express from "express";
 import mongoose from "mongoose";
 import requestIp from "request-ip";
 import "dotenv/config";
-import { user } from "./model/user.js";
 import cros from "cors";
 
 const MONGODB_URL = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}mymongoinit.6md0cxy.mongodb.net/gemini?retryWrites=true&w=majority`;
@@ -13,8 +12,10 @@ const app = express();
 app.use(express.json());
 app.use(requestIp.mw());
 
+const originUrl = process.env.CLIENT_REDIRECT_URL;
+
 const crosOption = {
-  origin: "http://localhost:3000",
+  origin: originUrl,
   optionsSuccessStatus: 200,
   credentials: true,
 };
