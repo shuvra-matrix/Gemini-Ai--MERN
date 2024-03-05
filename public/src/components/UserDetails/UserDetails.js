@@ -3,8 +3,10 @@ import { themeIcon } from "../../asset";
 import { uiAction } from "../../store/ui-gemini";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutHandler } from "../../store/auth-action";
+import { useNavigate } from "react-router-dom";
 
 const UserDetails = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const userDetails = useSelector((state) => state.user.user);
   const icon = themeIcon();
@@ -15,6 +17,7 @@ const UserDetails = () => {
 
   const onLogoutHandler = () => {
     dispatch(logoutHandler());
+    navigate("/");
   };
 
   return (

@@ -6,6 +6,7 @@ import { tokenVerify } from "../helper/tokenVerify.js";
 import { getCookieValue } from "../helper/cookieHandler.js";
 import jwt from "jsonwebtoken";
 
+const clientRedirectUrl = process.env.CLIENT_REDIRECT_URL;
 const accessTokenSecret = process.env.ACCESS_TOKEN_JWT_SECRET;
 const refreshTokenSecret = process.env.REFRESH_TOKEN_JWT_SECRET;
 const accessTokenExpire = process.env.ACCESS_TOKEN_EXPIRETIME;
@@ -96,8 +97,6 @@ export const googleOauthHandler = (req, res, next) => {
       res.cookie("access_token", accessToken, accessCookieOption);
       res.cookie("refresh_token", refreshToken, refreshCookieOption);
       res.cookie("isLogin", "yes", accessCookieOption);
-
-      const clientRedirectUrl = process.env.CLIENT_REDIRECT_URL;
       res.redirect(clientRedirectUrl);
     })
     .catch((error) => {
