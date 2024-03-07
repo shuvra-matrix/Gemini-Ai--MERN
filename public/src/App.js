@@ -18,6 +18,7 @@ function App() {
   const isDark = useSelector((state) => state.ui.isDark);
   const isUserDetails = useSelector((state) => state.ui.isUserDetailsShow);
   const isLogin = useSelector((state) => state.auth.isLogin);
+
   const settingHandler = () => {
     if (settingsShow === true) {
       dispatch(uiAction.toggleSettings());

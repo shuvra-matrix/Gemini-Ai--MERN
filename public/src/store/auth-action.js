@@ -58,7 +58,7 @@ export const logoutHandler = () => {
         localStorage.removeItem("loginCheck");
         dispatch(chatAction.replaceChat({ chats: [] }));
         dispatch(chatAction.recentChatHandler({ recentChat: [] }));
-        dispatch(chatAction.previousChatHandler({ previousChat: [] }));
+        dispatch(chatAction.replacePreviousChat({ previousChat: [] }));
         dispatch(chatAction.chatHistoryIdHandler({ chatHistoryId: "" }));
         dispatch(chatAction.newChatHandler());
         dispatch(

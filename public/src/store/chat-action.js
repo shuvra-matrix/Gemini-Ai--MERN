@@ -53,7 +53,9 @@ export const sendChatData = (useInput) => {
     })
       .then((response) => {
         if (!response.ok) {
-          const error = new Error("Server Error");
+          const statusCode = response.status;
+          const error = new Error(`Server Error: ${statusCode}`);
+          error.statusCode = statusCode;
           throw error;
         }
 
@@ -87,18 +89,32 @@ export const sendChatData = (useInput) => {
         );
       })
       .catch((err) => {
-        console.log(err);
+        const statusCode = err.statusCode || 500;
+
         dispatch(chatAction.popChat());
-        dispatch(
-          chatAction.chatStart({
-            useInput: {
-              user: useInput.user,
-              gemini:
-                "<span>Oops! Something went wrong on our end. Please refresh the page and try again. If the issue persists, please contact us for assistance.</span>",
-              isLoader: "no",
-            },
-          })
-        );
+        if (statusCode === 429) {
+          dispatch(
+            chatAction.chatStart({
+              useInput: {
+                user: useInput.user,
+                gemini:
+                  "<span>Rate Limit Exceeded. Please wait for one hour before trying again. Thank you for your patience.</span>",
+                isLoader: "no",
+              },
+            })
+          );
+        } else {
+          dispatch(
+            chatAction.chatStart({
+              useInput: {
+                user: useInput.user,
+                gemini:
+                  "<span>Oops! Something went wrong on our end. Please refresh the page and try again. If the issue persists, please contact us for assistance.</span>",
+                isLoader: "no",
+              },
+            })
+          );
+        }
         dispatch(chatAction.newChatHandler());
       });
   };

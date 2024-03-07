@@ -12,6 +12,7 @@ export const authMiddleware = (req, res, next) => {
     tokenVerify(token)
       .then((userData) => {
         req.user = userData;
+        req.auth = "auth";
         next();
       })
       .catch((err) => {
@@ -25,6 +26,7 @@ export const authMiddleware = (req, res, next) => {
       .then((userData) => {
         if (userData) {
           req.user = userData;
+          req.auth = "noauth";
           return next();
         }
 
@@ -61,6 +63,7 @@ export const authMiddleware = (req, res, next) => {
                   throw error;
                 }
                 req.user = userData;
+                req.auth = "noauth";
                 return next();
               });
           });

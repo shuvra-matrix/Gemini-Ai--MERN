@@ -159,19 +159,20 @@ export const postGemini = async (req, res, next) => {
 
       return user.findById(req.user._id);
     })
-    .then((userDate) => {
-      if (!userDate) {
+    .then((userData) => {
+      if (!userData) {
         const error = new Error("No user found");
         error.statusCode = 403;
         throw error;
       }
 
       if (chatHistoryId.length < 5) {
-        userDate.chatHistory.push(newChatHistoryId);
-        return userDate.save();
-      } else {
-        return true;
+        userData.chatHistory.push(newChatHistoryId);
       }
+      if (req.auth === "noauth") {
+        userData.currentLimit += 1;
+      }
+      return userData.save();
     })
     .then((result) => {
       if (!result) {

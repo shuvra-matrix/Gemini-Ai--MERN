@@ -41,6 +41,18 @@ const userSchema = new Schema({
       ref: "ChatHistory",
     },
   ],
+  maxRateLimit: {
+    type: Number,
+    default: 10,
+  },
+  currentLimit: {
+    type: Number,
+    default: 0,
+  },
+  recentRateLimitTime: {
+    type: Number,
+    default: 0,
+  },
 });
 
 export const user = mongoose.model("User", userSchema);
