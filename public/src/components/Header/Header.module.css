@@ -110,11 +110,24 @@
 }
 
 @media (max-width: 960px) {
+  .login {
+    padding: 7px 7px;
+  }
+
   .menu-icon {
     display: flex;
   }
 
   .plus-icon {
     display: flex;
+  }
+}
+
+@media (max-width: 320px) {
+  .login p {
+    display: none;
+  }
+  .right-section {
+    gap: 8px;
   }
 }

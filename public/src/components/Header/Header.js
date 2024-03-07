@@ -77,7 +77,7 @@ const Header = () => {
         ) : (
           <div className={styles["login"]} onClick={loginHandler}>
             <img src={commonIcon.googleLogo} alt="google logo"></img>
-            <p>Sign In</p>
+            <p>Sign in</p>
           </div>
         )}
       </div>
