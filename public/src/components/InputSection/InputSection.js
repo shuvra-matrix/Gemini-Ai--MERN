@@ -1,7 +1,7 @@
 import styles from "./InputSection.module.css";
 import { themeIcon } from "../../asset";
 import { sendChatData } from "../../store/chat-action";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,7 @@ const InputSection = () => {
   const [userInput, setUserInput] = useState("");
   const previousChat = useSelector((state) => state.chat.previousChat);
   const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
+  const suggestPrompt = useSelector((state) => state.chat.suggestPrompt);
 
   const userInputHandler = (e) => {
     setUserInput(e.target.value);
@@ -27,8 +28,15 @@ const InputSection = () => {
         chatHistoryId,
       })
     );
+    setUserInput("");
     navigate("/app");
   };
+
+  useEffect(() => {
+    if (suggestPrompt.length > 0) {
+      setUserInput(suggestPrompt);
+    }
+  }, [suggestPrompt]);
 
   const icon = themeIcon();
   return (
@@ -40,6 +48,7 @@ const InputSection = () => {
           type="text"
           placeholder="Enter a prompt here"
           name="prompt"
+          value={userInput}
         ></input>
         <button type="submit">
           <img src={icon.sendIcon} alt="send icon"></img>

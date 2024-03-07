@@ -7,6 +7,7 @@ const inittalState = {
   recentChat: [],
   previousChat: [],
   chatHistoryId: "",
+  suggestPrompt: "",
 };
 
 const chatSlice = createSlice({
@@ -48,6 +49,9 @@ const chatSlice = createSlice({
     },
     chatHistoryIdHandler(state, action) {
       state.chatHistoryId = action.payload.chatHistoryId;
+    },
+    suggestPromptHandler(state, action) {
+      state.suggestPrompt = action.payload.prompt;
     },
   },
 });

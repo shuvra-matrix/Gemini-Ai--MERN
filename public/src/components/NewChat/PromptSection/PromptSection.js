@@ -1,43 +1,43 @@
 import styles from "./PromptSection.module.css";
+import { suggestPrompt } from "../../../asset";
+import { useState, useEffect } from "react";
 import { themeIcon } from "../../../asset";
+import { useDispatch } from "react-redux";
+import { chatAction } from "../../../store/chat";
 
 const PromptSection = () => {
+  const dispatch = useDispatch();
+  const [randPrompt, setRandPrompt] = useState([]);
   const icon = themeIcon();
 
-  const prompt = [
-    {
-      id: 1,
-      prompt:
-        "Explain the key rules of rugby. Start with the basics and go step-by-step.",
-      icon: icon.ideaIcon,
-    },
-    {
-      id: 2,
-      prompt:
-        "Teach me the concept of game theory in simple terms, including real-world examples.",
-      icon: icon.ideaIcon,
-    },
-    {
-      id: 3,
-      prompt:
-        "Draft a packing list for my weekend fishing and camping trip in Yosemite with friends. Make a table for the list, with a column for if I have the item yet or not. Draft an email with the table included.",
-      icon: icon.ideaIcon,
-    },
-    {
-      id: 4,
-      prompt:
-        "I have a masters in fine arts that I'd like to apply for a museum curator role. Create a one-pager walking me through the job application process. ",
-      icon: icon.ideaIcon,
-    },
-  ];
+  useEffect(() => {
+    const getRandomPrompts = (list) => {
+      const promptsCopy = [...list];
+      promptsCopy.sort(() => Math.random() - 0.5);
+      return promptsCopy.slice(0, 4);
+    };
+    const randomSuggestions = getRandomPrompts(suggestPrompt);
+    setRandPrompt(randomSuggestions);
+  }, []);
 
+  const promptOnClick = (mainText) => {
+    dispatch(chatAction.suggestPromptHandler({ prompt: mainText }));
+  };
   return (
     <div className={styles["prompt-main"]}>
-      {prompt.map((p) => (
-        <div className={styles["prompt"]} key={p.id}>
-          <p>{p.prompt}</p>
+      {randPrompt.map((p) => (
+        <div
+          className={styles["prompt"]}
+          key={p.id}
+          onClick={() => promptOnClick(p.long)}
+        >
+          <p>{p.sort}</p>
           <div className={styles["icon"]}>
-            <img src={p.icon} alt="icon"></img>
+            {icon[p.icon] ? (
+              <img src={icon[p.icon]} alt="icon"></img>
+            ) : (
+              <img src={p.icon} alt="icon"></img>
+            )}
           </div>
         </div>
       ))}
