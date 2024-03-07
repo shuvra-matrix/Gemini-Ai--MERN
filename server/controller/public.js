@@ -211,8 +211,17 @@ export const getChatHistory = (req, res, next) => {
       }
       c += 1;
       console.log("chat history", c);
+
+      let chatHistory;
+
+      if (req.auth === "auth") {
+        chatHistory = userData.chatHistory.reverse();
+      } else {
+        chatHistory = userData.chatHistory.reverse().slice(0, 5);
+      }
+
       res.status(200).json({
-        chatHistory: userData.chatHistory.reverse(),
+        chatHistory: chatHistory,
         location: userData.location,
       });
     })
@@ -228,24 +237,50 @@ let a = 0;
 
 export const postChat = (req, res, next) => {
   const chatHistoryId = req.body.chatHistoryId;
-  chatHistory
-    .find({ user: req.user._id, _id: chatHistoryId })
-    .populate({
-      path: "chat",
+  const userId = req.user._id;
+  const isNotAuthUser = req.auth === "noauth";
+
+  const findChatHistory = isNotAuthUser
+    ? chatHistory.find({ user: userId })
+    : chatHistory.findOne({ user: userId, _id: chatHistoryId });
+
+  findChatHistory
+    .sort({ _id: -1 })
+    .limit(isNotAuthUser ? 5 : 1)
+    .then((chatHistories) => {
+      if (isNotAuthUser) {
+        const recentChatHistoryIds = chatHistories.map((history) =>
+          history._id.toString()
+        );
+
+        console.log(recentChatHistoryIds);
+
+        if (!recentChatHistoryIds.includes(chatHistoryId)) {
+          const error = new Error("You are not a auth user");
+          error.statusCode = 403;
+          throw error;
+        }
+      }
+
+      return chatHistory
+        .findOne({ user: userId, _id: chatHistoryId })
+        .populate({
+          path: "chat",
+        });
     })
     .then((chatData) => {
       if (!chatData) {
-        const error = new Error("No Chathistory found");
-        error.statusCode - 403;
+        const error = new Error("No Chat history found");
+        error.statusCode = 403;
         throw error;
       }
 
       a += 1;
-      console.log("old chats ", a);
+      console.log("Old chats ", a);
 
       res.status(200).json({
-        chatHistory: chatData[0]._id,
-        chats: chatData[0].chat.messages,
+        chatHistory: chatData._id,
+        chats: chatData.chat.messages,
       });
     })
     .catch((err) => {

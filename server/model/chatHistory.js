@@ -16,6 +16,10 @@ const chatHistorySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Chat",
   },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export const chatHistory = mongoose.model("ChatHistory", chatHistorySchema);
