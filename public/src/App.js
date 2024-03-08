@@ -9,6 +9,7 @@ import { getRecentChat } from "./store/chat-action";
 import UserDetails from "./components/UserDetails/UserDetails";
 import { refreshToken } from "./store/auth-action";
 import { loginHandler } from "./store/auth-action";
+import UserIntroPrompt from "./components/UserIntroPrompt/UserIntroPrompt";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ function App() {
   const isDark = useSelector((state) => state.ui.isDark);
   const isUserDetails = useSelector((state) => state.ui.isUserDetailsShow);
   const isLogin = useSelector((state) => state.auth.isLogin);
+  const isIntroPrompt = useSelector((state) => state.ui.showIntroUserPrompt);
 
   const settingHandler = () => {
     if (settingsShow === true) {
@@ -49,6 +51,18 @@ function App() {
   }, [dispatch]);
 
   useEffect(() => {
+    const showUserPrompt = setInterval(() => {
+      const isShowIntroAlready = localStorage.getItem("isIntroShow") || false;
+      if (!isShowIntroAlready) {
+        dispatch(uiAction.userIntroPromptHandler({ introPrompt: true }));
+        localStorage.setItem("isIntroShow", true);
+      }
+    }, 2 * 1000);
+
+    return () => clearInterval(showUserPrompt);
+  }, [dispatch]);
+
+  useEffect(() => {
     const refreshTokenHandler = setInterval(() => {
       const isLoginLocal = localStorage.getItem("isLogin");
       if (isLoginLocal) {
@@ -65,6 +79,7 @@ function App() {
       <ChatSection />
       <SettingSection />
       {isUserDetails && isLogin && <UserDetails />}
+      {!isLogin && isIntroPrompt && <UserIntroPrompt />}
       {settingsShow && (
         <div onClick={settingHandler} className="bg-focus-dark"></div>
       )}

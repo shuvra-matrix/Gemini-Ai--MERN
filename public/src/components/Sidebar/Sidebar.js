@@ -98,9 +98,6 @@ const Sidebar = () => {
                 >
                   <img src={icon.messageIcon} alt="message"></img>
                   <p>{chat.title.slice(0, 20)}</p>
-                  <div className={styles["three-dot"]}>
-                    <img src={icon.threeDotIcon} alt="more-option"></img>
-                  </div>
                 </div>
               </Link>
             ))}
@@ -127,9 +124,6 @@ const Sidebar = () => {
                   >
                     <img src={icon.messageIcon} alt="message"></img>
                     <p>{chat.title.slice(0, 20)}</p>
-                    <div className={styles["three-dot"]}>
-                      <img src={icon.threeDotIcon} alt="more-option"></img>
-                    </div>
                   </div>
                 </Link>
               ))}

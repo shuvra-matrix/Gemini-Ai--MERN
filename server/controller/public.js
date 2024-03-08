@@ -253,8 +253,6 @@ export const postChat = (req, res, next) => {
           history._id.toString()
         );
 
-        console.log(recentChatHistoryIds);
-
         if (!recentChatHistoryIds.includes(chatHistoryId)) {
           const error = new Error("You are not a auth user");
           error.statusCode = 403;

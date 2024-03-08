@@ -9,6 +9,7 @@ import flightIcon from "./icons8-flight-64.png";
 import mapIcon from "./icons8-google-maps-48.png";
 import hotelIcon from "./icons8-hotel-48.png";
 import sportsIcon from "./icons8-man-winner-48.png";
+import googleBigIcon from "./icons8-google-144.png";
 
 import { darkIcon } from "./darkIcon/darkIcon";
 import { lightIcon } from "./lightIcon/lightIcon";
@@ -24,6 +25,7 @@ export const commonIcon = {
   flightIcon,
   mapIcon,
   hotelIcon,
+  googleBigIcon,
 };
 
 export const themeIcon = () => {

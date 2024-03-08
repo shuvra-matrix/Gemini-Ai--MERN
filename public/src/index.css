@@ -27,6 +27,8 @@
   --header-user-icon-bg: #1c1c1f;
   --header-user-icon-clicked-bg: #252628;
 
+  --userprompt-text-span-color: #d96570;
+
   --new-chat-h2-color: #444746;
 
   --prompt-bg: #1e1f20;
@@ -107,6 +109,8 @@
 
 [data-theme="light"] {
   --chat-section-bg: #ffffff;
+
+  --userprompt-text-span-color: #9c72cb;
 
   --logo-font-color: #5f6368;
   --header-plus-bg: #e9eef6;

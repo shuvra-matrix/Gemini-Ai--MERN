@@ -7,6 +7,7 @@ const uiInitialState = {
   isSettingsShow: false,
   isAdvanceShow: false,
   isUserDetailsShow: false,
+  showIntroUserPrompt: false,
 };
 
 const uiCreteSlice = createSlice({
@@ -34,6 +35,9 @@ const uiCreteSlice = createSlice({
     },
     toggleUserDetailsShow(state) {
       state.isUserDetailsShow = !state.isUserDetailsShow;
+    },
+    userIntroPromptHandler(state, action) {
+      state.showIntroUserPrompt = action.payload.introPrompt;
     },
   },
 });
