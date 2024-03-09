@@ -1,25 +1,32 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "theme_color": "#131314",
+  "background_color": "#131314",
+  "display": "standalone",
+  "scope": "https://geminichatai.netlify.app",
+  "start_url": "https://geminichatai.netlify.app",
+  "name": "Gemini Ai",
+  "short_name": "Gemini AI",
+  "description": "Revolutionize your online interactions with our web app \u2013 a stellar clone of Google Gemini Chat AI. Seamlessly blending cutting-edge technology with a sleek interface, our application provides users with an immersive conversational experience. Engage in natural language conversations, access advanced language models, and enjoy the power of interactive communication. Elevate your online interactions with our user-friendly and feature-rich AI-powered chat application.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
