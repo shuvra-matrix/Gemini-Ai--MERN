@@ -1,6 +1,6 @@
 # Gemini AI Web App
 
-Gemini AI is an innovative web application that brings an interactive chat experience with Gemini AI. Built using Node.js, React.js, MongoDB, and React-Reducer, this app allows users to engage in text-based conversations with Gemini AI. The application features Google OAuth V2 for user authentication, enabling enhanced capabilities and personalization.
+Gemini AI is an innovative web application that brings an interactive chat experience with the help of Google Gemini Pro api. Built using Node.js, React.js, MongoDB, and React-Reducer, this app allows users to engage in text-based conversations with Gemini AI. The application features Google OAuth V2 for user authentication, enabling enhanced capabilities and personalization.
 
 ## Description
 
