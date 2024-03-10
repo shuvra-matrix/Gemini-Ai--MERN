@@ -268,7 +268,7 @@ export const refreshToken = (req, res, next) => {
         accessCookieOption.sameSite = "None";
       }
       res.cookie("access_token", newAccessToken, accessCookieOption);
-      res.cookie("isLogin", "yes", accessCookieOption);
+      res.cookie("isLogin", accessCookieOption);
 
       res.status(200).json({ message: "Token Reset Successful" });
     })
