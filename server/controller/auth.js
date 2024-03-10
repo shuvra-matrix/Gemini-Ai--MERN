@@ -180,7 +180,7 @@ export const logoutHandler = (req, res, next) => {
 
       res.clearCookie("access_token", accessCookieOption);
       res.clearCookie("refresh_token", refreshCookieOption);
-      res.clearCookie("isLogin", "yes", accessCookieOption);
+      res.clearCookie("isLogin", accessCookieOption);
 
       res.status(200).json({ message: "Logout" });
     })
@@ -268,7 +268,7 @@ export const refreshToken = (req, res, next) => {
         accessCookieOption.sameSite = "None";
       }
       res.cookie("access_token", newAccessToken, accessCookieOption);
-      res.cookie("isLogin", accessCookieOption);
+      res.cookie("isLogin", "yes", accessCookieOption);
 
       res.status(200).json({ message: "Token Reset Successful" });
     })
