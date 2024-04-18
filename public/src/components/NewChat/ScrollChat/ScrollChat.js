@@ -17,8 +17,9 @@ const ScrollChat = () => {
   const chat = useSelector((state) => state.chat.chats);
   const chatHistoryId = useSelector((state) => state.chat.chatHistoryId);
   const realTimeResponse = localStorage.getItem("realtime") || "no";
+  const userImage = useSelector((state) => state.user.user.profileImg);
 
-  console.log(historyId);
+  const userLogo = userImage || commonIcon.avatarIcon;
 
   useEffect(() => {
     if (chat.length === 0 && !historyId) {
@@ -61,7 +62,7 @@ const ScrollChat = () => {
           }`}
         >
           <div className={styles["user"]}>
-            <img src={commonIcon.avatarIcon} alt="avater icon"></img>
+            <img src={userLogo} alt="avater icon"></img>
             <p>{c.user}</p>
           </div>
           <div className={styles["gemini"]}>
